@@ -25,7 +25,7 @@
 
 export { createBenchmark } from './benchmark'
 export { BenchmarkReporter } from './reporter'
-export { BenchmarkRunner } from './runner'
+export { BenchmarkRunner, checkThresholds } from './runner'
 
 export type {
   Benchmark,
@@ -35,5 +35,7 @@ export type {
   BenchmarkSuite,
   BenchmarkReport,
   ReporterOptions,
+  BenchmarkThreshold,
+  BenchmarkThresholds,
 } from './types'
 

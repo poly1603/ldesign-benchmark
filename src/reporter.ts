@@ -2,7 +2,7 @@
  * Benchmark 报告生成器
  */
 
-import type { BenchmarkResult } from './types'
+import type { BenchmarkResult, ReporterOptions } from './types'
 
 /**
  * Benchmark Reporter 类
@@ -142,6 +142,48 @@ export class BenchmarkReporter {
 </html>`
 
     return html
+  }
+
+  /**
+   * 根据 ReporterOptions 输出或导出报告
+   * 
+   * @param results - 测试结果
+   * @param suiteName - 套件名称
+   * @param options - Reporter 选项
+   */
+  async report(
+    results: BenchmarkResult[],
+    suiteName: string,
+    options: ReporterOptions = {},
+  ): Promise<void> {
+    const format = options.format ?? 'console'
+
+    if (format === 'console') {
+      this.printConsole(results, suiteName)
+      return
+    }
+
+    let content: string
+
+    if (format === 'json') {
+      content = this.generateJSON(results)
+    } else if (format === 'markdown') {
+      content = this.generateMarkdown(results, suiteName)
+    } else {
+      content = this.generateHTML(results, suiteName)
+    }
+
+    if (options.output) {
+      const fs = await import('node:fs/promises')
+      await fs.writeFile(options.output, content, 'utf-8')
+
+      if (options.verbose) {
+        console.log(`\n✅ Benchmark 报告已导出: ${options.output}`)
+      }
+    } else {
+      // 未指定输出文件时，直接打印内容
+      console.log(content)
+    }
   }
 
   /**

@@ -45,6 +45,10 @@ export interface BenchmarkOptions {
    * @default true
    */
   teardown?: boolean
+  concurrency?: 'bench' | 'task' | null
+  retainSamples?: boolean
+  setupHook?: (context: { taskName: string; mode: 'run' | 'warmup' }) => void | Promise<void>
+  teardownHook?: (context: { taskName: string; mode: 'run' | 'warmup' }) => void | Promise<void>
 }
 
 /**
@@ -205,4 +209,12 @@ export interface ReporterOptions {
    */
   verbose?: boolean
 }
+
+export interface BenchmarkThreshold {
+  maxAvgTime?: number
+  minOpsPerSecond?: number
+  maxRme?: number
+}
+
+export type BenchmarkThresholds = Record<string, BenchmarkThreshold>
 

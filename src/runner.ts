@@ -4,7 +4,12 @@
  * 用于批量运行多个 benchmark 套件
  */
 
-import type { Benchmark, BenchmarkReport, BenchmarkSuite } from './types'
+import type {
+  Benchmark,
+  BenchmarkReport,
+  BenchmarkSuite,
+  BenchmarkThresholds,
+} from './types'
 
 /**
  * Benchmark Runner 类
@@ -99,6 +104,75 @@ export class BenchmarkRunner {
     const fs = await import('node:fs/promises')
     await fs.writeFile(filepath, JSON.stringify(report, null, 2), 'utf-8')
     console.log(`\n✅ 报告已导出: ${filepath}`)
+  }
+}
+
+export interface ThresholdFailure {
+  suite: string
+  task: string
+  reasons: string[]
+}
+
+export interface ThresholdCheckResult {
+  passed: boolean
+  failures: ThresholdFailure[]
+}
+
+export function checkThresholds(
+  report: BenchmarkReport,
+  thresholds: BenchmarkThresholds,
+): ThresholdCheckResult {
+  const failures: ThresholdFailure[] = []
+
+  for (const suite of report.suites) {
+    for (const result of suite.results) {
+      const keyWithSuite = `${suite.name}::${result.name}`
+      const keyTaskOnly = result.name
+
+      const threshold =
+        thresholds[keyWithSuite] !== undefined
+          ? thresholds[keyWithSuite]
+          : thresholds[keyTaskOnly]
+
+      if (!threshold) continue
+
+      const reasons: string[] = []
+
+      if (
+        typeof threshold.maxAvgTime === 'number' &&
+        result.avgTime > threshold.maxAvgTime
+      ) {
+        reasons.push(
+          `avgTime ${result.avgTime.toFixed(4)}ms > maxAvgTime ${threshold.maxAvgTime}ms`,
+        )
+      }
+
+      if (
+        typeof threshold.minOpsPerSecond === 'number' &&
+        result.opsPerSecond < threshold.minOpsPerSecond
+      ) {
+        reasons.push(
+          `opsPerSecond ${result.opsPerSecond.toFixed(2)} < minOpsPerSecond ${threshold.minOpsPerSecond}`,
+        )
+      }
+
+      if (typeof threshold.maxRme === 'number' && result.rme > threshold.maxRme) {
+        reasons.push(`rme ${result.rme.toFixed(2)}% > maxRme ${threshold.maxRme}%`)
+      }
+
+      if (reasons.length > 0) {
+        failures.push({
+          suite: suite.name,
+          task: result.name,
+          reasons,
+        })
+      }
+    }
+  }
+
+  return {
+    passed: failures.length === 0,
+    failures,
   }
 }
 

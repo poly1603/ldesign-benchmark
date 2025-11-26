@@ -21,8 +21,59 @@ export class BenchmarkImpl implements Benchmark {
   private reporter: BenchmarkReporter
 
   constructor(private options: BenchmarkOptions) {
-    // 使用 tinybench 默认配置
-    this.bench = new Bench()
+    const benchOptions: { [key: string]: unknown } = {}
+    const {
+      time,
+      iterations,
+      warmup,
+      concurrency,
+      retainSamples,
+      setupHook,
+      teardownHook,
+    } = options
+
+    if (typeof time === 'number') {
+      benchOptions.time = time
+    }
+
+    if (typeof iterations === 'number') {
+      benchOptions.iterations = iterations
+    }
+
+    if (typeof warmup === 'number') {
+      if (warmup <= 0) {
+        benchOptions.warmup = false
+      } else {
+        benchOptions.warmup = true
+        benchOptions.warmupIterations = warmup
+      }
+    }
+
+    if (concurrency === 'bench' || concurrency === 'task' || concurrency === null) {
+      benchOptions.concurrency = concurrency
+    }
+
+    if (typeof retainSamples === 'boolean') {
+      benchOptions.retainSamples = retainSamples
+    }
+
+    if (setupHook) {
+      benchOptions.setup = (task: any, mode?: 'run' | 'warmup') =>
+        setupHook({
+          taskName: task?.name ?? '',
+          mode: mode ?? 'run',
+        })
+    }
+
+    if (teardownHook) {
+      benchOptions.teardown = (task: any, mode?: 'run' | 'warmup') =>
+        teardownHook({
+          taskName: task?.name ?? '',
+          mode: mode ?? 'run',
+        })
+    }
+
+    this.bench = new Bench(benchOptions)
 
     this.reporter = new BenchmarkReporter()
   }
