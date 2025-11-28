@@ -1,0 +1,51 @@
+{
+  "name": "Benchmark Report",
+  "suites": [
+    {
+      "name": "simple",
+      "results": [
+        {
+          "name": "数组 push 操作",
+          "opsPerSecond": 315705.1160256809,
+          "avgTime": 0.003167512812553394,
+          "minTime": 0.001299999999901047,
+          "maxTime": 1.1407999999999845,
+          "stdDev": 0.007464237731542926,
+          "rme": 1.1625100979895042,
+          "iterations": 157853,
+          "totalTime": 500.0013999999909
+        },
+        {
+          "name": "数组 concat 操作",
+          "opsPerSecond": 2071.041936000407,
+          "avgTime": 0.482848745173745,
+          "minTime": 0.3606999999999516,
+          "maxTime": 2.682800000000043,
+          "stdDev": 0.15645065196680732,
+          "rme": 1.9730698661959274,
+          "iterations": 1036,
+          "totalTime": 500.2312999999998
+        },
+        {
+          "name": "对象属性访问",
+          "opsPerSecond": 2960667.4078663504,
+          "avgTime": 0.00033776168080989046,
+          "minTime": 0.0001999999999497959,
+          "maxTime": 4.1288999999999305,
+          "stdDev": 0.006059653017081452,
+          "rme": 2.8901048170389534,
+          "iterations": 1480334,
+          "totalTime": 500.0001000000284
+        }
+      ],
+      "duration": 2025,
+      "timestamp": 1764234069345
+    }
+  ],
+  "generatedAt": "2025-11-27T09:01:09.345Z",
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v25.2.1"
+  }
+}

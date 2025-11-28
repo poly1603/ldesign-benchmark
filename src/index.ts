@@ -25,7 +25,9 @@
 
 export { createBenchmark } from './benchmark'
 export { BenchmarkReporter } from './reporter'
-export { BenchmarkRunner, checkThresholds } from './runner'
+export { createRunner, checkThresholds } from './runner'
+export { createDefaultPluginManager, PluginManager } from './plugins'
+export { createPerformanceAnalyzer, PerformanceAnalyzer } from './analyzer'
 
 export type {
   Benchmark,
@@ -38,4 +40,3 @@ export type {
   BenchmarkThreshold,
   BenchmarkThresholds,
 } from './types'
-

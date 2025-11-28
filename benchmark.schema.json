@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LDesign Benchmark Configuration",
+  "description": "LDesign 性能基准测试配置文件的 JSON Schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "基准测试套件的名称"
+    },
+    "description": {
+      "type": "string", 
+      "description": "基准测试套件的描述"
+    },
+    "suites": {
+      "type": "object",
+      "description": "各个测试套件的配置",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "pattern": {
+            "type": "string",
+            "description": "测试文件的 glob 模式"
+          },
+          "thresholds": {
+            "type": "object",
+            "description": "性能阈值配置",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "minOpsPerSecond": {
+                  "type": "number",
+                  "description": "最小操作数/秒",
+                  "minimum": 0
+                },
+                "maxAvgTime": {
+                  "type": "number", 
+                  "description": "最大平均时间(毫秒)",
+                  "minimum": 0
+                },
+                "maxRme": {
+                  "type": "number",
+                  "description": "最大相对误差百分比",
+                  "minimum": 0,
+                  "maximum": 100
+                }
+              }
+            }
+          }
+        },
+        "required": ["pattern"]
+      }
+    },
+    "globalThresholds": {
+      "type": "object",
+      "description": "全局性能阈值",
+      "properties": {
+        "maxRme": {
+          "type": "number",
+          "description": "全局最大相对误差百分比",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "minIterations": {
+          "type": "number",
+          "description": "最小迭代次数",
+          "minimum": 1
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "description": "输出配置",
+      "properties": {
+        "directory": {
+          "type": "string",
+          "description": "输出目录"
+        },
+        "formats": {
+          "type": "array",
+          "description": "输出格式",
+          "items": {
+            "type": "string",
+            "enum": ["console", "json", "markdown", "html"]
+          }
+        },
+        "saveHistory": {
+          "type": "boolean",
+          "description": "是否保存历史记录"
+        }
+      }
+    },
+    "ci": {
+      "type": "object",
+      "description": "CI/CD 配置",
+      "properties": {
+        "failOnRegression": {
+          "type": "boolean",
+          "description": "性能回归时是否失败"
+        },
+        "compareWithBaseline": {
+          "type": "string",
+          "description": "对比的基线分支"
+        },
+        "notifyOnFailure": {
+          "type": "boolean",
+          "description": "失败时是否通知"
+        }
+      }
+    }
+  },
+  "required": ["name", "suites"]
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "./benchmark.schema.json",
+  "name": "LDesign 性能基准测试",
+  "description": "LDesign 组件库性能基准测试配置",
+  
+  "suites": {
+    "router": {
+      "pattern": "packages/router/**/*.bench.{js,ts}",
+      "thresholds": {
+        "route-matching": {
+          "minOpsPerSecond": 10000,
+          "maxAvgTime": 0.1
+        },
+        "guard-execution": {
+          "minOpsPerSecond": 5000,
+          "maxAvgTime": 0.2
+        }
+      }
+    },
+    
+    "color": {
+      "pattern": "packages/color/**/*.bench.{js,ts}",
+      "thresholds": {
+        "rgb-to-hsl": {
+          "minOpsPerSecond": 50000,
+          "maxAvgTime": 0.02
+        },
+        "hsl-to-rgb": {
+          "minOpsPerSecond": 50000,
+          "maxAvgTime": 0.02
+        }
+      }
+    },
+    
+    "i18n": {
+      "pattern": "packages/i18n/**/*.bench.{js,ts}",
+      "thresholds": {
+        "translation-l1-cache": {
+          "minOpsPerSecond": 100000,
+          "maxAvgTime": 0.01
+        },
+        "translation-l2-cache": {
+          "minOpsPerSecond": 50000,
+          "maxAvgTime": 0.02
+        }
+      }
+    }
+  },
+  
+  "globalThresholds": {
+    "maxRme": 5,
+    "minIterations": 100
+  },
+  
+  "output": {
+    "directory": "./benchmark-results",
+    "formats": ["json", "html"],
+    "saveHistory": true
+  },
+  
+  "ci": {
+    "failOnRegression": true,
+    "compareWithBaseline": "main",
+    "notifyOnFailure": true
+  }
+}

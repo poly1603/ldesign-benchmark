@@ -21,6 +21,9 @@
       "require": "./dist/index.cjs"
     }
   },
+  "bin": {
+    "ldbench": "./dist/cli.js"
+  },
   "files": [
     "dist",
     "README.md"
@@ -36,7 +39,10 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "tinybench": "^2.9.0"
+    "tinybench": "^2.9.0",
+    "globby": "^14.0.0",
+    "chokidar": "^4.0.0",
+    "cac": "^6.7.14"
   },
   "devDependencies": {
     "@ldesign/builder": "workspace:*",
@@ -56,4 +62,3 @@
     "url": "https://github.com/poly1603/ldesign-benchmark.git"
   }
 }
-
