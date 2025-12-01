@@ -1,6 +1,6 @@
 {
   "name": "@ldesign/benchmark",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "统一的性能测试框架 - LDesign Benchmark Framework",
   "keywords": [
     "benchmark",

@@ -8,6 +8,29 @@
 export type BenchmarkTask = () => void | Promise<void>
 
 /**
+ * 进度回调函数
+ */
+export type ProgressCallback = (info: ProgressInfo) => void
+
+/**
+ * 进度信息
+ */
+export interface ProgressInfo {
+  /** 当前套件名称 */
+  suite: string
+  /** 当前任务名称 */
+  task: string
+  /** 当前任务索引 */
+  current: number
+  /** 总任务数 */
+  total: number
+  /** 进度百分比 (0-100) */
+  percentage: number
+  /** 阶段 */
+  phase: 'warmup' | 'running' | 'complete'
+}
+
+/**
  * Benchmark 选项
  */
 export interface BenchmarkOptions {
@@ -49,6 +72,66 @@ export interface BenchmarkOptions {
   retainSamples?: boolean
   setupHook?: (context: { taskName: string; mode: 'run' | 'warmup' }) => void | Promise<void>
   teardownHook?: (context: { taskName: string; mode: 'run' | 'warmup' }) => void | Promise<void>
+
+  /**
+   * 是否收集内存信息
+   * @default false
+   */
+  collectMemory?: boolean
+
+  /**
+   * 进度回调
+   */
+  onProgress?: ProgressCallback
+
+  /**
+   * 失败重试次数
+   * @default 0
+   */
+  retries?: number
+
+  /**
+   * 超时时间(毫秒)
+   * @default 30000
+   */
+  timeout?: number
+
+  /**
+   * 标签用于过滤
+   */
+  tags?: string[]
+}
+
+/**
+ * 百分位数统计
+ */
+export interface PercentileStats {
+  /** 第50百分位数(中位数) */
+  p50: number
+  /** 第75百分位数 */
+  p75: number
+  /** 第90百分位数 */
+  p90: number
+  /** 第95百分位数 */
+  p95: number
+  /** 第99百分位数 */
+  p99: number
+}
+
+/**
+ * 内存统计
+ */
+export interface MemoryStats {
+  /** 堆使用量(字节) */
+  heapUsed: number
+  /** 堆总量(字节) */
+  heapTotal: number
+  /** 外部内存(字节) */
+  external: number
+  /** RSS(字节) */
+  rss: number
+  /** 内存增长量(字节) */
+  delta: number
 }
 
 /**
@@ -99,6 +182,41 @@ export interface BenchmarkResult {
    * 总运行时间(毫秒)
    */
   totalTime: number
+
+  /**
+   * 百分位数统计
+   */
+  percentiles?: PercentileStats
+
+  /**
+   * 内存统计
+   */
+  memory?: MemoryStats
+
+  /**
+   * 原始样本数据(毫秒)
+   */
+  samples?: number[]
+
+  /**
+   * 标签
+   */
+  tags?: string[]
+
+  /**
+   * 时间戳
+   */
+  timestamp?: number
+
+  /**
+   * 执行状态
+   */
+  status?: 'success' | 'failed' | 'skipped' | 'timeout'
+
+  /**
+   * 错误信息(如果失败)
+   */
+  error?: string
 }
 
 /**
@@ -196,7 +314,7 @@ export interface ReporterOptions {
    * 输出格式
    * @default 'console'
    */
-  format?: 'console' | 'json' | 'markdown' | 'html'
+  format?: 'console' | 'json' | 'markdown' | 'html' | 'csv'
 
   /**
    * 输出文件路径
@@ -208,13 +326,159 @@ export interface ReporterOptions {
    * @default false
    */
   verbose?: boolean
+
+  /**
+   * 是否使用颜色输出
+   * @default true (auto-detect)
+   */
+  colors?: boolean
 }
 
 export interface BenchmarkThreshold {
   maxAvgTime?: number
   minOpsPerSecond?: number
   maxRme?: number
+  /** 最大P95时间(毫秒) */
+  maxP95?: number
+  /** 最大内存增长(字节) */
+  maxMemoryDelta?: number
 }
 
 export type BenchmarkThresholds = Record<string, BenchmarkThreshold>
+
+/**
+ * 比较结果
+ */
+export interface ComparisonResult {
+  /** 套件名称 */
+  suite: string
+  /** 任务名称 */
+  task: string
+  /** 基线 ops/sec */
+  baselineOps: number
+  /** 当前 ops/sec */
+  currentOps: number
+  /** 改进百分比(正为提升，负为下降) */
+  improvement: number
+  /** 是否为回归 */
+  isRegression: boolean
+  /** 是否为提升 */
+  isImprovement: boolean
+  /** 基线平均时间 */
+  baselineAvgTime: number
+  /** 当前平均时间 */
+  currentAvgTime: number
+}
+
+/**
+ * 比较报告汇总
+ */
+export interface ComparisonSummary {
+  /** 基线生成时间 */
+  baseline: string
+  /** 当前生成时间 */
+  current: string
+  /** 详细比较 */
+  comparisons: ComparisonResult[]
+  /** 汇总统计 */
+  summary: {
+    totalComparisons: number
+    improvements: number
+    regressions: number
+    avgImprovement: number
+  }
+}
+
+/**
+ * Runner 选项
+ */
+export interface RunnerOptions {
+  /** 过滤器 - 只运行匹配的套件 */
+  filter?: string | RegExp
+  /** 标签过滤 */
+  tags?: string[]
+  /** 并行执行 */
+  parallel?: boolean
+  /** 最大并行数 */
+  maxConcurrency?: number
+  /** 失败后继续 */
+  continueOnError?: boolean
+  /** 进度回调 */
+  onProgress?: ProgressCallback
+  /** 套件开始回调 */
+  onSuiteStart?: (suite: string) => void
+  /** 套件完成回调 */
+  onSuiteComplete?: (suite: string, results: BenchmarkResult[]) => void
+  /** 是否保留样本数据 */
+  retainSamples?: boolean
+  /** 超时时间(毫秒) */
+  timeout?: number
+}
+
+/**
+ * 配置文件结构
+ */
+export interface BenchmarkConfig {
+  /** 默认选项 */
+  defaults?: Partial<BenchmarkOptions>
+  /** 测试文件 pattern */
+  pattern?: string | string[]
+  /** 忽略文件 */
+  ignore?: string[]
+  /** 输出目录 */
+  outputDir?: string
+  /** 历史记录目录 */
+  historyDir?: string
+  /** 阈值配置 */
+  thresholds?: BenchmarkThresholds
+  /** 报告格式 */
+  reporters?: ('console' | 'json' | 'markdown' | 'html' | 'csv')[]
+  /** 插件列表 */
+  plugins?: string[]
+  /** 环境变量 */
+  env?: Record<string, string>
+  /** Git 集成 */
+  git?: {
+    enabled: boolean
+    trackCommit?: boolean
+    trackBranch?: boolean
+  }
+}
+
+/**
+ * 趋势数据点
+ */
+export interface TrendDataPoint {
+  /** 时间戳 */
+  timestamp: number
+  /** Git 提交 hash */
+  commitHash?: string
+  /** Git 分支 */
+  branch?: string
+  /** ops/sec */
+  opsPerSecond: number
+  /** 平均时间 */
+  avgTime: number
+  /** 内存使用 */
+  memoryUsed?: number
+}
+
+/**
+ * 趋势分析
+ */
+export interface TrendAnalysis {
+  /** 任务名称 */
+  task: string
+  /** 数据点 */
+  dataPoints: TrendDataPoint[]
+  /** 趋势方向 */
+  trend: 'improving' | 'stable' | 'degrading'
+  /** 变化率(百分比/周) */
+  changeRate: number
+  /** 预测值 */
+  prediction?: {
+    nextWeek: number
+    confidence: number
+  }
+}
 

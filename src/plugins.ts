@@ -387,6 +387,179 @@ ${this.generateRecommendations(results)}
 }
 
 /**
+ * 内存分析插件
+ */
+export class MemoryAnalysisPlugin implements BenchmarkPlugin {
+  name = 'memory-analysis'
+  version = '1.0.0'
+  description = '分析内存使用情况和潜在泄漏'
+
+  private memorySnapshots: Map<string, { before: number; after: number }> = new Map()
+
+  install(context: PluginContext): void {
+    context.log('内存分析插件已安装')
+  }
+
+  onBenchmarkStart(suite: string, task: string): void {
+    if (global.gc) {
+      global.gc()
+    }
+    const mem = process.memoryUsage()
+    this.memorySnapshots.set(`${suite}::${task}`, { before: mem.heapUsed, after: 0 })
+  }
+
+  onBenchmarkComplete(suite: string, task: string): void {
+    const snapshot = this.memorySnapshots.get(`${suite}::${task}`)
+    if (snapshot) {
+      const mem = process.memoryUsage()
+      snapshot.after = mem.heapUsed
+    }
+  }
+
+  processResults(results: any[]): any[] {
+    return results.map(result => {
+      const key = `${result.suite || 'default'}::${result.name}`
+      const snapshot = this.memorySnapshots.get(key)
+
+      if (snapshot) {
+        const delta = snapshot.after - snapshot.before
+        return {
+          ...result,
+          memoryAnalysis: {
+            before: snapshot.before,
+            after: snapshot.after,
+            delta,
+            leaked: delta > 1024 * 1024, // 超过 1MB 视为潜在泄漏
+          }
+        }
+      }
+      return result
+    })
+  }
+
+  generateReport(results: any[]): string {
+    const analyzed = results.filter(r => r.memoryAnalysis)
+    const leaks = analyzed.filter(r => r.memoryAnalysis?.leaked)
+
+    let report = `# 内存分析报告\n\n`
+    report += `## 概览\n`
+    report += `- 分析任务数: ${analyzed.length}\n`
+    report += `- 潜在泄漏: ${leaks.length}\n\n`
+
+    if (leaks.length > 0) {
+      report += `## ⚠️ 潜在内存泄漏\n\n`
+      leaks.forEach(r => {
+        const delta = r.memoryAnalysis.delta
+        report += `- **${r.name}**: +${this.formatBytes(delta)}\n`
+      })
+    }
+
+    report += `\n## 内存使用详情\n\n`
+    report += `| 任务 | 初始内存 | 结束内存 | 变化 |\n`
+    report += `|------|----------|----------|------|\n`
+
+    analyzed.forEach(r => {
+      const ma = r.memoryAnalysis
+      const delta = ma.delta
+      const sign = delta >= 0 ? '+' : ''
+      report += `| ${r.name} | ${this.formatBytes(ma.before)} | ${this.formatBytes(ma.after)} | ${sign}${this.formatBytes(delta)} |\n`
+    })
+
+    return report
+  }
+
+  private formatBytes(bytes: number): string {
+    const abs = Math.abs(bytes)
+    if (abs >= 1024 * 1024) return `${(bytes / (1024 * 1024)).toFixed(2)} MB`
+    if (abs >= 1024) return `${(bytes / 1024).toFixed(2)} KB`
+    return `${bytes} B`
+  }
+}
+
+/**
+ * 回归检测插件
+ */
+export class RegressionDetectorPlugin implements BenchmarkPlugin {
+  name = 'regression-detector'
+  version = '1.0.0'
+  description = '自动检测性能回归'
+
+  private baseline: Map<string, number> = new Map()
+  private threshold: number = 10 // 10% 性能下降视为回归
+
+  constructor(options?: { threshold?: number; baseline?: Record<string, number> }) {
+    if (options?.threshold) this.threshold = options.threshold
+    if (options?.baseline) {
+      Object.entries(options.baseline).forEach(([key, value]) => {
+        this.baseline.set(key, value)
+      })
+    }
+  }
+
+  install(context: PluginContext): void {
+    context.log(`回归检测插件已安装 (阈值: ${this.threshold}%)`)
+  }
+
+  setBaseline(taskName: string, opsPerSecond: number): void {
+    this.baseline.set(taskName, opsPerSecond)
+  }
+
+  processResults(results: any[]): any[] {
+    return results.map(result => {
+      const baselineOps = this.baseline.get(result.name)
+
+      if (baselineOps !== undefined) {
+        const change = ((result.opsPerSecond - baselineOps) / baselineOps) * 100
+        const isRegression = change < -this.threshold
+        const isImprovement = change > this.threshold
+
+        return {
+          ...result,
+          regression: {
+            baselineOps,
+            change,
+            isRegression,
+            isImprovement,
+            status: isRegression ? 'regression' : isImprovement ? 'improvement' : 'stable'
+          }
+        }
+      }
+      return result
+    })
+  }
+
+  generateReport(results: any[]): string {
+    const analyzed = results.filter(r => r.regression)
+    const regressions = analyzed.filter(r => r.regression.isRegression)
+    const improvements = analyzed.filter(r => r.regression.isImprovement)
+
+    let report = `# 回归检测报告\n\n`
+    report += `## 概览\n`
+    report += `- 检测阈值: ±${this.threshold}%\n`
+    report += `- 分析任务数: ${analyzed.length}\n`
+    report += `- 回归: ${regressions.length}\n`
+    report += `- 提升: ${improvements.length}\n\n`
+
+    if (regressions.length > 0) {
+      report += `## 🔴 性能回归\n\n`
+      regressions.forEach(r => {
+        report += `- **${r.name}**: ${r.regression.change.toFixed(1)}% (基线: ${r.regression.baselineOps.toFixed(0)} ops/s)\n`
+      })
+      report += '\n'
+    }
+
+    if (improvements.length > 0) {
+      report += `## 🟢 性能提升\n\n`
+      improvements.forEach(r => {
+        report += `- **${r.name}**: +${r.regression.change.toFixed(1)}% (基线: ${r.regression.baselineOps.toFixed(0)} ops/s)\n`
+      })
+    }
+
+    return report
+  }
+}
+
+/**
  * 创建默认插件管理器
  */
 export function createDefaultPluginManager(): PluginManager {
@@ -395,6 +568,19 @@ export function createDefaultPluginManager(): PluginManager {
   // 注册内置插件
   manager.register(new StatisticsPlugin())
   manager.register(new TrendAnalysisPlugin())
+
+  return manager
+}
+
+/**
+ * 创建带内存分析的插件管理器
+ */
+export function createFullPluginManager(): PluginManager {
+  const manager = new PluginManager()
+
+  manager.register(new StatisticsPlugin())
+  manager.register(new TrendAnalysisPlugin())
+  manager.register(new MemoryAnalysisPlugin())
 
   return manager
 }

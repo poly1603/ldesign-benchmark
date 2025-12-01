@@ -9,7 +9,22 @@ import type {
   BenchmarkReport,
   BenchmarkSuite,
   BenchmarkThresholds,
+  RunnerOptions,
 } from './types'
+
+/**
+ * 获取 Git 信息
+ */
+async function getGitInfo(): Promise<{ commit?: string; branch?: string }> {
+  try {
+    const { execSync } = await import('node:child_process')
+    const commit = execSync('git rev-parse --short HEAD', { encoding: 'utf-8' }).trim()
+    const branch = execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf-8' }).trim()
+    return { commit, branch }
+  } catch {
+    return {}
+  }
+}
 
 /**
  * Benchmark Runner 类
@@ -18,6 +33,16 @@ import type {
  */
 export class BenchmarkRunner {
   private suites: Map<string, Benchmark> = new Map()
+  private options: RunnerOptions
+
+  constructor(options: RunnerOptions = {}) {
+    this.options = {
+      parallel: false,
+      maxConcurrency: 4,
+      continueOnError: true,
+      ...options,
+    }
+  }
 
   /**
    * 添加 benchmark 套件
@@ -31,30 +56,142 @@ export class BenchmarkRunner {
   }
 
   /**
+   * 获取套件列表
+   */
+  getSuites(): string[] {
+    return Array.from(this.suites.keys())
+  }
+
+  /**
+   * 移除套件
+   */
+  removeSuite(name: string): boolean {
+    return this.suites.delete(name)
+  }
+
+  /**
+   * 清空所有套件
+   */
+  clear(): void {
+    this.suites.clear()
+  }
+
+  /**
+   * 获取过滤后的套件
+   */
+  private getFilteredSuites(): Map<string, Benchmark> {
+    const { filter, tags } = this.options
+
+    if (!filter && !tags?.length) {
+      return this.suites
+    }
+
+    const filtered = new Map<string, Benchmark>()
+
+    for (const [name, benchmark] of this.suites) {
+      // 名称过滤
+      if (filter) {
+        const matches = typeof filter === 'string'
+          ? name.includes(filter)
+          : filter.test(name)
+        if (!matches) continue
+      }
+
+      // TODO: 标签过滤需要 benchmark 暴露 tags 属性
+      filtered.set(name, benchmark)
+    }
+
+    return filtered
+  }
+
+  /**
    * 运行所有套件
    * 
    * @returns 汇总报告
    */
   async runAll(): Promise<BenchmarkReport> {
+    const filteredSuites = this.getFilteredSuites()
     const suites: BenchmarkSuite[] = []
     const startTime = Date.now()
+    const errors: Array<{ suite: string; error: Error }> = []
 
-    for (const [name, benchmark] of this.suites) {
-      console.log(`\n🏃 运行套件: ${name}`)
-      const suiteStart = Date.now()
+    const totalSuites = filteredSuites.size
+    let completedSuites = 0
 
-      const results = await benchmark.run()
-      benchmark.printResults()
+    // 获取 Git 信息
+    const gitInfo = await getGitInfo()
 
-      suites.push({
-        name,
-        results,
-        duration: Date.now() - suiteStart,
-        timestamp: Date.now(),
-      })
+    if (this.options.parallel) {
+      // 并行执行
+      const entries = Array.from(filteredSuites.entries())
+      const chunks = this.chunkArray(entries, this.options.maxConcurrency || 4)
+
+      for (const chunk of chunks) {
+        const promises = chunk.map(async ([name, benchmark]) => {
+          try {
+            this.options.onSuiteStart?.(name)
+            console.log(`\n🏃 运行套件: ${name}`)
+            const suiteStart = Date.now()
+
+            const results = await benchmark.run()
+            benchmark.printResults()
+
+            completedSuites++
+            this.options.onSuiteComplete?.(name, results)
+
+            return {
+              name,
+              results,
+              duration: Date.now() - suiteStart,
+              timestamp: Date.now(),
+            } as BenchmarkSuite
+          } catch (error) {
+            errors.push({ suite: name, error: error as Error })
+            if (!this.options.continueOnError) {
+              throw error
+            }
+            return null
+          }
+        })
+
+        const results = await Promise.all(promises)
+        suites.push(...results.filter((r): r is BenchmarkSuite => r !== null))
+      }
+    } else {
+      // 串行执行
+      for (const [name, benchmark] of filteredSuites) {
+        try {
+          this.options.onSuiteStart?.(name)
+          console.log(`\n🏃 运行套件: ${name} (${completedSuites + 1}/${totalSuites})`)
+          const suiteStart = Date.now()
+
+          const results = await benchmark.run()
+          benchmark.printResults()
+
+          completedSuites++
+          this.options.onSuiteComplete?.(name, results)
+
+          suites.push({
+            name,
+            results,
+            duration: Date.now() - suiteStart,
+            timestamp: Date.now(),
+          })
+        } catch (error) {
+          errors.push({ suite: name, error: error as Error })
+          console.error(`❌ 套件 ${name} 运行失败:`, error)
+          if (!this.options.continueOnError) {
+            throw error
+          }
+        }
+      }
     }
 
     const totalDuration = Date.now() - startTime
+
+    if (errors.length > 0) {
+      console.log(`\n⚠️ ${errors.length} 个套件运行失败`)
+    }
 
     console.log(`\n✅ 所有套件运行完成 (${totalDuration}ms)`)
 
@@ -66,8 +203,21 @@ export class BenchmarkRunner {
         platform: process.platform,
         arch: process.arch,
         nodeVersion: process.version,
-      },
+        ...(gitInfo.commit && { gitCommit: gitInfo.commit }),
+        ...(gitInfo.branch && { gitBranch: gitInfo.branch }),
+      } as any,
     }
+  }
+
+  /**
+   * 分块数组
+   */
+  private chunkArray<T>(array: T[], size: number): T[][] {
+    const chunks: T[][] = []
+    for (let i = 0; i < array.length; i += size) {
+      chunks.push(array.slice(i, i + size))
+    }
+    return chunks
   }
 
   /**

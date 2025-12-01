@@ -1,14 +1,66 @@
 #!/usr/bin/env node
 import path from 'node:path'
 import { cac } from 'cac'
-import { createRunner, checkThresholds } from './index'
-import type { BenchmarkThresholds } from './types'
+import { createRunner, checkThresholds, BenchmarkReporter } from './index'
+import type { BenchmarkThresholds, BenchmarkConfig } from './types'
 import { globby } from 'globby'
-import { readFileSync } from 'node:fs'
+import { readFileSync, existsSync, mkdirSync, writeFileSync, readdirSync, unlinkSync, statSync } from 'node:fs'
 import { watch } from 'chokidar'
 import { performance } from 'node:perf_hooks'
 
 const cli = cac('ldbench')
+const VERSION = '0.2.0'
+
+// 默认配置
+const DEFAULT_CONFIG: BenchmarkConfig = {
+  pattern: ['**/*.bench.{js,ts}'],
+  ignore: ['**/node_modules/**', '**/dist/**', '**/build/**'],
+  outputDir: './benchmark-reports',
+  historyDir: './.benchmark-history',
+  reporters: ['console'],
+  defaults: {
+    time: 1000,
+    iterations: 10,
+    warmup: 5,
+  },
+}
+
+/**
+ * 加载配置文件
+ */
+function loadConfig(configPath?: string): BenchmarkConfig {
+  const searchPaths = configPath
+    ? [path.resolve(process.cwd(), configPath)]
+    : [
+      path.join(process.cwd(), 'benchmark.config.json'),
+      path.join(process.cwd(), 'benchmark.config.js'),
+      path.join(process.cwd(), '.benchmarkrc'),
+      path.join(process.cwd(), '.benchmarkrc.json'),
+    ]
+
+  for (const searchPath of searchPaths) {
+    if (existsSync(searchPath)) {
+      try {
+        const content = readFileSync(searchPath, 'utf-8')
+        const config = JSON.parse(content)
+        return { ...DEFAULT_CONFIG, ...config }
+      } catch (e) {
+        // 忽略解析错误，继续尝试下一个
+      }
+    }
+  }
+
+  return DEFAULT_CONFIG
+}
+
+/**
+ * 格式化文件大小
+ */
+function formatSize(bytes: number): string {
+  if (bytes >= 1024 * 1024) return `${(bytes / (1024 * 1024)).toFixed(2)} MB`
+  if (bytes >= 1024) return `${(bytes / 1024).toFixed(2)} KB`
+  return `${bytes} B`
+}
 
 cli
   .command('run [files...]', '运行基准测试文件')
@@ -268,8 +320,279 @@ cli
     }
   })
 
+// 添加 init 命令
+cli
+  .command('init', '初始化基准测试配置')
+  .option('--force', '覆盖已有配置文件')
+  .action(async (options: { force?: boolean }) => {
+    const configPath = path.join(process.cwd(), 'benchmark.config.json')
+
+    if (existsSync(configPath) && !options.force) {
+      console.log('⚠️  配置文件已存在: benchmark.config.json')
+      console.log('💡 使用 --force 覆盖已有配置')
+      return
+    }
+
+    const defaultConfig = {
+      "$schema": "./benchmark.schema.json",
+      pattern: ["**/*.bench.{js,ts}"],
+      ignore: ["**/node_modules/**", "**/dist/**", "**/build/**"],
+      outputDir: "./benchmark-reports",
+      historyDir: "./.benchmark-history",
+      reporters: ["console"],
+      defaults: {
+        time: 1000,
+        iterations: 10,
+        warmup: 5,
+        collectMemory: false,
+      },
+      thresholds: {},
+      git: {
+        enabled: true,
+        trackCommit: true,
+        trackBranch: true,
+      },
+    }
+
+    writeFileSync(configPath, JSON.stringify(defaultConfig, null, 2), 'utf-8')
+    console.log('✅ 配置文件已创建: benchmark.config.json')
+
+    // 创建示例文件
+    const examplesDir = path.join(process.cwd(), 'benchmarks')
+    if (!existsSync(examplesDir)) {
+      mkdirSync(examplesDir, { recursive: true })
+
+      const exampleContent = `/**
+ * 示例基准测试文件
+ * 运行: npx ldbench run
+ */
+import { createBenchmark, createRunner } from '@ldesign/benchmark'
+
+export default async function (runner) {
+  const bench = createBenchmark('示例测试')
+
+  bench.add('数组操作 - push', () => {
+    const arr = []
+    for (let i = 0; i < 1000; i++) {
+      arr.push(i)
+    }
+  })
+
+  bench.add('数组操作 - spread', () => {
+    let arr = []
+    for (let i = 0; i < 100; i++) {
+      arr = [...arr, i]
+    }
+  })
+
+  runner.addSuite('示例测试', bench)
+}
+`
+      writeFileSync(path.join(examplesDir, 'example.bench.ts'), exampleContent, 'utf-8')
+      console.log('✅ 示例文件已创建: benchmarks/example.bench.ts')
+    }
+
+    // 添加 .gitignore 条目
+    const gitignorePath = path.join(process.cwd(), '.gitignore')
+    const gitignoreEntries = '\n# Benchmark\n.benchmark-history/\nbenchmark-reports/\n'
+
+    if (existsSync(gitignorePath)) {
+      const content = readFileSync(gitignorePath, 'utf-8')
+      if (!content.includes('.benchmark-history')) {
+        const fs = await import('node:fs/promises')
+        await fs.appendFile(gitignorePath, gitignoreEntries)
+        console.log('✅ 已更新 .gitignore')
+      }
+    }
+
+    console.log('\n🎉 初始化完成！')
+    console.log('📝 运行 npx ldbench run 开始基准测试')
+  })
+
+// 添加 clean 命令
+cli
+  .command('clean', '清理历史记录和报告')
+  .option('--history', '仅清理历史记录')
+  .option('--reports', '仅清理报告')
+  .option('--all', '清理所有')
+  .option('--older-than <days>', '清理 N 天前的记录', { default: 0 })
+  .action(async (options: { history?: boolean; reports?: boolean; all?: boolean; olderThan?: number }) => {
+    const config = loadConfig()
+    const historyDir = path.resolve(process.cwd(), config.historyDir || '.benchmark-history')
+    const reportsDir = path.resolve(process.cwd(), config.outputDir || 'benchmark-reports')
+
+    let cleaned = 0
+    const olderThanMs = (options.olderThan || 0) * 24 * 60 * 60 * 1000
+    const now = Date.now()
+
+    const cleanDir = (dir: string) => {
+      if (!existsSync(dir)) return 0
+      let count = 0
+      const files = readdirSync(dir)
+
+      for (const file of files) {
+        const filePath = path.join(dir, file)
+        const stat = statSync(filePath)
+
+        if (olderThanMs > 0) {
+          if (now - stat.mtimeMs > olderThanMs) {
+            unlinkSync(filePath)
+            count++
+          }
+        } else {
+          unlinkSync(filePath)
+          count++
+        }
+      }
+      return count
+    }
+
+    if (options.all || options.history || (!options.history && !options.reports)) {
+      cleaned += cleanDir(historyDir)
+    }
+
+    if (options.all || options.reports) {
+      cleaned += cleanDir(reportsDir)
+    }
+
+    console.log(`🧹 已清理 ${cleaned} 个文件`)
+  })
+
+// 添加 export 命令
+cli
+  .command('export <source>', '导出历史记录为不同格式')
+  .option('--format <format>', '导出格式 (json, csv, markdown, html)', { default: 'json' })
+  .option('--out <file>', '输出文件路径')
+  .option('--merge', '合并所有历史记录')
+  .action(async (source: string, options: { format: string; out?: string; merge?: boolean }) => {
+    const config = loadConfig()
+    const historyDir = path.resolve(process.cwd(), config.historyDir || '.benchmark-history')
+    const reporter = new BenchmarkReporter()
+
+    let reports: any[] = []
+
+    if (source === 'history' || source === 'all') {
+      if (!existsSync(historyDir)) {
+        console.error('❌ 历史记录目录不存在')
+        process.exit(1)
+      }
+
+      const files = readdirSync(historyDir).filter((f: string) => f.endsWith('.json'))
+
+      for (const file of files) {
+        const content = readFileSync(path.join(historyDir, file), 'utf-8')
+        reports.push(JSON.parse(content))
+      }
+    } else {
+      // 单个文件
+      if (!existsSync(source)) {
+        console.error(`❌ 文件不存在: ${source}`)
+        process.exit(1)
+      }
+      const content = readFileSync(source, 'utf-8')
+      reports.push(JSON.parse(content))
+    }
+
+    if (reports.length === 0) {
+      console.log('⚠️  没有找到历史记录')
+      return
+    }
+
+    // 合并所有结果
+    const allResults = reports.flatMap(r =>
+      r.suites?.flatMap((s: any) => s.results) || []
+    )
+
+    let output: string
+    const suiteName = options.merge ? 'Merged Results' : reports[0]?.name || 'Benchmark Report'
+
+    switch (options.format) {
+      case 'csv':
+        output = reporter.generateCSV(allResults, suiteName)
+        break
+      case 'markdown':
+        output = reporter.generateMarkdown(allResults, suiteName)
+        break
+      case 'html':
+        output = reporter.generateHTML(allResults, suiteName)
+        break
+      default:
+        output = JSON.stringify(options.merge ? { results: allResults } : reports, null, 2)
+    }
+
+    if (options.out) {
+      writeFileSync(options.out, output, 'utf-8')
+      console.log(`✅ 已导出到: ${options.out}`)
+    } else {
+      console.log(output)
+    }
+  })
+
+// 添加 compare 命令
+cli
+  .command('compare <baseline> <current>', '比较两个基准测试报告')
+  .option('--format <format>', '输出格式 (console, json, markdown)', { default: 'console' })
+  .option('--threshold <percent>', '回归阈值百分比', { default: 5 })
+  .action(async (baseline: string, current: string, options: { format: string; threshold: number }) => {
+    if (!existsSync(baseline)) {
+      console.error(`❌ 基线文件不存在: ${baseline}`)
+      process.exit(1)
+    }
+    if (!existsSync(current)) {
+      console.error(`❌ 当前文件不存在: ${current}`)
+      process.exit(1)
+    }
+
+    const baselineReport = JSON.parse(readFileSync(baseline, 'utf-8'))
+    const currentReport = JSON.parse(readFileSync(current, 'utf-8'))
+
+    const comparison = compareReports(baselineReport, currentReport)
+
+    const regressions = comparison.filter(c => c.improvement < -options.threshold)
+    const improvements = comparison.filter(c => c.improvement > options.threshold)
+
+    if (options.format === 'json') {
+      console.log(JSON.stringify({ comparison, regressions, improvements }, null, 2))
+    } else if (options.format === 'markdown') {
+      let md = '# 性能对比报告\n\n'
+      md += '| 任务 | 基线 ops/sec | 当前 ops/sec | 变化 |\n'
+      md += '|------|-------------|-------------|------|\n'
+      comparison.forEach(c => {
+        const emoji = c.improvement > 5 ? '📈' : c.improvement < -5 ? '📉' : '➡️'
+        md += `| ${c.suite}::${c.task} | ${c.baselineOps?.toFixed(0) || '-'} | ${c.currentOps?.toFixed(0) || '-'} | ${emoji} ${c.improvement.toFixed(1)}% |\n`
+      })
+      console.log(md)
+    } else {
+      console.log('\n📊 性能对比报告')
+      console.log('='.repeat(80))
+
+      if (regressions.length > 0) {
+        console.log('\n⚠️  性能回归:')
+        regressions.forEach(r => {
+          console.log(`   📉 ${r.suite}::${r.task}: ${r.improvement.toFixed(1)}%`)
+        })
+      }
+
+      if (improvements.length > 0) {
+        console.log('\n✅ 性能提升:')
+        improvements.forEach(r => {
+          console.log(`   📈 ${r.suite}::${r.task}: +${r.improvement.toFixed(1)}%`)
+        })
+      }
+
+      const avgChange = comparison.reduce((sum, c) => sum + c.improvement, 0) / comparison.length
+      console.log(`\n📈 平均变化: ${avgChange > 0 ? '+' : ''}${avgChange.toFixed(1)}%`)
+      console.log('='.repeat(80))
+
+      // 如果有回归，返回非零退出码
+      if (regressions.length > 0) {
+        process.exit(1)
+      }
+    }
+  })
+
 cli.help()
-cli.version('0.1.0')
+cli.version(VERSION)
 cli.parse()
 
 // 辅助函数：对比报告
@@ -277,8 +600,10 @@ function compareReports(baseline: any, current: any): Array<{
   suite: string
   task: string
   improvement: number
+  baselineOps: number
+  currentOps: number
 }> {
-  const comparisons: Array<{ suite: string; task: string; improvement: number }> = []
+  const comparisons: Array<{ suite: string; task: string; improvement: number; baselineOps: number; currentOps: number }> = []
 
   for (const currentSuite of current.suites) {
     const baselineSuite = baseline.suites.find((s: any) => s.name === currentSuite.name)
@@ -292,7 +617,9 @@ function compareReports(baseline: any, current: any): Array<{
       comparisons.push({
         suite: currentSuite.name,
         task: currentResult.name,
-        improvement
+        improvement,
+        baselineOps: baselineResult.opsPerSecond,
+        currentOps: currentResult.opsPerSecond,
       })
     }
   }
