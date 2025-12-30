@@ -1,0 +1,15 @@
+{
+  "id": "4aabf517-ae80-5377-8000-0017d15e9275",
+  "name": "]Ga=",
+  "generatedAt": "2024-01-01T00:00:00.007Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop"
+  },
+  "duration": 99984
+}

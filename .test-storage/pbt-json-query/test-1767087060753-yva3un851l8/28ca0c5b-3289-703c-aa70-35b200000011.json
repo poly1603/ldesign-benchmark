@@ -1,0 +1,16 @@
+{
+  "id": "28ca0c5b-3289-703c-aa70-35b200000011",
+  "name": "N@12Ng69-cK$",
+  "generatedAt": "2024-05-13T17:25:45.076Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "c8141f067f9e4d3b04860cdfbbf0ef2ae8f2cfe2"
+  },
+  "duration": 92221
+}

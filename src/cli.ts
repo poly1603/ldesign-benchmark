@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import path from 'node:path'
 import { cac } from 'cac'
-import { createRunner, checkThresholds, BenchmarkReporter } from './index'
+import { createRunner, checkThresholds, BenchmarkReporter, createConfigLoader, validateConfig } from './index'
 import type { BenchmarkThresholds, BenchmarkConfig } from './types'
 import { globby } from 'globby'
 import { readFileSync, existsSync, mkdirSync, writeFileSync, readdirSync, unlinkSync, statSync } from 'node:fs'
@@ -320,6 +320,100 @@ cli
     }
   })
 
+// 添加 config-validate 命令
+cli
+  .command('config-validate [configFile]', '验证配置文件有效性')
+  .option('--verbose', '显示详细验证信息')
+  .option('--json', '以 JSON 格式输出结果')
+  .action(async (configFile: string | undefined, options: { verbose?: boolean; json?: boolean }) => {
+    try {
+      const loader = createConfigLoader()
+      const cwd = process.cwd()
+
+      // 尝试加载配置文件
+      let configPath: string | undefined
+      let config: any
+
+      if (configFile) {
+        configPath = path.resolve(cwd, configFile)
+        if (!existsSync(configPath)) {
+          console.error(`❌ 配置文件不存在: ${configPath}`)
+          process.exit(1)
+        }
+        config = loader.loadFromFile(configPath)
+      } else {
+        // 搜索默认配置文件
+        const result = loader.findAndLoad(cwd)
+        if (result) {
+          config = result.config
+          configPath = result.path
+        } else {
+          console.error('❌ 未找到配置文件')
+          console.log('💡 尝试指定配置文件路径: ldbench config-validate <config-file>')
+          console.log('💡 或运行 ldbench init 创建配置文件')
+          process.exit(1)
+        }
+      }
+
+      // 验证配置
+      const result = validateConfig(config, cwd)
+
+      if (options.json) {
+        // JSON 格式输出
+        console.log(JSON.stringify({
+          valid: result.valid,
+          configPath,
+          errors: result.errors,
+          warnings: result.warnings,
+        }, null, 2))
+      } else {
+        // 人类可读格式输出
+        console.log(`\n📋 配置文件验证: ${configPath}`)
+        console.log('='.repeat(60))
+
+        if (result.valid && result.warnings.length === 0) {
+          console.log('\n✅ 配置文件有效，没有错误或警告')
+        } else {
+          if (result.errors.length > 0) {
+            console.log(`\n❌ 发现 ${result.errors.length} 个错误:`)
+            for (const error of result.errors) {
+              console.log(`   • [${error.path}] ${error.message}`)
+              if (options.verbose && error.value !== undefined) {
+                console.log(`     当前值: ${JSON.stringify(error.value)}`)
+              }
+            }
+          }
+
+          if (result.warnings.length > 0) {
+            console.log(`\n⚠️  发现 ${result.warnings.length} 个警告:`)
+            for (const warning of result.warnings) {
+              console.log(`   • [${warning.path}] ${warning.message}`)
+              if (warning.suggestion) {
+                console.log(`     建议: ${warning.suggestion}`)
+              }
+            }
+          }
+
+          if (result.valid) {
+            console.log('\n✅ 配置文件有效（有警告但可以使用）')
+          } else {
+            console.log('\n❌ 配置文件无效，请修复上述错误')
+          }
+        }
+
+        console.log('='.repeat(60))
+      }
+
+      // 如果配置无效，返回非零退出码
+      if (!result.valid) {
+        process.exit(1)
+      }
+    } catch (error) {
+      console.error('❌ 验证配置文件时发生错误:', error)
+      process.exit(1)
+    }
+  })
+
 // 添加 init 命令
 cli
   .command('init', '初始化基准测试配置')
@@ -588,6 +682,182 @@ cli
       if (regressions.length > 0) {
         process.exit(1)
       }
+    }
+  })
+
+// 添加 query 命令
+cli
+  .command('query', '高级历史查询')
+  .option('--storage <type>', '存储类型 (json, sqlite)', { default: 'json' })
+  .option('--storage-path <path>', '存储路径')
+  .option('--from <date>', '开始日期 (YYYY-MM-DD)')
+  .option('--to <date>', '结束日期 (YYYY-MM-DD)')
+  .option('--suite <name>', '按套件名称过滤 (可多次使用)', { type: [] })
+  .option('--tag <tag>', '按标签过滤 (可多次使用)', { type: [] })
+  .option('--branch <branch>', '按 Git 分支过滤')
+  .option('--order <order>', '排序方向 (asc, desc)', { default: 'desc' })
+  .option('--order-by <field>', '排序字段 (date, duration, suiteCount)', { default: 'date' })
+  .option('--limit <number>', '限制结果数量', { default: 10 })
+  .option('--offset <number>', '跳过前 N 条结果', { default: 0 })
+  .option('--format <format>', '输出格式 (console, json, csv)', { default: 'console' })
+  .option('--verbose', '显示详细信息')
+  .action(async (options: {
+    storage: string
+    storagePath?: string
+    from?: string
+    to?: string
+    suite?: string[]
+    tag?: string[]
+    branch?: string
+    order: string
+    orderBy: string
+    limit: number
+    offset: number
+    format: string
+    verbose?: boolean
+  }) => {
+    try {
+      const { createStorage } = await import('./storage.js')
+
+      // 确定存储路径
+      const config = loadConfig()
+      let storagePath = options.storagePath
+
+      if (!storagePath) {
+        if (options.storage === 'sqlite') {
+          storagePath = path.join(process.cwd(), config.historyDir || '.benchmark-history', 'benchmark.db')
+        } else {
+          storagePath = path.join(process.cwd(), config.historyDir || '.benchmark-history')
+        }
+      }
+
+      // 检查存储是否存在
+      if (!existsSync(storagePath)) {
+        console.error(`❌ 存储路径不存在: ${storagePath}`)
+        console.log('💡 请先运行基准测试并使用 --history 选项保存历史记录')
+        process.exit(1)
+      }
+
+      // 创建存储实例
+      const storage = await createStorage(options.storage as 'json' | 'sqlite', storagePath)
+
+      // 构建查询选项
+      const queryOptions: any = {
+        orderBy: options.orderBy as 'date' | 'duration' | 'suiteCount',
+        order: options.order as 'asc' | 'desc',
+        limit: options.limit,
+        offset: options.offset,
+      }
+
+      // 日期范围
+      if (options.from || options.to) {
+        queryOptions.dateRange = {
+          start: options.from ? new Date(options.from) : new Date(0),
+          end: options.to ? new Date(options.to + 'T23:59:59.999Z') : new Date(),
+        }
+      }
+
+      // 套件过滤
+      if (options.suite && options.suite.length > 0) {
+        queryOptions.suites = options.suite
+      }
+
+      // 标签过滤
+      if (options.tag && options.tag.length > 0) {
+        queryOptions.tags = options.tag
+      }
+
+      // Git 分支过滤
+      if (options.branch) {
+        queryOptions.branch = options.branch
+      }
+
+      if (options.verbose) {
+        console.log('🔍 查询选项:', JSON.stringify(queryOptions, null, 2))
+      }
+
+      // 执行查询
+      const results = await storage.query(queryOptions)
+      const totalCount = await storage.count()
+
+      await storage.close()
+
+      if (results.length === 0) {
+        console.log('⚠️  没有找到匹配的记录')
+        return
+      }
+
+      // 输出结果
+      if (options.format === 'json') {
+        console.log(JSON.stringify(results, null, 2))
+      } else if (options.format === 'csv') {
+        // CSV 格式输出
+        console.log('id,name,generatedAt,duration,branch,commit,suiteCount,taskCount')
+        for (const report of results) {
+          const suiteCount = report.suites.length
+          const taskCount = report.suites.reduce((sum, s) => sum + s.results.length, 0)
+          console.log([
+            report.id,
+            `"${report.name}"`,
+            report.generatedAt,
+            report.duration || '',
+            report.git?.branch || '',
+            report.git?.commit || '',
+            suiteCount,
+            taskCount,
+          ].join(','))
+        }
+      } else {
+        // Console 格式输出
+        console.log('\n📊 查询结果')
+        console.log('='.repeat(80))
+        console.log(`找到 ${results.length} 条记录 (共 ${totalCount} 条)`)
+        console.log('')
+
+        for (const report of results) {
+          const date = new Date(report.generatedAt).toLocaleString('zh-CN')
+          const suiteCount = report.suites.length
+          const taskCount = report.suites.reduce((sum, s) => sum + s.results.length, 0)
+
+          console.log(`📅 ${date}`)
+          console.log(`   ID: ${report.id}`)
+          console.log(`   名称: ${report.name}`)
+
+          if (report.git?.branch || report.git?.commit) {
+            const gitInfo = []
+            if (report.git.branch) gitInfo.push(`分支: ${report.git.branch}`)
+            if (report.git.commit) gitInfo.push(`提交: ${report.git.commit}`)
+            if (report.git.dirty) gitInfo.push('(有未提交更改)')
+            console.log(`   Git: ${gitInfo.join(', ')}`)
+          }
+
+          console.log(`   套件: ${suiteCount} 个, 任务: ${taskCount} 个`)
+
+          if (report.duration) {
+            console.log(`   耗时: ${report.duration}ms`)
+          }
+
+          if (options.verbose) {
+            console.log('   套件详情:')
+            for (const suite of report.suites) {
+              console.log(`     📦 ${suite.name} (${suite.results.length} 个任务)`)
+              for (const result of suite.results) {
+                const ops = result.opsPerSecond >= 1000
+                  ? `${(result.opsPerSecond / 1000).toFixed(1)}K`
+                  : result.opsPerSecond.toFixed(0)
+                console.log(`        • ${result.name}: ${ops} ops/sec`)
+              }
+            }
+          }
+
+          console.log('')
+        }
+
+        console.log('='.repeat(80))
+      }
+    } catch (error) {
+      console.error('❌ 查询失败:', error)
+      process.exit(1)
     }
   })
 

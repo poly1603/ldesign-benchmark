@@ -1,0 +1,60 @@
+{
+  "id": "3134fde3-6d20-8840-a1f4-335510318e33",
+  "name": "5",
+  "generatedAt": "2024-12-27T07:15:02.326Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [
+        {
+          "name": "|^yM9J",
+          "opsPerSecond": 1970.9730186132156,
+          "avgTime": 35.85220174726515,
+          "minTime": 0.03743760676148571,
+          "maxTime": 0.5902255248787849,
+          "stdDev": 7.387446882672574e-307,
+          "rme": 1.019733360910876e-244,
+          "iterations": 628,
+          "totalTime": 80.17502198211355,
+          "tags": [
+            "io",
+            "fast"
+          ]
+        },
+        {
+          "name": "Ljpfc8f",
+          "opsPerSecond": 31.73292452157837,
+          "avgTime": 0.808240194759731,
+          "minTime": 54.823066072743714,
+          "maxTime": 0.03199808171805761,
+          "stdDev": 1.4810705475077894e-176,
+          "rme": 0.000003334396271790759,
+          "iterations": 298,
+          "totalTime": 186.0664348133301,
+          "tags": [
+            "fast",
+            "fast"
+          ]
+        }
+      ],
+      "duration": 3544,
+      "timestamp": 1720421979861
+    },
+    {
+      "name": "Suite-D",
+      "results": [],
+      "duration": 2048,
+      "timestamp": 1717909941298
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "6d3578f474ec6a330f558dfe8cba6f2f7058eaff"
+  },
+  "duration": 81034
+}

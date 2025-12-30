@@ -1,0 +1,22 @@
+{
+  "id": "c85098b4-5323-12dd-9b0a-6ba83684dff6",
+  "name": "5s@U'CB",
+  "generatedAt": "2024-06-06T23:36:56.065Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [],
+      "duration": 3984,
+      "timestamp": 1730919187268
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "b0ab9ec8e7967d729ced1b3ef502b94c779c2203"
+  }
+}

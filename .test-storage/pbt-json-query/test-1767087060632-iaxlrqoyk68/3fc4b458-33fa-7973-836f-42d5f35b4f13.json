@@ -1,0 +1,45 @@
+{
+  "id": "3fc4b458-33fa-7973-836f-42d5f35b4f13",
+  "name": "EO*}",
+  "generatedAt": "2024-07-07T09:04:08.917Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [
+        {
+          "name": "x6+A4a",
+          "opsPerSecond": 9804.56556262059,
+          "avgTime": 0.01316921735893924,
+          "minTime": 0.06875173020193527,
+          "maxTime": 0.08636418727229297,
+          "stdDev": 5.900451838056766e-69,
+          "rme": 7.646381260076698e-139,
+          "iterations": 52,
+          "totalTime": 685.8816041969095
+        },
+        {
+          "name": "}%hm",
+          "opsPerSecond": 3837.1504809372664,
+          "avgTime": 0.03462793572849905,
+          "minTime": 0.1023124860647191,
+          "maxTime": 2.016381524829169,
+          "stdDev": 2.199148939525544e-95,
+          "rme": 1.8703262202588107e-289,
+          "iterations": 263,
+          "totalTime": 2.391857193386379
+        }
+      ],
+      "duration": 6554,
+      "timestamp": 1731961727190
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "c621daeb6bee9505b1f39f1aa6d2881a94527a7f"
+  }
+}

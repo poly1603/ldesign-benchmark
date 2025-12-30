@@ -1,0 +1,16 @@
+{
+  "id": "4519ac34-7cdf-4b0a-82e1-2586f06ae4c0",
+  "name": "FCjb",
+  "generatedAt": "2024-07-01T03:01:41.784Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "e70be1b3c7648e8491ceda2c2872f1603e52de37"
+  },
+  "duration": 30561
+}

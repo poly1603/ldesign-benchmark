@@ -1,0 +1,24 @@
+{
+  "id": "6b78bb3f-cf26-1962-8975-2ace00000004",
+  "name": "x|-O",
+  "generatedAt": "2025-12-25T09:31:01.672Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 7497,
+      "timestamp": 1721948241411
+    },
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 1737,
+      "timestamp": 1705341018997
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

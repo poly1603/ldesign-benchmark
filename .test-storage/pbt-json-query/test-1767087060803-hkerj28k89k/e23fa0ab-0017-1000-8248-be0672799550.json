@@ -1,0 +1,54 @@
+{
+  "id": "e23fa0ab-0017-1000-8248-be0672799550",
+  "name": "f*%mu/",
+  "generatedAt": "2024-10-05T22:38:11.862Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "?/{SKvUn;:t*",
+          "opsPerSecond": 353.94416843044957,
+          "avgTime": 0.03975983650098098,
+          "minTime": 51.24722763298757,
+          "maxTime": 0.013716183608176516,
+          "stdDev": 2.1161422691805504e-145,
+          "rme": 1.5622369173159348e-153,
+          "iterations": 392,
+          "totalTime": 675.9541924130885
+        }
+      ],
+      "duration": 3839,
+      "timestamp": 1719031446031
+    },
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": " /iq.R)Bxd\\",
+          "opsPerSecond": 23.63237933997207,
+          "avgTime": 15.176987558317764,
+          "minTime": 1.5095051512432238,
+          "maxTime": 22.355960750635933,
+          "stdDev": 3.1924132040405692e-201,
+          "rme": 2.0848728885837538e-9,
+          "iterations": 628,
+          "totalTime": 13.745617651656396,
+          "tags": [
+            "slow",
+            "io",
+            "memory"
+          ]
+        }
+      ],
+      "duration": 5335,
+      "timestamp": 1728384300228
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "duration": 88735
+}

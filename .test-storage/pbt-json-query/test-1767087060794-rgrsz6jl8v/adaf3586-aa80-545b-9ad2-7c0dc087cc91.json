@@ -1,0 +1,16 @@
+{
+  "id": "adaf3586-aa80-545b-9ad2-7c0dc087cc91",
+  "name": "o2@&2#c",
+  "generatedAt": "2024-08-06T14:23:19.768Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "7759ee5ad0b4c621c591fcceea2bf5d30e05281c"
+  },
+  "duration": 28073
+}

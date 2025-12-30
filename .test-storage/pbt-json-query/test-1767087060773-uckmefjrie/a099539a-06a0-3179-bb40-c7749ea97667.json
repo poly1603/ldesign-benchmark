@@ -1,0 +1,56 @@
+{
+  "id": "a099539a-06a0-3179-bb40-c7749ea97667",
+  "name": "1$J6",
+  "generatedAt": "2024-06-14T11:11:22.297Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [],
+      "duration": 2220,
+      "timestamp": 1719639228172
+    },
+    {
+      "name": "Suite-D",
+      "results": [
+        {
+          "name": "-qx",
+          "opsPerSecond": 115.75374636364728,
+          "avgTime": 0.0533272919291819,
+          "minTime": 0.021735626342272676,
+          "maxTime": 0.053260682896521944,
+          "stdDev": 2.3237811181282927e-180,
+          "rme": 8.182027483088544e-64,
+          "iterations": 434,
+          "totalTime": 3.9165561094026486,
+          "tags": [
+            "io"
+          ]
+        },
+        {
+          "name": "K`6G",
+          "opsPerSecond": 851.0272043315315,
+          "avgTime": 11.569970012288506,
+          "minTime": 0.7173950510764251,
+          "maxTime": 19.960486935362685,
+          "stdDev": 1.1722668260296872e-79,
+          "rme": 3.4120092571843296e-259,
+          "iterations": 463,
+          "totalTime": 7873.183923988272,
+          "tags": [
+            "slow",
+            "io",
+            "memory"
+          ]
+        }
+      ],
+      "duration": 6223,
+      "timestamp": 1710956623173
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "duration": 21875
+}

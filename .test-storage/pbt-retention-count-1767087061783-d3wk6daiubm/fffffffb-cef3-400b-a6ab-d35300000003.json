@@ -1,0 +1,18 @@
+{
+  "id": "fffffffb-cef3-400b-a6ab-d35300000003",
+  "name": "8@>f}U{",
+  "generatedAt": "2025-12-25T09:31:01.672Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 9410,
+      "timestamp": 1733623912612
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

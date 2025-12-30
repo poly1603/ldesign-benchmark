@@ -185,7 +185,7 @@ export class BenchmarkImpl implements Benchmark {
    * 运行所有任务
    */
   async run(): Promise<BenchmarkResult[]> {
-    const startTime = Date.now()
+    // const startTime = Date.now() // Reserved for future use
     this.completedTasks = 0
 
     // 触发预热阶段回调

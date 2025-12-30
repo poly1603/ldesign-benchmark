@@ -1,0 +1,61 @@
+{
+  "id": "3a205e27-8f18-25b1-8695-d00671f1e714",
+  "name": "vR6m",
+  "generatedAt": "2024-10-08T18:51:20.385Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [
+        {
+          "name": ",_6|j6",
+          "opsPerSecond": 13.900227151811702,
+          "avgTime": 0.8598192259748092,
+          "minTime": 0.017404850879793262,
+          "maxTime": 3.812564929557189,
+          "stdDev": 2.281750472116581e-287,
+          "rme": 1.6357636270147026e-168,
+          "iterations": 645,
+          "totalTime": 3.830061040708253,
+          "tags": [
+            "io",
+            "slow"
+          ]
+        }
+      ],
+      "duration": 2990,
+      "timestamp": 1707850256664
+    },
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "Ms!dl",
+          "opsPerSecond": 188.72155476888742,
+          "avgTime": 7.072903161735537,
+          "minTime": 3.8771931168702394,
+          "maxTime": 1.0357324061336695,
+          "stdDev": 2.978955097397182e-267,
+          "rme": 4.45781553639724e-78,
+          "iterations": 204,
+          "totalTime": 3.9428874515038466,
+          "tags": [
+            "io",
+            "memory",
+            "memory"
+          ]
+        }
+      ],
+      "duration": 7184,
+      "timestamp": 1734773622609
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop"
+  },
+  "duration": 80242
+}

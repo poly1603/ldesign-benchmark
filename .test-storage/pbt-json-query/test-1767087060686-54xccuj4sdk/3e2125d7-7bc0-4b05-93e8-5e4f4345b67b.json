@@ -1,0 +1,38 @@
+{
+  "id": "3e2125d7-7bc0-4b05-93e8-5e4f4345b67b",
+  "name": "}",
+  "generatedAt": "2024-12-03T19:27:46.480Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "goeuw->=VKv",
+          "opsPerSecond": 1.1776517947432543,
+          "avgTime": 0.20918766564642985,
+          "minTime": 0.4271587862336506,
+          "maxTime": 0.9576949020961475,
+          "stdDev": 4.355086013623528e-274,
+          "rme": 2.6657637982813285e-196,
+          "iterations": 699,
+          "totalTime": 5.878415862442792,
+          "tags": [
+            "memory",
+            "fast"
+          ]
+        }
+      ],
+      "duration": 9535,
+      "timestamp": 1710347479396
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop"
+  },
+  "duration": 9841
+}

@@ -1,0 +1,18 @@
+{
+  "id": "00000016-08a4-657c-942f-54d900000005",
+  "name": "bind",
+  "generatedAt": "2025-12-27T09:31:01.672Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 7969,
+      "timestamp": 1706930828662
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

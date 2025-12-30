@@ -1,0 +1,11 @@
+{
+  "id": "report-2-1767087061539-leaxy29ysg",
+  "name": "Report 2",
+  "suites": [],
+  "generatedAt": "2025-12-28T08:31:01.538Z",
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

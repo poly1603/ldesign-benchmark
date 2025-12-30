@@ -1,0 +1,47 @@
+{
+  "id": "0000000d-0005-1000-8000-000c00000019",
+  "name": "J&__proto___",
+  "generatedAt": "2024-01-01T00:00:00.026Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [
+        {
+          "name": "3:Q,ze ",
+          "opsPerSecond": 1305.1167350642106,
+          "avgTime": 1.4182028009392083,
+          "minTime": 37.5714341052401,
+          "maxTime": 0.2769475516737284,
+          "stdDev": 1.8081796794143938e-20,
+          "rme": 4.013393451001994e-97,
+          "iterations": 221,
+          "totalTime": 105.49386109063471,
+          "tags": [
+            "cpu"
+          ]
+        },
+        {
+          "name": "Hm",
+          "opsPerSecond": 3033.5665573292895,
+          "avgTime": 36.86772776351183,
+          "minTime": 59.878440488679146,
+          "maxTime": 8.836876954915855,
+          "stdDev": 3.8609592030390035e-142,
+          "rme": 1.370698102462389e-158,
+          "iterations": 846,
+          "totalTime": 223.6042058045015,
+          "tags": [
+            "slow"
+          ]
+        }
+      ],
+      "duration": 5,
+      "timestamp": 1723864088226
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

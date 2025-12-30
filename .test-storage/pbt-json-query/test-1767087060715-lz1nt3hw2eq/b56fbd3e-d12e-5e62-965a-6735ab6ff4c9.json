@@ -1,0 +1,39 @@
+{
+  "id": "b56fbd3e-d12e-5e62-965a-6735ab6ff4c9",
+  "name": "W+T@ u&^BnB",
+  "generatedAt": "2024-09-27T07:53:59.765Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [
+        {
+          "name": "sClh[573",
+          "opsPerSecond": 14.244845593699685,
+          "avgTime": 0.05628950361657066,
+          "minTime": 11.142580944273703,
+          "maxTime": 0.2521757216179483,
+          "stdDev": 3.821483260952958e-188,
+          "rme": 1.5324608882298922e-192,
+          "iterations": 793,
+          "totalTime": 37.599512335697234,
+          "tags": [
+            "slow",
+            "slow"
+          ]
+        }
+      ],
+      "duration": 6720,
+      "timestamp": 1716251300860
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "86d62dfb721b84b8b2b8bff75f4cc07eab084cd3"
+  },
+  "duration": 83122
+}

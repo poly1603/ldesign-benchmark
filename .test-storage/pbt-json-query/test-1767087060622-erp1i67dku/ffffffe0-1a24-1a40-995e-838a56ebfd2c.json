@@ -1,0 +1,49 @@
+{
+  "id": "ffffffe0-1a24-1a40-995e-838a56ebfd2c",
+  "name": "Wy^",
+  "generatedAt": "2024-03-22T17:08:19.202Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "I:^aO%}",
+          "opsPerSecond": 842.9200955321288,
+          "avgTime": 0.04421710638744685,
+          "minTime": 0.020329336889605545,
+          "maxTime": 0.11004724768403092,
+          "stdDev": 2.363928029326384e-210,
+          "rme": 2.2028080565842006e-54,
+          "iterations": 740,
+          "totalTime": 1,
+          "tags": [
+            "fast"
+          ]
+        },
+        {
+          "name": "XMx6$",
+          "opsPerSecond": 5247.615189324201,
+          "avgTime": 0.010000000000000024,
+          "minTime": 53.32854319374258,
+          "maxTime": 0.010000000000000014,
+          "stdDev": 9.99999999999998,
+          "rme": 1.593846896877496e-174,
+          "iterations": 850,
+          "totalTime": 1
+        }
+      ],
+      "duration": 14,
+      "timestamp": 1713992141245
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "063eceb193ea9cbd956dcaf65f93dabb264c07a8"
+  },
+  "duration": 99993
+}

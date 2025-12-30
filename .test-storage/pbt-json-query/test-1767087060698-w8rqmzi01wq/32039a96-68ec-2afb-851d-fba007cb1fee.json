@@ -1,0 +1,31 @@
+{
+  "id": "32039a96-68ec-2afb-851d-fba007cb1fee",
+  "name": "D5",
+  "generatedAt": "2024-04-01T00:30:30.256Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "m58v^:",
+          "opsPerSecond": 243.12270372736478,
+          "avgTime": 52.4389132770941,
+          "minTime": 0.24568805024202456,
+          "maxTime": 26.71650127166362,
+          "stdDev": 1.0887992904767153e-193,
+          "rme": 1.2489240975671952e-231,
+          "iterations": 691,
+          "totalTime": 3083.4648958887365
+        }
+      ],
+      "duration": 9650,
+      "timestamp": 1714417597994
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "duration": 10378
+}

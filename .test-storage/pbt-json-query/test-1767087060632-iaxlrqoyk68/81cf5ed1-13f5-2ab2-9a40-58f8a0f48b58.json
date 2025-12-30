@@ -1,0 +1,38 @@
+{
+  "id": "81cf5ed1-13f5-2ab2-9a40-58f8a0f48b58",
+  "name": "2KByC<xU>EM",
+  "generatedAt": "2024-03-05T22:12:41.226Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [
+        {
+          "name": "1xnv",
+          "opsPerSecond": 181.48540521491398,
+          "avgTime": 72.37789218466959,
+          "minTime": 11.403342225123726,
+          "maxTime": 0.015475619494277719,
+          "stdDev": 1.9218505575326594e-115,
+          "rme": 4.053201670081219e-47,
+          "iterations": 99,
+          "totalTime": 388.5828156872222,
+          "tags": [
+            "fast",
+            "io"
+          ]
+        }
+      ],
+      "duration": 2490,
+      "timestamp": 1706199423520
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "abb236bda9aed87fddbdf2e33a80236cb719b3cb"
+  }
+}

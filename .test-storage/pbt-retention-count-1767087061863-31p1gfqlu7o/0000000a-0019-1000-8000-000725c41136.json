@@ -1,0 +1,24 @@
+{
+  "id": "0000000a-0019-1000-8000-000725c41136",
+  "name": "is",
+  "generatedAt": "2025-12-30T09:31:01.672Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [],
+      "duration": 3062,
+      "timestamp": 1717242363966
+    },
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 8845,
+      "timestamp": 1720345268597
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

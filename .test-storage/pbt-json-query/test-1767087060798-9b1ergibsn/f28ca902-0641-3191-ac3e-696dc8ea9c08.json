@@ -1,0 +1,49 @@
+{
+  "id": "f28ca902-0641-3191-ac3e-696dc8ea9c08",
+  "name": "O'",
+  "generatedAt": "2024-07-03T05:38:26.475Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "OiT1",
+          "opsPerSecond": 3470.011569644633,
+          "avgTime": 6.655230850041398,
+          "minTime": 16.80428242363131,
+          "maxTime": 0.02904659479708286,
+          "stdDev": 5.872765634299678e-128,
+          "rme": 7.447397352416831e-106,
+          "iterations": 34,
+          "totalTime": 2847.9285331985343,
+          "tags": [
+            "fast",
+            "slow"
+          ]
+        },
+        {
+          "name": "_!wTvL",
+          "opsPerSecond": 103.06543176980088,
+          "avgTime": 29.80015191649577,
+          "minTime": 11.717489403187642,
+          "maxTime": 3.1047468978595183,
+          "stdDev": 1.2225399825391892e-269,
+          "rme": 1.7085540479728488e-124,
+          "iterations": 9,
+          "totalTime": 2558.821488046306,
+          "tags": [
+            "memory"
+          ]
+        }
+      ],
+      "duration": 599,
+      "timestamp": 1719615446701
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "duration": 71348
+}

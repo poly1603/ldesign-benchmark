@@ -11,20 +11,7 @@ import type {
   BenchmarkThresholds,
   RunnerOptions,
 } from './types'
-
-/**
- * 获取 Git 信息
- */
-async function getGitInfo(): Promise<{ commit?: string; branch?: string }> {
-  try {
-    const { execSync } = await import('node:child_process')
-    const commit = execSync('git rev-parse --short HEAD', { encoding: 'utf-8' }).trim()
-    const branch = execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf-8' }).trim()
-    return { commit, branch }
-  } catch {
-    return {}
-  }
-}
+import { getGitInfo } from './git'
 
 /**
  * Benchmark Runner 类

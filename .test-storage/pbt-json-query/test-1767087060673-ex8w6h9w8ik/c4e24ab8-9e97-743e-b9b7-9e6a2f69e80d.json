@@ -1,0 +1,74 @@
+{
+  "id": "c4e24ab8-9e97-743e-b9b7-9e6a2f69e80d",
+  "name": "I",
+  "generatedAt": "2024-05-10T02:12:04.518Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "r@$*mb",
+          "opsPerSecond": 3810.390053342495,
+          "avgTime": 0.209687489761685,
+          "minTime": 11.285219238306079,
+          "maxTime": 23.539146463634495,
+          "stdDev": 1.1961269341876029e-120,
+          "rme": 6.841676944825459e-44,
+          "iterations": 762,
+          "totalTime": 1377.56329923181,
+          "tags": [
+            "memory"
+          ]
+        }
+      ],
+      "duration": 3195,
+      "timestamp": 1704067200025
+    },
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "3v@5{ *j",
+          "opsPerSecond": 3.719331565919091,
+          "avgTime": 0.1329220103893135,
+          "minTime": 0.23657953981427818,
+          "maxTime": 95.82594410763787,
+          "stdDev": 6.517217275268407e-181,
+          "rme": 8.577297117807704e-285,
+          "iterations": 719,
+          "totalTime": 1288.2957330729341,
+          "tags": [
+            "memory",
+            "io"
+          ]
+        },
+        {
+          "name": "7o4",
+          "opsPerSecond": 180.1335077854264,
+          "avgTime": 0.052870791275576465,
+          "minTime": 0.04361550528010299,
+          "maxTime": 0.06465449859487157,
+          "stdDev": 1.7413740249127112e-17,
+          "rme": 7.051839643986404e-75,
+          "iterations": 52,
+          "totalTime": 181.02712114205332,
+          "tags": [
+            "io",
+            "io"
+          ]
+        }
+      ],
+      "duration": 4729,
+      "timestamp": 1704067200030
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "4d9f6c1e20285482c278a0c38aa9b1542ed73c2d"
+  }
+}

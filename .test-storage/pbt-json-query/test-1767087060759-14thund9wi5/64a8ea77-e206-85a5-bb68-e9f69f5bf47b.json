@@ -1,0 +1,16 @@
+{
+  "id": "64a8ea77-e206-85a5-bb68-e9f69f5bf47b",
+  "name": "KVf<s!!]+",
+  "generatedAt": "2024-01-01T00:00:00.020Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "e109ca3b3dcecb3f216f10655d3bcd9ca0223843"
+  },
+  "duration": 92586
+}

@@ -1,0 +1,54 @@
+{
+  "id": "8643c99b-8095-28fe-b32f-7104fcd5234a",
+  "name": "rfR +%b",
+  "generatedAt": "2024-07-28T08:48:36.152Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [
+        {
+          "name": ">n8&4Y5i,@F",
+          "opsPerSecond": 98.58175278646983,
+          "avgTime": 8.703203352358216,
+          "minTime": 0.91984463372847,
+          "maxTime": 0.11844484145434371,
+          "stdDev": 1.5240096375595756e-217,
+          "rme": 0.0004355218905864568,
+          "iterations": 256,
+          "totalTime": 240.99320539458697,
+          "tags": [
+            "fast",
+            "slow",
+            "fast"
+          ]
+        },
+        {
+          "name": "a?",
+          "opsPerSecond": 418.16725759833,
+          "avgTime": 1.534398740062356,
+          "minTime": 0.027564381687759775,
+          "maxTime": 31.548274549812906,
+          "stdDev": 1.3298552164120492e-181,
+          "rme": 0.00018371795866547024,
+          "iterations": 85,
+          "totalTime": 7127.755318137097,
+          "tags": [
+            "cpu"
+          ]
+        }
+      ],
+      "duration": 4672,
+      "timestamp": 1712548505006
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "8c39e5302191dca996ff84215591bbfde9fb9464"
+  },
+  "duration": 85814
+}

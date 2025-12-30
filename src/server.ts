@@ -8,10 +8,10 @@
 
 import { createServer } from 'node:http'
 import { readFileSync, existsSync, readdirSync } from 'node:fs'
-import { join, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { join } from 'node:path'
+// import { fileURLToPath } from 'node:url'
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url))
+// const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 interface ServerOptions {
   port: number
@@ -110,7 +110,7 @@ export class BenchmarkServer {
   /**
    * 提供仪表板页面
    */
-  private async serveDashboard(req: any, res: any): Promise<void> {
+  private async serveDashboard(_req: any, res: any): Promise<void> {
     const dashboardHTML = `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -260,7 +260,7 @@ export class BenchmarkServer {
   /**
    * 提供历史记录列表
    */
-  private async serveHistoryList(req: any, res: any): Promise<void> {
+  private async serveHistoryList(_req: any, res: any): Promise<void> {
     const historyDir = this.options.historyDir
 
     if (!existsSync(historyDir)) {
@@ -296,7 +296,7 @@ export class BenchmarkServer {
   /**
    * 提供具体报告
    */
-  private async serveReport(req: any, res: any, pathname: string): Promise<void> {
+  private async serveReport(_req: any, res: any, pathname: string): Promise<void> {
     const reportId = pathname.split('/').pop()?.replace('.json', '')
 
     if (!reportId) {
@@ -358,7 +358,7 @@ export class BenchmarkServer {
   /**
    * 提供服务器状态
    */
-  private async serveStatus(req: any, res: any): Promise<void> {
+  private async serveStatus(_req: any, res: any): Promise<void> {
     const status = {
       uptime: process.uptime(),
       memory: process.memoryUsage(),

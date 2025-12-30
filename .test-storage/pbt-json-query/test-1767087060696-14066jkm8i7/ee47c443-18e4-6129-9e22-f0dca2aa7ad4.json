@@ -1,0 +1,15 @@
+{
+  "id": "ee47c443-18e4-6129-9e22-f0dca2aa7ad4",
+  "name": ".P7,|-p<z7]",
+  "generatedAt": "2024-09-13T23:05:18.224Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop"
+  },
+  "duration": 32404
+}

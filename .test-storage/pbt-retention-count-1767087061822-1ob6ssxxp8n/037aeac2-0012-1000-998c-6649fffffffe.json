@@ -1,0 +1,18 @@
+{
+  "id": "037aeac2-0012-1000-998c-6649fffffffe",
+  "name": "4p",
+  "generatedAt": "2025-12-30T09:31:01.672Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 9991,
+      "timestamp": 1707616951729
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

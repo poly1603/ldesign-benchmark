@@ -1,0 +1,23 @@
+{
+  "id": "5c65277f-c4b9-5277-bc8b-abeceb4a6771",
+  "name": "C!QWL^iS",
+  "generatedAt": "2024-10-16T14:22:34.645Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 1675,
+      "timestamp": 1721362389539
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "09bc42f30608525bf0959be3b63cbda42e70b5b8"
+  },
+  "duration": 20628
+}

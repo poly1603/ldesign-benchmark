@@ -1,0 +1,16 @@
+{
+  "id": "ffffffe0-3cf1-5656-8000-000f00000011",
+  "name": "9Solkh'V'3E$",
+  "generatedAt": "2024-12-31T23:59:59.989Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "092b8b9bad71f462b71c4277fa43d2f11f1c8db1"
+  },
+  "duration": 14
+}

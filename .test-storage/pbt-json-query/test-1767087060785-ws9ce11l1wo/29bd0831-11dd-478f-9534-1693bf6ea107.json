@@ -1,0 +1,16 @@
+{
+  "id": "29bd0831-11dd-478f-9534-1693bf6ea107",
+  "name": "wl=",
+  "generatedAt": "2024-07-09T14:06:53.789Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "605f4f2287e3d8edd3709056e9dc8be2b6ce715f"
+  },
+  "duration": 82767
+}

@@ -1,0 +1,67 @@
+{
+  "id": "d26d82a3-6ddd-7a47-9a61-b01995fa4577",
+  "name": "VZg#wJ6y`qc",
+  "generatedAt": "2024-05-30T17:30:59.781Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "[UMi%>",
+          "opsPerSecond": 5695.364694176874,
+          "avgTime": 28.633416759625373,
+          "minTime": 0.03023624003415113,
+          "maxTime": 1.4143062914710824,
+          "stdDev": 1.1685303096040848e-268,
+          "rme": 1.1520494480938622e-37,
+          "iterations": 963,
+          "totalTime": 750.9907807359025,
+          "tags": [
+            "slow",
+            "cpu"
+          ]
+        },
+        {
+          "name": "B?a/.Q3,TJ",
+          "opsPerSecond": 6.80678399739196,
+          "avgTime": 99.52738486643649,
+          "minTime": 1.4023178307083422,
+          "maxTime": 52.38967211144556,
+          "stdDev": 5.890600331532537e-57,
+          "rme": 7.908746203868223e-108,
+          "iterations": 94,
+          "totalTime": 7271.501939859552
+        }
+      ],
+      "duration": 8468,
+      "timestamp": 1732993380082
+    },
+    {
+      "name": "Suite-D",
+      "results": [
+        {
+          "name": "/~",
+          "opsPerSecond": 6.721065804211945,
+          "avgTime": 0.1573647451059381,
+          "minTime": 0.7563611131176294,
+          "maxTime": 0.01768889765948344,
+          "stdDev": 7.381449150629016e-149,
+          "rme": 1.324565028602228e-99,
+          "iterations": 128,
+          "totalTime": 2672.359278662242,
+          "tags": [
+            "cpu",
+            "slow"
+          ]
+        }
+      ],
+      "duration": 1567,
+      "timestamp": 1710553571178
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "id": "683c1141-6880-11ea-ad1e-7c101a6f0f52",
+  "name": "qHsPU#",
+  "generatedAt": "2024-12-07T00:10:28.097Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "Roc=D&Vr",
+          "opsPerSecond": 461.172305747961,
+          "avgTime": 62.29597247304952,
+          "minTime": 0.05776557607353306,
+          "maxTime": 6.94271087772567,
+          "stdDev": 2.3048288547397611e-10,
+          "rme": 5.378834435816598e-245,
+          "iterations": 918,
+          "totalTime": 11.693692363384848,
+          "tags": [
+            "io"
+          ]
+        },
+        {
+          "name": "HU#",
+          "opsPerSecond": 12.084769474572498,
+          "avgTime": 0.2958436266702381,
+          "minTime": 17.716425620524607,
+          "maxTime": 10.34511596277038,
+          "stdDev": 6.465592482806626e-242,
+          "rme": 4.529078265746735e-15,
+          "iterations": 41,
+          "totalTime": 6.979495195041254,
+          "tags": [
+            "io"
+          ]
+        }
+      ],
+      "duration": 7559,
+      "timestamp": 1713645456139
+    },
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "L]VN?",
+          "opsPerSecond": 7584.85659270789,
+          "avgTime": 1.065481929073424,
+          "minTime": 99.81349797268206,
+          "maxTime": 5.12647824462435,
+          "stdDev": 3.790755531933908e-88,
+          "rme": 6.214746838095594e-155,
+          "iterations": 283,
+          "totalTime": 105.44287265728914,
+          "tags": [
+            "slow",
+            "slow",
+            "memory"
+          ]
+        },
+        {
+          "name": ">3",
+          "opsPerSecond": 128.13629275778825,
+          "avgTime": 2.7069591267956783,
+          "minTime": 6.875539332109734,
+          "maxTime": 27.956238128073714,
+          "stdDev": 4.8102512930757935e-83,
+          "rme": 6.712732675111881e-222,
+          "iterations": 373,
+          "totalTime": 161.39380086114465,
+          "tags": [
+            "memory"
+          ]
+        }
+      ],
+      "duration": 6206,
+      "timestamp": 1718485637922
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "5e6f60acba899eb657862573744e09e9fdd5ffe1"
+  },
+  "duration": 33303
+}

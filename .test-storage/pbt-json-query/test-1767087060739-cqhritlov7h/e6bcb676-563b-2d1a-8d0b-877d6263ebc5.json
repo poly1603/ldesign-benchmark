@@ -1,0 +1,38 @@
+{
+  "id": "e6bcb676-563b-2d1a-8d0b-877d6263ebc5",
+  "name": ")c",
+  "generatedAt": "2024-06-04T21:00:44.069Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [
+        {
+          "name": "TD&",
+          "opsPerSecond": 5584.565817513799,
+          "avgTime": 48.28522061828158,
+          "minTime": 2.190434738680109,
+          "maxTime": 0.08764411555368135,
+          "stdDev": 1.1267332660541959e-304,
+          "rme": 6.429350916620589e-148,
+          "iterations": 526,
+          "totalTime": 7.834202890573102,
+          "tags": [
+            "cpu"
+          ]
+        }
+      ],
+      "duration": 1680,
+      "timestamp": 1707603612539
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "1ac61329bacf58b74864dd20f9b923ff8e9adde5"
+  },
+  "duration": 81930
+}

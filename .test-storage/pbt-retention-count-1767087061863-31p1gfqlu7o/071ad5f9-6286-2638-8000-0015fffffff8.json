@@ -1,0 +1,24 @@
+{
+  "id": "071ad5f9-6286-2638-8000-0015fffffff8",
+  "name": ")WL4W6s#kP",
+  "generatedAt": "2025-12-29T09:31:01.672Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [],
+      "duration": 1266,
+      "timestamp": 1735689599979
+    },
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 1184,
+      "timestamp": 1728569515611
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

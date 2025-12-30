@@ -1,0 +1,23 @@
+{
+  "id": "965b43ed-3649-2646-a277-3c7ae7d6a8c7",
+  "name": "4\"es1\"D%vu<3",
+  "generatedAt": "2024-10-27T01:21:19.918Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [],
+      "duration": 7090,
+      "timestamp": 1724931446570
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "3ff7ebda967f8bddcf5d6f6dced028dc8b27bfff"
+  },
+  "duration": 19526
+}

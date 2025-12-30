@@ -1,0 +1,15 @@
+{
+  "id": "fffffff3-0003-1000-bfff-ffe900000019",
+  "name": "!#E0",
+  "generatedAt": "2024-10-06T14:56:04.886Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "3082ee02ffc8a6a13b59cf225e7f2d1bb21e2eeb"
+  }
+}

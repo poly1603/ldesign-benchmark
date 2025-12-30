@@ -1,0 +1,58 @@
+{
+  "id": "1e2ca3ec-7e3f-5d09-bccc-559650a76d4f",
+  "name": "JGM*$1L",
+  "generatedAt": "2024-10-10T03:50:30.570Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "dAd~MIdS'#R",
+          "opsPerSecond": 39.78764322444783,
+          "avgTime": 26.752588272019725,
+          "minTime": 0.04680912399066832,
+          "maxTime": 6.595218952884903,
+          "stdDev": 2.4368304581062225e-166,
+          "rme": 1.2206219452465274e-282,
+          "iterations": 579,
+          "totalTime": 633.7085410651747,
+          "tags": [
+            "fast",
+            "cpu",
+            "cpu"
+          ]
+        },
+        {
+          "name": "0",
+          "opsPerSecond": 7245.189562527668,
+          "avgTime": 1.6320910739535197,
+          "minTime": 0.04447676693298228,
+          "maxTime": 0.021519100381716713,
+          "stdDev": 6.653486926459504e-241,
+          "rme": 3.01062383622089e-177,
+          "iterations": 971,
+          "totalTime": 2.264515949817543,
+          "tags": [
+            "io"
+          ]
+        }
+      ],
+      "duration": 131,
+      "timestamp": 1714968477724
+    },
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 1927,
+      "timestamp": 1713307991956
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "report-a2",
+  "name": "Report A2",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 100,
+      "timestamp": 1767087061471
+    }
+  ],
+  "generatedAt": "2024-01-02T16:00:00.000Z",
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

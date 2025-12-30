@@ -1,0 +1,19 @@
+{
+  "id": "5e903074-6161-4f7a-a18f-d40185692d63",
+  "name": "mN s48&<sD",
+  "generatedAt": "2024-09-13T15:19:10.388Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 7504,
+      "timestamp": 1726195902973
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "duration": 13486
+}

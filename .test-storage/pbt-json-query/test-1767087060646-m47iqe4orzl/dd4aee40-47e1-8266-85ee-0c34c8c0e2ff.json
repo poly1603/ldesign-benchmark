@@ -1,0 +1,39 @@
+{
+  "id": "dd4aee40-47e1-8266-85ee-0c34c8c0e2ff",
+  "name": "ihj2ST",
+  "generatedAt": "2024-09-04T03:35:58.753Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [
+        {
+          "name": "|U",
+          "opsPerSecond": 286.78240395484585,
+          "avgTime": 0.051961674434521855,
+          "minTime": 1.7352603545072827,
+          "maxTime": 0.02270293428804406,
+          "stdDev": 3.3524009007904677e-82,
+          "rme": 2.78832229236519e-101,
+          "iterations": 892,
+          "totalTime": 1.7854230638912554,
+          "tags": [
+            "io",
+            "memory"
+          ]
+        }
+      ],
+      "duration": 4115,
+      "timestamp": 1711050499859
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "387bba3077fe4ccbdfa5cf0cdb886db991c601e4"
+  },
+  "duration": 37293
+}

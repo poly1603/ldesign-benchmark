@@ -1,0 +1,49 @@
+{
+  "id": "ce9236ac-0013-1000-9b47-6db000000016",
+  "name": "rJ",
+  "generatedAt": "2024-09-21T03:38:27.175Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "1kga",
+          "opsPerSecond": 30.629767678789126,
+          "avgTime": 0.035291387760946515,
+          "minTime": 1.1913109132111348,
+          "maxTime": 10.5861436168475,
+          "stdDev": 5.254746814082415e-256,
+          "rme": 4.775422416036031e-304,
+          "iterations": 846,
+          "totalTime": 1310.669452851173,
+          "tags": [
+            "cpu",
+            "slow"
+          ]
+        },
+        {
+          "name": " ./6uZ!g7J",
+          "opsPerSecond": 5.500697432695842,
+          "avgTime": 0.051094892028702356,
+          "minTime": 9.084594986021958,
+          "maxTime": 1.6244186753600214,
+          "stdDev": 1.7727130241598532e-135,
+          "rme": 6.788113156838559e-86,
+          "iterations": 114,
+          "totalTime": 16.754841667699807,
+          "tags": [
+            "slow",
+            "memory"
+          ]
+        }
+      ],
+      "duration": 6262,
+      "timestamp": 1718390908274
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "00000010-6893-5b7f-8000-0005a5ce6bc1",
+  "name": ":",
+  "generatedAt": "2024-06-15T11:35:07.705Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 3576,
+      "timestamp": 1710360309434
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "4303e2d12e4ef750a0e7bbeb1ef122e1c1218c20"
+  }
+}

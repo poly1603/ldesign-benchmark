@@ -1,0 +1,38 @@
+{
+  "id": "8671acf7-8130-2b4c-a307-565f4a2c2d7d",
+  "name": "g-/",
+  "generatedAt": "2024-05-16T23:40:12.506Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "s;d/AFX$",
+          "opsPerSecond": 29.663541096328814,
+          "avgTime": 0.33777854390995776,
+          "minTime": 0.011677655087682655,
+          "maxTime": 7.86343749939532,
+          "stdDev": 3.314247044814156e-72,
+          "rme": 3.2309300284893845e-214,
+          "iterations": 243,
+          "totalTime": 1.5208788822384731,
+          "tags": [
+            "fast",
+            "memory"
+          ]
+        }
+      ],
+      "duration": 821,
+      "timestamp": 1732989913772
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "d30d046c6da56a10675e72e64f3808aacd77c95a"
+  }
+}

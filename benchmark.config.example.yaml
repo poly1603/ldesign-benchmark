@@ -1,0 +1,85 @@
+# LDesign Benchmark 配置文件示例 (YAML 格式)
+# 此文件展示了所有可用的配置选项
+
+name: LDesign 性能基准测试
+description: LDesign 组件库性能基准测试配置
+
+# 测试套件配置
+suites:
+  router:
+    pattern: "packages/router/**/*.bench.{js,ts}"
+    thresholds:
+      route-matching:
+        minOpsPerSecond: 10000
+        maxAvgTime: 0.1
+      guard-execution:
+        minOpsPerSecond: 5000
+        maxAvgTime: 0.2
+
+  color:
+    pattern: "packages/color/**/*.bench.{js,ts}"
+    thresholds:
+      rgb-to-hsl:
+        minOpsPerSecond: 50000
+        maxAvgTime: 0.02
+      hsl-to-rgb:
+        minOpsPerSecond: 50000
+        maxAvgTime: 0.02
+
+  i18n:
+    pattern: "packages/i18n/**/*.bench.{js,ts}"
+    thresholds:
+      translation-l1-cache:
+        minOpsPerSecond: 100000
+        maxAvgTime: 0.01
+      translation-l2-cache:
+        minOpsPerSecond: 50000
+        maxAvgTime: 0.02
+
+# 全局阈值
+globalThresholds:
+  maxRme: 5
+  minIterations: 100
+
+# 输出配置
+output:
+  directory: "./benchmark-results"
+  formats:
+    - json
+    - html
+  saveHistory: true
+
+# CI/CD 配置
+ci:
+  enabled: true
+  provider: github
+  failOnRegression: true
+  regressionThreshold: 5
+  annotations: true
+
+# 并行执行配置
+parallel:
+  enabled: false
+  maxWorkers: 4
+  isolate: true
+
+# 存储配置
+storage:
+  type: json
+  path: "./.benchmark-history"
+  retention:
+    maxAge: 30  # 保留 30 天
+    maxCount: 100  # 最多保留 100 条记录
+
+# 国际化配置
+locale:
+  language: zh-CN
+  dateFormat: "YYYY-MM-DD HH:mm:ss"
+  numberFormat: "0,0.00"
+
+# 默认选项
+defaults:
+  time: 1000
+  iterations: 10
+  warmup: 5
+  collectMemory: false

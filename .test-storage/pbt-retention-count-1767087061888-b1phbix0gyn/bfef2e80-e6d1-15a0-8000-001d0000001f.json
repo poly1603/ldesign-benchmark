@@ -1,0 +1,18 @@
+{
+  "id": "bfef2e80-e6d1-15a0-8000-001d0000001f",
+  "name": "$W\\J(",
+  "generatedAt": "2025-12-28T09:31:01.672Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 168,
+      "timestamp": 1706555770506
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

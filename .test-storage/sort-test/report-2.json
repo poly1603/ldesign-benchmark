@@ -1,0 +1,12 @@
+{
+  "id": "report-2",
+  "name": "Report 2",
+  "suites": [],
+  "generatedAt": "2024-02-01T00:00:00.000Z",
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "duration": 200
+}

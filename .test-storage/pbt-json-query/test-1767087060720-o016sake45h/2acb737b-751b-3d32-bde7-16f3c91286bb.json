@@ -1,0 +1,15 @@
+{
+  "id": "2acb737b-751b-3d32-bde7-16f3c91286bb",
+  "name": "apviV-r7UP",
+  "generatedAt": "2024-12-31T23:59:59.970Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "abb672ae89f582cd1b0b3f752de4aea514ef268a"
+  }
+}
