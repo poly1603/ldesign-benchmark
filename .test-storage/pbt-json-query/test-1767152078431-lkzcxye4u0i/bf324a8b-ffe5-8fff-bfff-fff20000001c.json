@@ -1,0 +1,54 @@
+{
+  "id": "bf324a8b-ffe5-8fff-bfff-fff20000001c",
+  "name": "otlength}",
+  "generatedAt": "2024-12-31T23:59:59.985Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "lsfgg--_)",
+          "opsPerSecond": 450.81420528600404,
+          "avgTime": 11.416345941816346,
+          "minTime": 0.05469249227489714,
+          "maxTime": 0.059929523596084694,
+          "stdDev": 1.0702224018999519e-21,
+          "rme": 5.968036029286539e-132,
+          "iterations": 903,
+          "totalTime": 20.421108276275252,
+          "tags": [
+            "memory",
+            "fast",
+            "slow"
+          ]
+        },
+        {
+          "name": "F+,Ka!#U<B",
+          "opsPerSecond": 3.159934794242658,
+          "avgTime": 1.926831217646608,
+          "minTime": 0.043420706015689335,
+          "maxTime": 1.5145561622177537,
+          "stdDev": 3.5925138147325663e-284,
+          "rme": 4.870072301837355e-206,
+          "iterations": 859,
+          "totalTime": 95.88430577895751,
+          "tags": [
+            "fast"
+          ]
+        }
+      ],
+      "duration": 3509,
+      "timestamp": 1726255596889
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "daa4ecd7f4f3574967ecc8eadac861cde72addf1"
+  },
+  "duration": 81067
+}

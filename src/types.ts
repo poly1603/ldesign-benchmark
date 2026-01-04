@@ -303,6 +303,12 @@ export interface BenchmarkReport {
     platform: string
     arch: string
     nodeVersion: string
+    cpuModel?: string
+    cpuCores?: number
+    totalMemory?: number
+    freeMemory?: number
+    osVersion?: string
+    hostname?: string
   }
 }
 
@@ -314,7 +320,7 @@ export interface ReporterOptions {
    * 输出格式
    * @default 'console'
    */
-  format?: 'console' | 'json' | 'markdown' | 'html' | 'csv'
+  format?: 'console' | 'json' | 'markdown' | 'html' | 'csv' | 'pdf'
 
   /**
    * 输出文件路径
@@ -332,6 +338,16 @@ export interface ReporterOptions {
    * @default true (auto-detect)
    */
   colors?: boolean
+
+  /**
+   * 自定义模板路径（用于 HTML 格式）
+   */
+  template?: string
+
+  /**
+   * 模板变量（传递给模板）
+   */
+  templateVars?: Record<string, unknown>
 }
 
 export interface BenchmarkThreshold {
@@ -479,6 +495,51 @@ export interface TrendAnalysis {
   prediction?: {
     nextWeek: number
     confidence: number
+  }
+}
+
+/**
+ * CI 环境配置
+ */
+export interface CIConfig {
+  /** 是否启用 CI 模式 */
+  enabled: boolean
+  /** CI 提供商 */
+  provider?: 'github' | 'gitlab' | 'jenkins' | 'azure'
+  /** 是否在回归时失败 */
+  failOnRegression: boolean
+  /** 回归阈值百分比 */
+  regressionThreshold: number
+  /** 是否生成注释 */
+  annotations: boolean
+}
+
+/**
+ * 增强的配置结构（包含 CI 配置）
+ */
+export interface EnhancedBenchmarkConfig extends BenchmarkConfig {
+  /** CI/CD 配置 */
+  ci?: CIConfig
+  /** 并行执行配置 */
+  parallel?: {
+    enabled: boolean
+    maxWorkers: number
+    isolate: boolean
+  }
+  /** 存储配置 */
+  storage?: {
+    type: 'json' | 'sqlite'
+    path: string
+    retention: {
+      maxAge: number
+      maxCount: number
+    }
+  }
+  /** 国际化配置 */
+  locale?: {
+    language: 'zh-CN' | 'en-US'
+    dateFormat: string
+    numberFormat: string
   }
 }
 

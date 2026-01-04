@@ -1,0 +1,23 @@
+{
+  "id": "ea8b23af-c691-58f3-bc23-0c5ba2843c3a",
+  "name": "&Xui6`!Py",
+  "generatedAt": "2024-03-24T02:47:02.302Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 47,
+      "timestamp": 1731198034832
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "eaed8558d12c61dcd4bebe293eaf02bf11207da0"
+  },
+  "duration": 59601
+}

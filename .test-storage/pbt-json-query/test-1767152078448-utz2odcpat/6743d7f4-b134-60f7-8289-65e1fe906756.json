@@ -1,0 +1,15 @@
+{
+  "id": "6743d7f4-b134-60f7-8289-65e1fe906756",
+  "name": "JKp",
+  "generatedAt": "2024-02-23T14:55:10.389Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1"
+  },
+  "duration": 85451
+}

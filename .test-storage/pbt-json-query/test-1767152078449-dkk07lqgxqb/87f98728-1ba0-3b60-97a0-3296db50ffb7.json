@@ -1,0 +1,23 @@
+{
+  "id": "87f98728-1ba0-3b60-97a0-3296db50ffb7",
+  "name": "{-=F",
+  "generatedAt": "2024-05-18T05:45:38.134Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [],
+      "duration": 8576,
+      "timestamp": 1731184138986
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "807b28664f0d856abaf3e3d6f0d262f03eb70a33"
+  },
+  "duration": 58304
+}

@@ -1,0 +1,11 @@
+{
+  "id": "00000012-3c78-5f76-9d32-1e6f93734857",
+  "name": "j&<",
+  "generatedAt": "2025-12-30T03:34:39.124Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

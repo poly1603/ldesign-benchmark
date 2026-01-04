@@ -13,6 +13,7 @@ import type {
   MemoryStats,
 } from './types'
 import { BenchmarkReporter } from './reporter'
+import { environmentCollector } from './environment'
 
 /**
  * 计算百分位数
@@ -272,11 +273,7 @@ export class BenchmarkImpl implements Benchmark {
         },
       ],
       generatedAt: new Date().toISOString(),
-      environment: {
-        platform: process.platform,
-        arch: process.arch,
-        nodeVersion: process.version,
-      },
+      environment: environmentCollector.collect(),
     }
   }
 }

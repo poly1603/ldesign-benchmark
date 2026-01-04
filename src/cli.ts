@@ -75,8 +75,30 @@ cli
   .option('--compare <baseline>', '与基线报告对比')
   .option('--history', '保存到历史记录')
   .option('--verbose', '显示详细信息')
+  .option('--debug', '启用调试模式，输出详细日志和内部状态')
+  .option('--ci', '启用 CI 模式（自动检测 CI 环境，生成 CI 友好的输出）')
+  .option('--ci-fail-on-regression', '在检测到性能回归时以非零退出码退出')
+  .option('--ci-regression-threshold <percent>', '回归阈值百分比', { default: '5' })
+  .option('--locale <locale>', '输出语言 (zh-CN, en-US)', { default: 'zh-CN' })
   .action(async (files: string[], options) => {
     try {
+      // 设置国际化语言
+      const { getI18n } = await import('./i18n.js')
+      const i18n = getI18n()
+      if (options.locale && (options.locale === 'zh-CN' || options.locale === 'en-US')) {
+        i18n.setLocale(options.locale)
+      }
+
+      // 启用调试模式
+      if (options.debug) {
+        const { enableDebug, getDebugLogger } = await import('./debug-logger.js')
+        enableDebug()
+        const logger = getDebugLogger()
+        logger.info('调试模式已启用')
+        logger.logMemory('启动时')
+        logger.logState('CLI 选项', options)
+      }
+
       // 1. 加载配置文件
       let config: any = {}
       if (options.config) {
@@ -86,8 +108,16 @@ cli
           if (options.verbose) {
             console.log(`📁 加载配置文件: ${configPath}`)
           }
+          if (options.debug) {
+            const { getDebugLogger } = await import('./debug-logger.js')
+            getDebugLogger().debug('配置文件已加载', { configPath, config })
+          }
         } catch (e) {
           console.error(`❌ 无法加载配置文件: ${configPath}`, e)
+          if (options.debug) {
+            const { getDebugLogger } = await import('./debug-logger.js')
+            getDebugLogger().error('加载配置文件失败', { configPath, error: String(e) })
+          }
           process.exit(1)
         }
       }
@@ -99,6 +129,15 @@ cli
         absolute: true,
         ignore: ['**/node_modules/**', '**/dist/**', '**/build/**']
       })
+
+      if (options.debug) {
+        const { getDebugLogger } = await import('./debug-logger.js')
+        getDebugLogger().debug('收集基准测试文件', {
+          patterns,
+          filesFound: benchmarkFiles.length,
+          files: benchmarkFiles.map(f => path.relative(process.cwd(), f)),
+        })
+      }
 
       if (benchmarkFiles.length === 0) {
         console.error('❌ 未找到基准测试文件')
@@ -175,6 +214,57 @@ cli
         }
       }
 
+      // 5.5. CI 模式报告
+      if (options.ci) {
+        const { CIReporter, getCIEnvironment, loadConfigFromEnv } = await import('./index.js')
+
+        // 加载环境变量配置
+        const envConfig = loadConfigFromEnv()
+
+        // 获取 CI 环境信息
+        const ciEnv = getCIEnvironment()
+
+        if (options.verbose) {
+          console.log('\n🔍 CI 环境信息:')
+          console.log(`  提供商: ${ciEnv.provider}`)
+          if (ciEnv.buildId) console.log(`  构建 ID: ${ciEnv.buildId}`)
+          if (ciEnv.branch) console.log(`  分支: ${ciEnv.branch}`)
+          if (ciEnv.commit) console.log(`  提交: ${ciEnv.commit}`)
+        }
+
+        // 创建 CI 报告器
+        const ciReporter = new CIReporter({
+          provider: ciEnv.provider,
+          failOnRegression: options.ciFailOnRegression ?? envConfig.ci?.failOnRegression ?? true,
+          regressionThreshold: parseFloat(options.ciRegressionThreshold) ?? envConfig.ci?.regressionThreshold ?? 5,
+          annotations: envConfig.ci?.annotations ?? true,
+        })
+
+        // 加载基线报告（如果指定）
+        let baselineReport
+        if (options.compare) {
+          const baselinePath = path.resolve(process.cwd(), options.compare)
+          try {
+            baselineReport = JSON.parse(readFileSync(baselinePath, 'utf-8'))
+          } catch (e) {
+            console.error(`⚠️  无法加载基线报告: ${baselinePath}`)
+          }
+        }
+
+        // 生成 CI 报告
+        console.log('\n')
+        const shouldFail = ciReporter.report(
+          report.suites.flatMap(s => s.results),
+          baselineReport
+        )
+
+        // 如果应该失败，设置退出码
+        if (shouldFail) {
+          console.error('\n❌ 检测到性能回归或测试失败')
+          process.exit(1)
+        }
+      }
+
       // 6. 保存历史记录
       if (options.history) {
         const historyDir = path.join(process.cwd(), '.benchmark-history')
@@ -248,7 +338,20 @@ cli
         })
       }
 
+      // 打印调试日志统计
+      if (options.debug) {
+        const { getDebugLogger } = await import('./debug-logger.js')
+        const logger = getDebugLogger()
+        logger.logMemory('运行结束')
+        logger.printStats()
+        console.log('\n💡 使用 --verbose 查看更多详细信息')
+      }
+
     } catch (error) {
+      if (options.debug) {
+        const { getDebugLogger } = await import('./debug-logger.js')
+        getDebugLogger().error('运行失败', { error: String(error) })
+      }
       console.error(error)
       process.exit(1)
     }
@@ -259,7 +362,15 @@ cli
   .command('history', '查看历史基准测试记录')
   .option('--limit <number>', '显示最近 N 条记录', { default: 10 })
   .option('--suite <name>', '筛选特定套件')
+  .option('--locale <locale>', '输出语言 (zh-CN, en-US)', { default: 'zh-CN' })
   .action(async (options) => {
+    // 设置国际化语言
+    const { getI18n } = await import('./i18n.js')
+    const i18n = getI18n()
+    if (options.locale && (options.locale === 'zh-CN' || options.locale === 'en-US')) {
+      i18n.setLocale(options.locale)
+    }
+
     const historyDir = path.join(process.cwd(), '.benchmark-history')
     const fs = await import('node:fs/promises')
 

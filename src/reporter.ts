@@ -188,8 +188,26 @@ export class BenchmarkReporter {
    * 
    * @param results - 测试结果
    * @param suiteName - 套件名称
+   * @param template - 可选的自定义模板
+   * @param templateVars - 模板变量
    */
-  generateHTML(results: BenchmarkResult[], suiteName: string): string {
+  generateHTML(
+    results: BenchmarkResult[],
+    suiteName: string,
+    template?: string,
+    templateVars?: Record<string, unknown>
+  ): string {
+    // 如果提供了自定义模板，使用模板引擎渲染
+    if (template) {
+      return this.renderTemplate(template, {
+        results,
+        suiteName,
+        generatedAt: new Date().toLocaleString('zh-CN'),
+        ...templateVars,
+      })
+    }
+
+    // 否则使用默认模板
     const fastest = results.reduce((prev, curr) =>
       curr.opsPerSecond > prev.opsPerSecond ? curr : prev,
     )
@@ -201,6 +219,22 @@ export class BenchmarkReporter {
     const chartColors = results.map(r =>
       r.name === fastest.name ? '#4CAF50' : '#2196F3'
     )
+
+    // 生成表格数据（用于过滤和排序）
+    const tableData = JSON.stringify(results.map(r => ({
+      name: r.name,
+      opsPerSecond: r.opsPerSecond,
+      avgTime: r.avgTime,
+      minTime: r.minTime,
+      maxTime: r.maxTime,
+      rme: r.rme,
+      iterations: r.iterations,
+      p50: r.percentiles?.p50 ?? null,
+      p95: r.percentiles?.p95 ?? null,
+      p99: r.percentiles?.p99 ?? null,
+      status: r.status ?? 'success',
+      isFastest: r.name === fastest.name,
+    })))
 
     let html = `<!DOCTYPE html>
 <html lang="zh-CN">
@@ -226,6 +260,31 @@ export class BenchmarkReporter {
       display: flex;
       align-items: center;
       gap: 10px;
+    }
+    .controls {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .controls label {
+      font-weight: 600;
+      margin-right: 5px;
+    }
+    .controls input, .controls select {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .controls input:focus, .controls select:focus {
+      outline: none;
+      border-color: #4CAF50;
     }
     .summary {
       display: grid;
@@ -282,8 +341,27 @@ export class BenchmarkReporter {
       text-transform: uppercase;
       font-size: 12px;
       letter-spacing: 0.5px;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+    }
+    th:hover {
+      background: linear-gradient(135deg, #45a049, #3d8b40);
+    }
+    th.sortable::after {
+      content: ' ⇅';
+      opacity: 0.5;
+    }
+    th.sorted-asc::after {
+      content: ' ↑';
+      opacity: 1;
+    }
+    th.sorted-desc::after {
+      content: ' ↓';
+      opacity: 1;
     }
     tr:hover { background-color: #f8f9fa; }
+    tr.hidden { display: none; }
     .fastest { background-color: #e8f5e9 !important; }
     .ops-bar {
       height: 8px;
@@ -319,15 +397,53 @@ export class BenchmarkReporter {
       padding-top: 20px;
       border-top: 1px solid #ddd;
     }
+    .no-results {
+      text-align: center;
+      padding: 40px;
+      color: #999;
+      font-size: 18px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>📊 ${suiteName}</h1>
     
+    <div class="controls">
+      <div>
+        <label for="searchInput">🔍 搜索:</label>
+        <input type="text" id="searchInput" placeholder="输入任务名称..." />
+      </div>
+      <div>
+        <label for="statusFilter">状态:</label>
+        <select id="statusFilter">
+          <option value="all">全部</option>
+          <option value="success">成功</option>
+          <option value="failed">失败</option>
+          <option value="timeout">超时</option>
+        </select>
+      </div>
+      <div>
+        <label for="sortBy">排序:</label>
+        <select id="sortBy">
+          <option value="name">名称</option>
+          <option value="opsPerSecond">ops/sec</option>
+          <option value="avgTime">平均时间</option>
+          <option value="rme">误差</option>
+        </select>
+      </div>
+      <div>
+        <label for="sortOrder">顺序:</label>
+        <select id="sortOrder">
+          <option value="asc">升序</option>
+          <option value="desc">降序</option>
+        </select>
+      </div>
+    </div>
+
     <div class="summary">
       <div class="summary-card">
-        <div class="value">${results.length}</div>
+        <div class="value" id="totalCount">${results.length}</div>
         <div class="label">测试任务</div>
       </div>
       <div class="summary-card">
@@ -355,52 +471,24 @@ export class BenchmarkReporter {
       </div>
     </div>
 
-    <table>
+    <table id="resultsTable">
       <thead>
         <tr>
-          <th>任务</th>
-          <th>ops/sec</th>
-          <th>平均时间</th>
+          <th class="sortable" data-sort="name">任务</th>
+          <th class="sortable" data-sort="opsPerSecond">ops/sec</th>
+          <th class="sortable" data-sort="avgTime">平均时间</th>
           <th>百分位数</th>
-          <th>误差</th>
-          <th>迭代</th>
-          <th>状态</th>
+          <th class="sortable" data-sort="rme">误差</th>
+          <th class="sortable" data-sort="iterations">迭代</th>
+          <th class="sortable" data-sort="status">状态</th>
         </tr>
       </thead>
-      <tbody>
-`
-
-    results.forEach((result) => {
-      const isFastest = result.name === fastest.name
-      const percentage = (result.opsPerSecond / fastest.opsPerSecond * 100).toFixed(0)
-      const statusClass = result.status === 'failed' ? 'badge-error' :
-        result.status === 'timeout' ? 'badge-warning' : 'badge-success'
-      const statusText = result.status === 'failed' ? '失败' :
-        result.status === 'timeout' ? '超时' : '成功'
-
-      html += `        <tr class="${isFastest ? 'fastest' : ''}">
-          <td>
-            ${isFastest ? '🏆 ' : ''}<strong>${result.name}</strong>
-            <div class="ops-bar"><div class="ops-bar-fill" style="width: ${percentage}%"></div></div>
-          </td>
-          <td><strong>${this.formatOps(result.opsPerSecond)}</strong></td>
-          <td>${result.avgTime.toFixed(4)} ms</td>
-          <td class="percentiles">
-            ${result.percentiles ?
-          `P50: ${result.percentiles.p50.toFixed(3)}ms<br>
-               P95: ${result.percentiles.p95.toFixed(3)}ms<br>
-               P99: ${result.percentiles.p99.toFixed(3)}ms` :
-          '-'}
-          </td>
-          <td>±${result.rme.toFixed(2)}%</td>
-          <td>${result.iterations}</td>
-          <td><span class="badge ${statusClass}">${statusText}</span></td>
-        </tr>
-`
-    })
-
-    html += `      </tbody>
+      <tbody id="resultsBody">
+      </tbody>
     </table>
+    <div id="noResults" class="no-results" style="display: none;">
+      没有找到匹配的结果
+    </div>
 
     <footer>
       <p>生成时间: ${new Date().toLocaleString('zh-CN')}</p>
@@ -409,8 +497,155 @@ export class BenchmarkReporter {
   </div>
 
   <script>
-    // 操作数图表
-    new Chart(document.getElementById('opsChart'), {
+    // 数据
+    const allResults = ${tableData};
+    let filteredResults = [...allResults];
+    let currentSort = { field: 'name', order: 'asc' };
+
+    // 格式化 ops/sec
+    function formatOps(ops) {
+      if (ops >= 1000000) return (ops / 1000000).toFixed(2) + 'M';
+      if (ops >= 1000) return (ops / 1000).toFixed(2) + 'K';
+      return ops.toFixed(2);
+    }
+
+    // 渲染表格
+    function renderTable() {
+      const tbody = document.getElementById('resultsBody');
+      const noResults = document.getElementById('noResults');
+      const table = document.getElementById('resultsTable');
+      
+      tbody.innerHTML = '';
+      
+      if (filteredResults.length === 0) {
+        table.style.display = 'none';
+        noResults.style.display = 'block';
+        return;
+      }
+      
+      table.style.display = 'table';
+      noResults.style.display = 'none';
+
+      const maxOps = Math.max(...filteredResults.map(r => r.opsPerSecond));
+
+      filteredResults.forEach(result => {
+        const percentage = (result.opsPerSecond / maxOps * 100).toFixed(0);
+        const statusClass = result.status === 'failed' ? 'badge-error' :
+          result.status === 'timeout' ? 'badge-warning' : 'badge-success';
+        const statusText = result.status === 'failed' ? '失败' :
+          result.status === 'timeout' ? '超时' : '成功';
+
+        const row = document.createElement('tr');
+        if (result.isFastest) row.classList.add('fastest');
+        
+        row.innerHTML = \`
+          <td>
+            \${result.isFastest ? '🏆 ' : ''}<strong>\${result.name}</strong>
+            <div class="ops-bar"><div class="ops-bar-fill" style="width: \${percentage}%"></div></div>
+          </td>
+          <td><strong>\${formatOps(result.opsPerSecond)}</strong></td>
+          <td>\${result.avgTime.toFixed(4)} ms</td>
+          <td class="percentiles">
+            \${result.p50 !== null ?
+              \`P50: \${result.p50.toFixed(3)}ms<br>
+               P95: \${result.p95.toFixed(3)}ms<br>
+               P99: \${result.p99.toFixed(3)}ms\` :
+              '-'}
+          </td>
+          <td>±\${result.rme.toFixed(2)}%</td>
+          <td>\${result.iterations}</td>
+          <td><span class="badge \${statusClass}">\${statusText}</span></td>
+        \`;
+        
+        tbody.appendChild(row);
+      });
+
+      // 更新计数
+      document.getElementById('totalCount').textContent = filteredResults.length;
+    }
+
+    // 过滤数据
+    function filterResults() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const statusFilter = document.getElementById('statusFilter').value;
+
+      filteredResults = allResults.filter(result => {
+        const matchesSearch = result.name.toLowerCase().includes(searchTerm);
+        const matchesStatus = statusFilter === 'all' || result.status === statusFilter;
+        return matchesSearch && matchesStatus;
+      });
+
+      sortResults();
+    }
+
+    // 排序数据
+    function sortResults() {
+      const sortBy = document.getElementById('sortBy').value;
+      const sortOrder = document.getElementById('sortOrder').value;
+
+      filteredResults.sort((a, b) => {
+        let aVal = a[sortBy];
+        let bVal = b[sortBy];
+
+        if (typeof aVal === 'string') {
+          aVal = aVal.toLowerCase();
+          bVal = bVal.toLowerCase();
+        }
+
+        if (sortOrder === 'asc') {
+          return aVal > bVal ? 1 : aVal < bVal ? -1 : 0;
+        } else {
+          return aVal < bVal ? 1 : aVal > bVal ? -1 : 0;
+        }
+      });
+
+      renderTable();
+      updateCharts();
+    }
+
+    // 更新图表
+    function updateCharts() {
+      const labels = filteredResults.map(r => r.name);
+      const opsData = filteredResults.map(r => r.opsPerSecond);
+      const timeData = filteredResults.map(r => r.avgTime);
+      const colors = filteredResults.map(r => r.isFastest ? '#4CAF50' : '#2196F3');
+
+      opsChart.data.labels = labels;
+      opsChart.data.datasets[0].data = opsData;
+      opsChart.data.datasets[0].backgroundColor = colors;
+      opsChart.update();
+
+      timeChart.data.labels = labels;
+      timeChart.data.datasets[0].data = timeData;
+      timeChart.update();
+    }
+
+    // 表头排序
+    document.querySelectorAll('th.sortable').forEach(th => {
+      th.addEventListener('click', () => {
+        const sortField = th.dataset.sort;
+        const sortSelect = document.getElementById('sortBy');
+        const orderSelect = document.getElementById('sortOrder');
+        
+        if (sortSelect.value === sortField) {
+          orderSelect.value = orderSelect.value === 'asc' ? 'desc' : 'asc';
+        } else {
+          sortSelect.value = sortField;
+          orderSelect.value = 'desc';
+        }
+        
+        sortResults();
+      });
+    });
+
+    // 事件监听
+    document.getElementById('searchInput').addEventListener('input', filterResults);
+    document.getElementById('statusFilter').addEventListener('change', filterResults);
+    document.getElementById('sortBy').addEventListener('change', sortResults);
+    document.getElementById('sortOrder').addEventListener('change', sortResults);
+
+    // 初始化图表
+    const opsChart = new Chart(document.getElementById('opsChart'), {
       type: 'bar',
       data: {
         labels: ${chartLabels},
@@ -428,8 +663,7 @@ export class BenchmarkReporter {
       }
     });
 
-    // 时间图表
-    new Chart(document.getElementById('timeChart'), {
+    const timeChart = new Chart(document.getElementById('timeChart'), {
       type: 'bar',
       data: {
         labels: ${chartLabels},
@@ -446,6 +680,9 @@ export class BenchmarkReporter {
         scales: { y: { beginAtZero: true } }
       }
     });
+
+    // 初始渲染
+    renderTable();
   </script>
 </body>
 </html>`
@@ -472,7 +709,7 @@ export class BenchmarkReporter {
       return
     }
 
-    let content: string
+    let content: string | Buffer
 
     switch (format) {
       case 'json':
@@ -484,7 +721,16 @@ export class BenchmarkReporter {
       case 'csv':
         content = this.generateCSV(results, suiteName)
         break
-      case 'html':
+      case 'html': {
+        // 如果提供了模板文件，读取它
+        let template: string | undefined
+        if (options.template) {
+          const fs = await import('node:fs/promises')
+          template = await fs.readFile(options.template, 'utf-8')
+        }
+        content = this.generateHTML(results, suiteName, template, options.templateVars)
+        break
+      }
       default:
         content = this.generateHTML(results, suiteName)
         break
@@ -492,14 +738,20 @@ export class BenchmarkReporter {
 
     if (options.output) {
       const fs = await import('node:fs/promises')
-      await fs.writeFile(options.output, content, 'utf-8')
+      const isBuffer = typeof content !== 'string'
+      await fs.writeFile(options.output, content, isBuffer ? undefined : 'utf-8')
 
       if (options.verbose) {
         console.log(`\n✅ Benchmark 报告已导出: ${options.output}`)
       }
     } else {
       // 未指定输出文件时，直接打印内容
-      console.log(content)
+      const isBuffer = typeof content !== 'string'
+      if (isBuffer) {
+        console.log('报告已生成（Buffer）')
+      } else {
+        console.log(content)
+      }
     }
   }
 
@@ -530,6 +782,54 @@ export class BenchmarkReporter {
       return `${ms.toFixed(2)}ms`
     }
     return `${(ms / 1000).toFixed(2)}s`
+  }
+
+  /**
+   * 渲染自定义模板
+   * 
+   * 使用简单的模板引擎替换 {{variable}} 占位符
+   */
+  private renderTemplate(
+    template: string,
+    data: Record<string, unknown>
+  ): string {
+    let result = template
+
+    // 替换简单变量 {{variable}}
+    result = result.replace(/\{\{(\w+)\}\}/g, (match, key) => {
+      return data[key] !== undefined ? String(data[key]) : match
+    })
+
+    // 替换循环 {{#each results}}...{{/each}}
+    result = result.replace(
+      /\{\{#each\s+(\w+)\}\}([\s\S]*?)\{\{\/each\}\}/g,
+      (_match, arrayKey, itemTemplate) => {
+        const array = data[arrayKey]
+        if (!Array.isArray(array)) return _match
+
+        return array
+          .map((item) => {
+            let itemHtml = itemTemplate
+            // 替换 item.property
+            itemHtml = itemHtml.replace(/\{\{item\.(\w+)\}\}/g, (_m: string, prop: string) => {
+              const value = (item as Record<string, unknown>)[prop]
+              return value !== undefined ? String(value) : _m
+            })
+            return itemHtml
+          })
+          .join('')
+      }
+    )
+
+    // 替换条件 {{#if condition}}...{{/if}}
+    result = result.replace(
+      /\{\{#if\s+(\w+)\}\}([\s\S]*?)\{\{\/if\}\}/g,
+      (_match, key, content) => {
+        return data[key] ? content : ''
+      }
+    )
+
+    return result
   }
 }
 

@@ -1,0 +1,38 @@
+{
+  "id": "3b4fdc11-9b77-8aea-b38e-4bcaa6dece5a",
+  "name": "TVH\",FgENv",
+  "generatedAt": "2024-09-11T08:21:38.817Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [
+        {
+          "name": "[4yE.&u<1Bk",
+          "opsPerSecond": 2385.296550207868,
+          "avgTime": 19.03676873771277,
+          "minTime": 0.11238648938450538,
+          "maxTime": 1.3083389246295076,
+          "stdDev": 2.455261634723726e-49,
+          "rme": 7.60007357140571e-102,
+          "iterations": 333,
+          "totalTime": 3194.383705533175,
+          "tags": [
+            "memory"
+          ]
+        }
+      ],
+      "duration": 5693,
+      "timestamp": 1708787260017
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "21adecaa4744fad6cc55e24d2799d2d4caadbdf1"
+  },
+  "duration": 35023
+}

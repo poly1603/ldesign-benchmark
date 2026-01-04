@@ -1,0 +1,16 @@
+{
+  "id": "3d6a0db2-0c6f-759d-a74c-4134f48e865c",
+  "name": "v",
+  "generatedAt": "2024-10-26T13:59:46.798Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "11b1addbbbba1af6377af2f9e11cadae5f4aab0e"
+  },
+  "duration": 12
+}

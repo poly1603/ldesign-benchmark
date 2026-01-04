@@ -1,0 +1,23 @@
+{
+  "timestamp": "2025-12-31T03:34:37.425Z",
+  "error": {
+    "name": "Error",
+    "message": "Test error",
+    "stack": "Error: Test error\n    at D:/WorkBench/ldesign/tools/benchmark/src/recovery.test.ts:358:27\n    at AsyncProperty.predicate (file:///D:/WorkBench/ldesign/node_modules/.pnpm/fast-check@4.5.2/node_modules/fast-check/lib/check/property/AsyncProperty.js:14:59)\n    at AsyncProperty.run (file:///D:/WorkBench/ldesign/node_modules/.pnpm/fast-check@4.5.2/node_modules/fast-check/lib/check/property/AsyncProperty.generic.js:43:39)\n    at asyncRunIt (file:///D:/WorkBench/ldesign/node_modules/.pnpm/fast-check@4.5.2/node_modules/fast-check/lib/check/runner/Runner.js:24:36)"
+  },
+  "results": [
+    {
+      "name": " ",
+      "opsPerSecond": 6.764124908280111e-24,
+      "avgTime": 9999.9794921875,
+      "minTime": 1.2769680125475295e-27,
+      "maxTime": null,
+      "stdDev": 3.5526360977760475e-28,
+      "rme": 3.0828566215145976e-44,
+      "iterations": 660,
+      "totalTime": 0.000024063723685685545,
+      "status": "success"
+    }
+  ],
+  "suiteName": "8D"
+}

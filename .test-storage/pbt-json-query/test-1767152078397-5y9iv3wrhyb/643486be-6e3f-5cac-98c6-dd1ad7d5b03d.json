@@ -1,0 +1,29 @@
+{
+  "id": "643486be-6e3f-5cac-98c6-dd1ad7d5b03d",
+  "name": "sWIZ",
+  "generatedAt": "2024-06-07T12:52:02.474Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [],
+      "duration": 3303,
+      "timestamp": 1733005740970
+    },
+    {
+      "name": "Suite-D",
+      "results": [],
+      "duration": 4546,
+      "timestamp": 1733941643479
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "77f2803f9e3a37e7e18b0b5e353518ba50fb9c87"
+  },
+  "duration": 80757
+}

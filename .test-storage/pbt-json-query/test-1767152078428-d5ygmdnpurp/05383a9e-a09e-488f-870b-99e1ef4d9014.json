@@ -1,0 +1,38 @@
+{
+  "id": "05383a9e-a09e-488f-870b-99e1ef4d9014",
+  "name": "NP}kIu0%\"tn",
+  "generatedAt": "2024-11-21T14:49:01.805Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [
+        {
+          "name": "'u",
+          "opsPerSecond": 1.3846505445861026,
+          "avgTime": 3.6772869965422275,
+          "minTime": 9.546026922373173,
+          "maxTime": 39.49587904100961,
+          "stdDev": 1.0842474910068195e-88,
+          "rme": 4.584759802966074e-266,
+          "iterations": 57,
+          "totalTime": 368.1433232648878,
+          "tags": [
+            "io"
+          ]
+        }
+      ],
+      "duration": 8498,
+      "timestamp": 1722169597017
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "abadedf7afa6562e6a842b7dcbec4f6f5ffacacb"
+  },
+  "duration": 25919
+}

@@ -1,0 +1,57 @@
+{
+  "id": "8e03ccf9-07fe-71f2-b876-a1e882cbdd84",
+  "name": "X",
+  "generatedAt": "2024-05-21T00:25:05.105Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 1473,
+      "timestamp": 1721604777699
+    },
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "i",
+          "opsPerSecond": 1.1418463048950878,
+          "avgTime": 22.454748447085354,
+          "minTime": 0.07731373618434198,
+          "maxTime": 0.07224074506362455,
+          "stdDev": 9.656705810195779e-179,
+          "rme": 2.224147218708028e-69,
+          "iterations": 569,
+          "totalTime": 99.66711364849378,
+          "tags": [
+            "io",
+            "memory",
+            "slow"
+          ]
+        },
+        {
+          "name": ";!$?/mmt",
+          "opsPerSecond": 54.099859961926185,
+          "avgTime": 0.026746410582213217,
+          "minTime": 0.028141128511314513,
+          "maxTime": 1.4680024404632435,
+          "stdDev": 1.6419176030596568e-261,
+          "rme": 0.007031502644760622,
+          "iterations": 215,
+          "totalTime": 5.727842955375674
+        }
+      ],
+      "duration": 3292,
+      "timestamp": 1706514624802
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "e6ca5aa1b1d6c124c681077ed8db7b7b0e8da41d"
+  },
+  "duration": 27620
+}

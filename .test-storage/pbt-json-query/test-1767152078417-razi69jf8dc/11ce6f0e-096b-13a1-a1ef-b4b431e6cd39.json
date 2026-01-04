@@ -1,0 +1,15 @@
+{
+  "id": "11ce6f0e-096b-13a1-a1ef-b4b431e6cd39",
+  "name": " LDVl#ey72",
+  "generatedAt": "2024-03-29T00:00:58.842Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main"
+  },
+  "duration": 92121
+}

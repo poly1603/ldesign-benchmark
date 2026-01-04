@@ -1,0 +1,18 @@
+{
+  "id": "23c35322-d32e-53b4-9707-01bb00000000",
+  "name": "I:\"kJS#R",
+  "generatedAt": "2024-01-01T00:00:00.019Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 3546,
+      "timestamp": 1723442858164
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

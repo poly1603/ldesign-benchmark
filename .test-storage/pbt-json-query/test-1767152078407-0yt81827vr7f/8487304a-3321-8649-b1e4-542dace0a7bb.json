@@ -1,0 +1,16 @@
+{
+  "id": "8487304a-3321-8649-b1e4-542dace0a7bb",
+  "name": "AVQ@",
+  "generatedAt": "2024-12-27T19:19:55.347Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "de7bd56e8881e57ee3a10a5ceaadf3eaf83b66a8"
+  },
+  "duration": 13395
+}

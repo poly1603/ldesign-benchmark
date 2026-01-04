@@ -1,0 +1,23 @@
+{
+  "id": "1ebc59a9-ed92-3790-aa14-d94f6dc14f9c",
+  "name": "@;Ju}VG4(/",
+  "generatedAt": "2024-10-09T00:22:31.295Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [],
+      "duration": 3533,
+      "timestamp": 1719803471443
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "d32bf483b2467d3af8e977ac56215c108da5bffe"
+  },
+  "duration": 26394
+}

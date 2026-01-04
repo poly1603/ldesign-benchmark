@@ -39,13 +39,18 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "tinybench": "^2.9.0",
-    "globby": "^14.0.0",
-    "chokidar": "^4.0.0",
-    "cac": "^6.7.14",
-    "yaml": "^2.7.0",
+    "@types/pdfkit": "^0.13.0",
+    "@types/ws": "^8.5.10",
     "ajv": "^8.17.1",
-    "sql.js": "^1.12.0"
+    "cac": "^6.7.14",
+    "chokidar": "^4.0.0",
+    "exceljs": "^4.4.0",
+    "globby": "^14.0.0",
+    "pdfkit": "^0.15.0",
+    "sql.js": "^1.12.0",
+    "tinybench": "^2.9.0",
+    "ws": "^8.18.3",
+    "yaml": "^2.7.0"
   },
   "devDependencies": {
     "@ldesign/builder": "workspace:*",

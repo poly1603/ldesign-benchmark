@@ -1,0 +1,37 @@
+{
+  "id": "fffffffb-9b65-38a9-8000-001700000008",
+  "name": "M~MwS0i",
+  "generatedAt": "2024-01-01T00:00:00.013Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "f@M",
+          "opsPerSecond": 15.07588586983703,
+          "avgTime": 0.021175771295873065,
+          "minTime": 10.011943579896004,
+          "maxTime": 1.0859629446503811,
+          "stdDev": 3.7431293774807446e-132,
+          "rme": 2.3270147104467114e-77,
+          "iterations": 163,
+          "totalTime": 6266.4909656091995,
+          "tags": [
+            "memory"
+          ]
+        }
+      ],
+      "duration": 5373,
+      "timestamp": 1735689599991
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test"
+  },
+  "duration": 99994
+}

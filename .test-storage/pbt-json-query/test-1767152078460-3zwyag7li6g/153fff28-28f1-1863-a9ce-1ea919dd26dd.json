@@ -1,0 +1,29 @@
+{
+  "id": "153fff28-28f1-1863-a9ce-1ea919dd26dd",
+  "name": "`!h",
+  "generatedAt": "2024-02-18T04:12:32.583Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 8932,
+      "timestamp": 1717969664199
+    },
+    {
+      "name": "Suite-B",
+      "results": [],
+      "duration": 7046,
+      "timestamp": 1710420227420
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "4457dd8b5dfdf5de7d87fefec4c4432efaaeb979"
+  },
+  "duration": 31679
+}

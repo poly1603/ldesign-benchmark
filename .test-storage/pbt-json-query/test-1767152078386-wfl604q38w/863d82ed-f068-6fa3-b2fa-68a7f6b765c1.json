@@ -1,0 +1,30 @@
+{
+  "id": "863d82ed-f068-6fa3-b2fa-68a7f6b765c1",
+  "name": ":,9EKV,e\"V",
+  "generatedAt": "2024-11-30T17:09:01.452Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [
+        {
+          "name": "FN",
+          "opsPerSecond": 3.5296578399217546,
+          "avgTime": 0.05957053422318564,
+          "minTime": 77.07748847903416,
+          "maxTime": 0.013914971944344443,
+          "stdDev": 1.7160653596436028e-56,
+          "rme": 3.0331793198602397e-168,
+          "iterations": 370,
+          "totalTime": 26.87738397288644
+        }
+      ],
+      "duration": 2958,
+      "timestamp": 1720199681834
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

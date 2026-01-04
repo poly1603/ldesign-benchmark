@@ -26,6 +26,8 @@
 // 核心功能
 export { createBenchmark, BenchmarkImpl } from './benchmark'
 export { BenchmarkReporter } from './reporter'
+export { PDFReporter } from './reporter-pdf'
+export { ExcelReporter } from './reporter-excel'
 export { createRunner, checkThresholds, BenchmarkRunner } from './runner'
 
 // 配置系统
@@ -53,6 +55,12 @@ export {
   isGitRepository,
 } from './git'
 
+// 环境信息
+export {
+  EnvironmentCollector,
+  environmentCollector,
+} from './environment'
+
 // 插件系统
 export {
   createDefaultPluginManager,
@@ -73,6 +81,63 @@ export {
 
 // 可视化服务器
 export { BenchmarkServer } from './server'
+
+// CI/CD 集成
+export { CIReporter } from './ci-reporter'
+export { RegressionDetector, createRegressionDetector } from './regression-detector'
+export {
+  CIEnvironmentDetector,
+  createCIEnvironmentDetector,
+  getCIEnvironment,
+  isCI,
+  loadConfigFromEnv,
+} from './ci-env'
+
+// 错误处理和调试
+export {
+  BenchmarkError,
+  ConfigurationError,
+  ExecutionError,
+  TimeoutError,
+  StorageError,
+  ValidationError as BenchmarkValidationError,
+  formatError,
+  captureError,
+} from './errors'
+
+export {
+  TimeoutHandler,
+  withTimeout,
+  createTimeoutHandler,
+} from './timeout-handler'
+
+export {
+  DryRunExecutor,
+  createDryRunExecutor,
+} from './dry-run'
+
+export {
+  RecoveryManager,
+  createRecoveryManager,
+} from './recovery'
+
+export {
+  DebugLogger,
+  getDebugLogger,
+  enableDebug,
+  disableDebug,
+  LogLevel,
+} from './debug-logger'
+
+// 国际化
+export {
+  I18nManager,
+  getI18n,
+  setI18n,
+  t,
+  zhCN,
+  enUS,
+} from './i18n'
 
 // 类型导出
 export type {
@@ -122,6 +187,16 @@ export type {
   ConfigWithSource,
 } from './config'
 
+// PDF 报告类型
+export type {
+  PDFReportOptions,
+} from './reporter-pdf'
+
+// Excel 报告类型
+export type {
+  ExcelReportOptions,
+} from './reporter-excel'
+
 // 存储类型
 export type {
   BenchmarkStorage,
@@ -134,6 +209,11 @@ export type {
 export type {
   GitInfo,
 } from './git'
+
+// 环境类型
+export type {
+  EnvironmentMetadata,
+} from './environment'
 
 // 插件类型
 export type {
@@ -171,3 +251,48 @@ export type {
   SuiteExecutionResult,
   ParallelExecutionState,
 } from './parallel'
+
+// CI/CD 类型
+export type {
+  GitHubAnnotation,
+  GitHubAnnotationLevel,
+  CIProvider,
+  CIReporterOptions,
+} from './ci-reporter'
+
+export type {
+  RegressionDetectorOptions,
+} from './regression-detector'
+
+export type {
+  CIEnvironment,
+} from './ci-env'
+
+// 错误处理和调试类型
+export type {
+  ErrorContext,
+} from './errors'
+
+export type {
+  PartialResult,
+} from './timeout-handler'
+
+export type {
+  DryRunTask,
+  DryRunResult,
+} from './dry-run'
+
+export type {
+  RecoveryData,
+  RecoveryFileInfo,
+} from './recovery'
+
+export type {
+  LogEntry,
+} from './debug-logger'
+
+// 国际化类型
+export type {
+  Locale,
+  I18nMessages,
+} from './i18n'

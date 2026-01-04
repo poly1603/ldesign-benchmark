@@ -1,0 +1,40 @@
+{
+  "id": "c00763ec-977d-1f68-997c-e1683b372efa",
+  "name": "-/",
+  "generatedAt": "2024-02-23T03:43:08.525Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 9256,
+      "timestamp": 1729003981974
+    },
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "Cm",
+          "opsPerSecond": 51.07066193895981,
+          "avgTime": 6.391311787244014,
+          "minTime": 3.643262756678956,
+          "maxTime": 12.462432283981016,
+          "stdDev": 1.2996132998579801e-138,
+          "rme": 8.229901815608476e-179,
+          "iterations": 159,
+          "totalTime": 283.2637133817702,
+          "tags": [
+            "memory"
+          ]
+        }
+      ],
+      "duration": 2209,
+      "timestamp": 1709055234116
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "duration": 51611
+}

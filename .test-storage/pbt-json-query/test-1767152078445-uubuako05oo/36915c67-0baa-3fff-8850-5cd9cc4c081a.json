@@ -1,0 +1,48 @@
+{
+  "id": "36915c67-0baa-3fff-8850-5cd9cc4c081a",
+  "name": "$|gM5|#",
+  "generatedAt": "2024-05-06T01:13:57.114Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [
+        {
+          "name": "DVIJ?*GIoPP",
+          "opsPerSecond": 10.206965629064817,
+          "avgTime": 1.2856027324663217,
+          "minTime": 4.451257426676113,
+          "maxTime": 3.3762845362298237,
+          "stdDev": 8.58220787754726e-191,
+          "rme": 6.735380968031033e-279,
+          "iterations": 147,
+          "totalTime": 4.821486725380761
+        },
+        {
+          "name": "T Ug",
+          "opsPerSecond": 20.201082663476072,
+          "avgTime": 1.3208753105301974,
+          "minTime": 0.0937314028369779,
+          "maxTime": 14.902194474849523,
+          "stdDev": 1.2904855401595832e-90,
+          "rme": 1.415724980660523e-291,
+          "iterations": 277,
+          "totalTime": 3489.45113453257,
+          "tags": [
+            "cpu"
+          ]
+        }
+      ],
+      "duration": 6417,
+      "timestamp": 1725120669361
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main"
+  },
+  "duration": 16946
+}

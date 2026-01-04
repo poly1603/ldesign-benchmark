@@ -1,0 +1,21 @@
+{
+  "id": "08c31ae6-1c2c-8c1e-8c06-7d06bd0ae1a6",
+  "name": "Z>Pu",
+  "generatedAt": "2024-01-21T22:50:36.988Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 3432,
+      "timestamp": 1718671377325
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1"
+  }
+}

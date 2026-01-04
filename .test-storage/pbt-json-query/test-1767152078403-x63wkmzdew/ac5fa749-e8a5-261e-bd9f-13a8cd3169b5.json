@@ -1,0 +1,22 @@
+{
+  "id": "ac5fa749-e8a5-261e-bd9f-13a8cd3169b5",
+  "name": "Y!x",
+  "generatedAt": "2024-12-31T23:59:59.985Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [],
+      "duration": 2262,
+      "timestamp": 1731143778156
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test"
+  },
+  "duration": 99995
+}

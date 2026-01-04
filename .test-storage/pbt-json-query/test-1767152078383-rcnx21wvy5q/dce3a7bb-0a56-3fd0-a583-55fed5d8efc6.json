@@ -1,0 +1,85 @@
+{
+  "id": "dce3a7bb-0a56-3fd0-a583-55fed5d8efc6",
+  "name": "JQH`mH N8c9@",
+  "generatedAt": "2024-01-04T18:31:09.682Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "0;|POB",
+          "opsPerSecond": 25.818503422461593,
+          "avgTime": 95.38131694009823,
+          "minTime": 0.11059014864815567,
+          "maxTime": 0.020885587863933346,
+          "stdDev": 1.4167792876204477e-28,
+          "rme": 1.0606777595520286e-201,
+          "iterations": 565,
+          "totalTime": 5009.243197025106
+        },
+        {
+          "name": "C._(",
+          "opsPerSecond": 2.082684638067475,
+          "avgTime": 11.660054605308542,
+          "minTime": 0.68679994440255,
+          "maxTime": 0.020236495883400308,
+          "stdDev": 1.792185463840289e-27,
+          "rme": 2.6830578434032517e-294,
+          "iterations": 321,
+          "totalTime": 3082.305743215392,
+          "tags": [
+            "memory",
+            "cpu",
+            "io"
+          ]
+        }
+      ],
+      "duration": 3084,
+      "timestamp": 1719882366762
+    },
+    {
+      "name": "Suite-D",
+      "results": [
+        {
+          "name": "I!lAV8m&(63",
+          "opsPerSecond": 786.790263415976,
+          "avgTime": 6.521539385650352,
+          "minTime": 0.4123298218739451,
+          "maxTime": 0.8481445583656418,
+          "stdDev": 1.1161639702239875e-157,
+          "rme": 9.345047639326514e-209,
+          "iterations": 590,
+          "totalTime": 110.40086408034973,
+          "tags": [
+            "fast",
+            "memory",
+            "io"
+          ]
+        },
+        {
+          "name": "t?/GC]iQ",
+          "opsPerSecond": 14.403591821241575,
+          "avgTime": 15.767456446416057,
+          "minTime": 0.03001240247573507,
+          "maxTime": 0.7371125261385413,
+          "stdDev": 7.610438950289008e-239,
+          "rme": 2.2272314608625676e-29,
+          "iterations": 485,
+          "totalTime": 116.15949974345047,
+          "tags": [
+            "io",
+            "slow"
+          ]
+        }
+      ],
+      "duration": 4464,
+      "timestamp": 1718231252827
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "duration": 79313
+}

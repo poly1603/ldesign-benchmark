@@ -1,0 +1,38 @@
+{
+  "id": "a9969272-8b55-6d77-8696-f1ca2d310cb5",
+  "name": "A+!",
+  "generatedAt": "2024-02-26T06:45:48.592Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": ")Uz",
+          "opsPerSecond": 204.78406820023687,
+          "avgTime": 1.1104229718722414,
+          "minTime": 2.419862738110732,
+          "maxTime": 11.423371718038824,
+          "stdDev": 5.88512402789774e-244,
+          "rme": 2.660267004433654e-178,
+          "iterations": 462,
+          "totalTime": 1604.5987084677051,
+          "tags": [
+            "memory"
+          ]
+        }
+      ],
+      "duration": 9682,
+      "timestamp": 1713919496918
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "b6fe7a5eb5c76eacb2be0335cbeaefa26ce42d11"
+  },
+  "duration": 24319
+}

@@ -1,0 +1,16 @@
+{
+  "id": "1b879bac-19f2-591d-800d-744c1fe5ff97",
+  "name": "5z?jkv&",
+  "generatedAt": "2024-02-12T09:04:46.805Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "c2039d5ac4aefa6df8e6bffe98a1cdf145d45e03"
+  },
+  "duration": 90530
+}

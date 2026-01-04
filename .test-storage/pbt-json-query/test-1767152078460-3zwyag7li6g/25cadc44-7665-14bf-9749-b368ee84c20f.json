@@ -1,0 +1,16 @@
+{
+  "id": "25cadc44-7665-14bf-9749-b368ee84c20f",
+  "name": "I_yn|51#E>",
+  "generatedAt": "2024-11-04T02:56:15.362Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "64af48c48f8fbbed9e141cd0c00ac35d689db54b"
+  },
+  "duration": 5380
+}

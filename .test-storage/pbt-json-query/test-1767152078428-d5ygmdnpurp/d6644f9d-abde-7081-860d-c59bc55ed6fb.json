@@ -1,0 +1,23 @@
+{
+  "id": "d6644f9d-abde-7081-860d-c59bc55ed6fb",
+  "name": "dJI{6@e R",
+  "generatedAt": "2024-11-30T23:42:33.617Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 3713,
+      "timestamp": 1728353580482
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "d71a85656224d62e3346f2bcaacbd95e9802fe2f"
+  },
+  "duration": 86926
+}

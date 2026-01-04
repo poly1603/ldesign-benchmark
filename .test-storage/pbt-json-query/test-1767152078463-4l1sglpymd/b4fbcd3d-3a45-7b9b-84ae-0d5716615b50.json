@@ -1,0 +1,34 @@
+{
+  "id": "b4fbcd3d-3a45-7b9b-84ae-0d5716615b50",
+  "name": "'`0e\"30",
+  "generatedAt": "2024-04-23T00:42:15.992Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "BtBxBvK&",
+          "opsPerSecond": 14.683341467335929,
+          "avgTime": 0.034539471551536687,
+          "minTime": 81.12869765583041,
+          "maxTime": 3.947428565621733,
+          "stdDev": 2.9464109587674515e-111,
+          "rme": 4.0738070935203973e-184,
+          "iterations": 473,
+          "totalTime": 944.5725814571111
+        }
+      ],
+      "duration": 6577,
+      "timestamp": 1713920944261
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "5c8dbaae99f3fc85af8116ca80bb4a4f6d70cbac"
+  }
+}

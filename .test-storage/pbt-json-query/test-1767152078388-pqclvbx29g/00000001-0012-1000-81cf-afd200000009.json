@@ -1,0 +1,38 @@
+{
+  "id": "00000001-0012-1000-81cf-afd200000009",
+  "name": "~a",
+  "generatedAt": "2024-02-06T23:34:28.656Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [
+        {
+          "name": "EHY~|k5HYl",
+          "opsPerSecond": 208.1450674408413,
+          "avgTime": 0.02124483556297861,
+          "minTime": 0.20593833007249043,
+          "maxTime": 6.187127849854414,
+          "stdDev": 7.34160991726407e-249,
+          "rme": 3.8465139149268995e-77,
+          "iterations": 610,
+          "totalTime": 180.2917885413977,
+          "tags": [
+            "slow"
+          ]
+        }
+      ],
+      "duration": 2482,
+      "timestamp": 1716197905015
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "cc9c7c9cb0b126c5a9a1cdb3927a0f2738303df3"
+  },
+  "duration": 7
+}

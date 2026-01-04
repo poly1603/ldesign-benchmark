@@ -1,0 +1,29 @@
+{
+  "id": "1a047ab0-4bbe-6f9a-b632-edaeb0f3296f",
+  "name": "kNZi 1hdn",
+  "generatedAt": "2024-06-01T01:55:11.400Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 5381,
+      "timestamp": 1729917923973
+    },
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 662,
+      "timestamp": 1730230363005
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "c66d1e4e66ea44aec6a75cb0bdd1ef52d1ca2e4e"
+  },
+  "duration": 77348
+}

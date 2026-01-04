@@ -1,0 +1,18 @@
+{
+  "id": "00000012-bee2-260f-bfff-fffa82382415",
+  "name": "Gk$y",
+  "generatedAt": "2025-12-29T03:34:39.124Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 1386,
+      "timestamp": 1707033116057
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

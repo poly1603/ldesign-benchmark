@@ -1,0 +1,15 @@
+{
+  "id": "5e0609fb-a12c-8677-8000-000dfffffff6",
+  "name": "bi",
+  "generatedAt": "2024-01-01T00:00:00.016Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1"
+  },
+  "duration": 44892
+}

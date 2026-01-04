@@ -1,0 +1,16 @@
+{
+  "id": "6fe0e95e-4248-29c9-92bc-3a3ab4c6195c",
+  "name": "}3-k1xp",
+  "generatedAt": "2024-12-08T00:28:29.036Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "ac610ccebbfd77e87daf0c4de6614bdeed60284b"
+  },
+  "duration": 14662
+}

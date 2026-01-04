@@ -1,0 +1,59 @@
+{
+  "id": "ba85936c-23e5-4750-8000-0005cbeff540",
+  "name": "DPT<WolTNT",
+  "generatedAt": "2024-01-01T00:00:00.003Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "@vVLgMP.UC",
+          "opsPerSecond": 27.654831183201953,
+          "avgTime": 0.32123614237984016,
+          "minTime": 84.29197991700605,
+          "maxTime": 0.5844740446311263,
+          "stdDev": 1.226563513644517e-68,
+          "rme": 2.2467300428702483e-143,
+          "iterations": 104,
+          "totalTime": 1470.3022041998088,
+          "tags": [
+            "cpu",
+            "io"
+          ]
+        },
+        {
+          "name": "`El_4b&wn2",
+          "opsPerSecond": 2.2869365359014107,
+          "avgTime": 0.09304159848639414,
+          "minTime": 0.3963232215388888,
+          "maxTime": 0.1013352815039945,
+          "stdDev": 8.515252546232904e-266,
+          "rme": 6.392728209162012e-138,
+          "iterations": 575,
+          "totalTime": 1888.8340668806106,
+          "tags": [
+            "slow"
+          ]
+        }
+      ],
+      "duration": 5443,
+      "timestamp": 1704282175775
+    },
+    {
+      "name": "Suite-D",
+      "results": [],
+      "duration": 4062,
+      "timestamp": 1705196447750
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "cb71281183b2b1af2b2bbe60aa0ffee7e7ecd26b"
+  },
+  "duration": 27616
+}

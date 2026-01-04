@@ -1,0 +1,24 @@
+{
+  "id": "62136410-fff9-8fff-8000-0010ffffffe8",
+  "name": "constructor",
+  "generatedAt": "2025-12-28T03:34:39.124Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 6111,
+      "timestamp": 1730363673688
+    },
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 7074,
+      "timestamp": 1718377746254
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

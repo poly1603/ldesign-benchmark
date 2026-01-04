@@ -1,0 +1,16 @@
+{
+  "id": "0d245196-32e5-721e-8328-c4cb565ccd6c",
+  "name": "mv8H48",
+  "generatedAt": "2024-02-17T07:14:51.688Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "48f27e8a63edaa5049a23669ebf28fcfab65b74f"
+  },
+  "duration": 29069
+}

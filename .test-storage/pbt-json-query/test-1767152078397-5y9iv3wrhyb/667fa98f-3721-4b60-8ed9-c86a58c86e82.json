@@ -1,0 +1,52 @@
+{
+  "id": "667fa98f-3721-4b60-8ed9-c86a58c86e82",
+  "name": ">K3skv?B",
+  "generatedAt": "2024-02-22T01:13:44.117Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 6529,
+      "timestamp": 1722929437690
+    },
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "II9.H6\\I(CTt",
+          "opsPerSecond": 15.687756028647145,
+          "avgTime": 3.8029392574865093,
+          "minTime": 1.3676482855612042,
+          "maxTime": 0.13343231290297303,
+          "stdDev": 5.983920329040337e-98,
+          "rme": 3.2842495645069267e-128,
+          "iterations": 94,
+          "totalTime": 940.6496640704335
+        },
+        {
+          "name": "+!S8Gee",
+          "opsPerSecond": 652.7313446154055,
+          "avgTime": 0.09121760035138235,
+          "minTime": 0.03501745459268849,
+          "maxTime": 0.01251291605671752,
+          "stdDev": 8.73303997783724e-33,
+          "rme": 2.9113321225862872e-171,
+          "iterations": 202,
+          "totalTime": 557.4207269525104
+        }
+      ],
+      "duration": 4496,
+      "timestamp": 1724856892166
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "aa96b4133a7eb78fd0ea1dc31ba629586b8814e5"
+  },
+  "duration": 58344
+}

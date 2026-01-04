@@ -1,0 +1,24 @@
+{
+  "id": "0b9637cb-0001-1000-9da5-b7b2d22e4b8b",
+  "name": "|& Czy@R V",
+  "generatedAt": "2025-12-30T03:34:39.124Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 7589,
+      "timestamp": 1704067200000
+    },
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 3068,
+      "timestamp": 1733172286912
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

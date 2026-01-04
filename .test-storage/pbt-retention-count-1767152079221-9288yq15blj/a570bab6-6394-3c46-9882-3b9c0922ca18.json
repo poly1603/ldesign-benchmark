@@ -1,0 +1,24 @@
+{
+  "id": "a570bab6-6394-3c46-9882-3b9c0922ca18",
+  "name": "V0hu<K$~\"-&`",
+  "generatedAt": "2025-12-28T03:34:39.124Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 6269,
+      "timestamp": 1731892323414
+    },
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 9755,
+      "timestamp": 1717481243489
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

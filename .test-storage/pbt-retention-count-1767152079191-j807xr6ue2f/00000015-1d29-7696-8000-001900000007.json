@@ -1,0 +1,18 @@
+{
+  "id": "00000015-1d29-7696-8000-001900000007",
+  "name": "WgsN1^iS",
+  "generatedAt": "2025-12-31T03:34:39.124Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 9988,
+      "timestamp": 1728012040280
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

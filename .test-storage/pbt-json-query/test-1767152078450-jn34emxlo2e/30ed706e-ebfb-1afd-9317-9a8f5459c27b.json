@@ -1,0 +1,36 @@
+{
+  "id": "30ed706e-ebfb-1afd-9317-9a8f5459c27b",
+  "name": "A%U",
+  "generatedAt": "2024-05-04T06:13:33.314Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "y~(=Bq4+",
+          "opsPerSecond": 492.6217745744729,
+          "avgTime": 20.45447734330659,
+          "minTime": 47.185042467453144,
+          "maxTime": 10.029946316781018,
+          "stdDev": 4.660729292065165e-296,
+          "rme": 5.24697273810056e-27,
+          "iterations": 870,
+          "totalTime": 1.9293319975980985,
+          "tags": [
+            "memory"
+          ]
+        }
+      ],
+      "duration": 4261,
+      "timestamp": 1721719556249
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1"
+  }
+}

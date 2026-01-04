@@ -1,0 +1,92 @@
+{
+  "id": "ffffffe9-7d1f-68d2-8000-0006dc673e03",
+  "name": "&;75\\",
+  "generatedAt": "2024-08-29T15:34:57.832Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "wxHl\\zn' ",
+          "opsPerSecond": 569.2703614874229,
+          "avgTime": 0.028193443555496946,
+          "minTime": 55.63505719884226,
+          "maxTime": 0.01923920072834759,
+          "stdDev": 4.1939884042356056e-281,
+          "rme": 1.3378770858130195e-70,
+          "iterations": 217,
+          "totalTime": 32.459359877521884,
+          "tags": [
+            "fast",
+            "memory",
+            "io"
+          ]
+        },
+        {
+          "name": "Ws",
+          "opsPerSecond": 3.842800789859919,
+          "avgTime": 1.0267236047826054,
+          "minTime": 1.3128582063877137,
+          "maxTime": 0.14655902945233423,
+          "stdDev": 1.0496968722374133e-168,
+          "rme": 1.1549109573154328e-11,
+          "iterations": 638,
+          "totalTime": 1.6642202249401687,
+          "tags": [
+            "memory",
+            "io",
+            "memory"
+          ]
+        }
+      ],
+      "duration": 4530,
+      "timestamp": 1708248876228
+    },
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "+Tt5;'JL(j",
+          "opsPerSecond": 310.75970942429757,
+          "avgTime": 0.15919097424073414,
+          "minTime": 0.017553871122038725,
+          "maxTime": 0.27755998091962175,
+          "stdDev": 4.953075440445922e-116,
+          "rme": 1.724784906382387e-137,
+          "iterations": 388,
+          "totalTime": 84.49450816025943,
+          "tags": [
+            "io",
+            "memory"
+          ]
+        },
+        {
+          "name": "IDv.Wo*H`",
+          "opsPerSecond": 51.23935703697337,
+          "avgTime": 0.2244121667203637,
+          "minTime": 89.04960783433062,
+          "maxTime": 15.798692794104511,
+          "stdDev": 8.648094323890995e-303,
+          "rme": 2.5030699592454613e-194,
+          "iterations": 759,
+          "totalTime": 7040.616798997214,
+          "tags": [
+            "slow"
+          ]
+        }
+      ],
+      "duration": 9993,
+      "timestamp": 1718484321827
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "3d0ed29a5bb6ba6d568adcd3e2ceacc960d29f3e"
+  },
+  "duration": 71515
+}

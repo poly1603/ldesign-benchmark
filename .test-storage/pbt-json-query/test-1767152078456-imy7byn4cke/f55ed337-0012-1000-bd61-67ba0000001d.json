@@ -1,0 +1,38 @@
+{
+  "id": "f55ed337-0012-1000-bd61-67ba0000001d",
+  "name": "valueOf\"ar",
+  "generatedAt": "2024-04-18T13:20:35.143Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [
+        {
+          "name": "\"kq",
+          "opsPerSecond": 56.05130164013447,
+          "avgTime": 0.08688704254659806,
+          "minTime": 0.4685063741432176,
+          "maxTime": 51.01026766918021,
+          "stdDev": 8.108319175722729e-43,
+          "rme": 3.392906888560261e-177,
+          "iterations": 149,
+          "totalTime": 590.0006962786395,
+          "tags": [
+            "fast"
+          ]
+        }
+      ],
+      "duration": 1480,
+      "timestamp": 1704067200016
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "83aef8cb3eb8763f170d2e1bbf3a1ea3f497dadc"
+  },
+  "duration": 31914
+}
