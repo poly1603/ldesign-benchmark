@@ -1,0 +1,55 @@
+{
+  "id": "a80c15a5-7115-5908-9ad9-222cbee76f8e",
+  "name": "R",
+  "generatedAt": "2024-01-08T14:43:01.817Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "itj~\\=",
+          "opsPerSecond": 5446.697368618044,
+          "avgTime": 31.418453849418295,
+          "minTime": 8.589324746714993,
+          "maxTime": 0.8790425566685534,
+          "stdDev": 7.427353050475898e-149,
+          "rme": 1.0038877047100699e-45,
+          "iterations": 439,
+          "totalTime": 2740.344946186767,
+          "tags": [
+            "slow",
+            "fast",
+            "cpu"
+          ]
+        },
+        {
+          "name": "<Lu<G~D?f]`-",
+          "opsPerSecond": 1.9260332872854813,
+          "avgTime": 0.01961008118787804,
+          "minTime": 11.318136388928146,
+          "maxTime": 21.182975245205895,
+          "stdDev": 0.00006679277678012707,
+          "rme": 3.510334208597972e-156,
+          "iterations": 682,
+          "totalTime": 3667.8859980543843,
+          "tags": [
+            "fast",
+            "slow"
+          ]
+        }
+      ],
+      "duration": 8188,
+      "timestamp": 1719721709732
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "c4cc5dffec6dc22f2ddb7a521adbccf7322fecf9"
+  },
+  "duration": 91360
+}

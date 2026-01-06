@@ -1,0 +1,54 @@
+{
+  "id": "42f04779-02ff-6257-bedf-96fb25a19a39",
+  "name": "AiIY#qtu",
+  "generatedAt": "2024-05-22T21:36:00.875Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "a|[6%N",
+          "opsPerSecond": 12.244829084617084,
+          "avgTime": 20.700387539035898,
+          "minTime": 71.77738973621993,
+          "maxTime": 0.1091455072107362,
+          "stdDev": 2.0534839804738775e-132,
+          "rme": 2.867898582131832e-23,
+          "iterations": 133,
+          "totalTime": 1.8224204123407284,
+          "tags": [
+            "io",
+            "slow"
+          ]
+        },
+        {
+          "name": "_;rVz6h",
+          "opsPerSecond": 82.6224228015653,
+          "avgTime": 34.760482006798114,
+          "minTime": 2.7512037177890267,
+          "maxTime": 0.016011766941927328,
+          "stdDev": 2.231191511035413e-107,
+          "rme": 7.120517952296127e-301,
+          "iterations": 974,
+          "totalTime": 4.652841271145562,
+          "tags": [
+            "fast",
+            "io",
+            "fast"
+          ]
+        }
+      ],
+      "duration": 1470,
+      "timestamp": 1718665081687
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "a8ecad1a23bbdc5d9d112f9111b2cfc5ca726f17"
+  }
+}

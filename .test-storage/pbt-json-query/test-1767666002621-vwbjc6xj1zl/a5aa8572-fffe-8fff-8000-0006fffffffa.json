@@ -1,0 +1,38 @@
+{
+  "id": "a5aa8572-fffe-8fff-8000-0006fffffffa",
+  "name": "GyW ",
+  "generatedAt": "2024-01-22T05:38:36.645Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "Z!4kxPkNIR,x",
+          "opsPerSecond": 2.8561567403287538,
+          "avgTime": 99.99999999999991,
+          "minTime": 0.010000000000000007,
+          "maxTime": 0.010000000000000018,
+          "stdDev": 5.2577304525296955e-107,
+          "rme": 9.461864924050642e-71,
+          "iterations": 6,
+          "totalTime": 7018.251817200405,
+          "tags": [
+            "cpu",
+            "slow"
+          ]
+        }
+      ],
+      "duration": 11,
+      "timestamp": 1731289938059
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "a1a86269aafef52d289f01bb11ae3a60ea6a02f7"
+  }
+}

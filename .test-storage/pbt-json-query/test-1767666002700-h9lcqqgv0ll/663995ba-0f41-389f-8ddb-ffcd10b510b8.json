@@ -1,0 +1,36 @@
+{
+  "id": "663995ba-0f41-389f-8ddb-ffcd10b510b8",
+  "name": "Tcbnf?",
+  "generatedAt": "2024-12-09T01:43:37.885Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "<#-=",
+          "opsPerSecond": 970.394092892599,
+          "avgTime": 0.28396565409466695,
+          "minTime": 76.2102136644401,
+          "maxTime": 10.732830893888003,
+          "stdDev": 1.5071279396432363e-18,
+          "rme": 9.87488519475076e-232,
+          "iterations": 863,
+          "totalTime": 91.65072524956854,
+          "tags": [
+            "cpu"
+          ]
+        }
+      ],
+      "duration": 7880,
+      "timestamp": 1722778348448
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main"
+  }
+}

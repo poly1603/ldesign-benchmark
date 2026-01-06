@@ -1,0 +1,81 @@
+{
+  "id": "0061c42b-0fa8-2f1d-beae-bf42865f3eb3",
+  "name": "ve",
+  "generatedAt": "2024-07-12T23:50:34.405Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [
+        {
+          "name": "YLd,qYSQwId",
+          "opsPerSecond": 1963.8545413022107,
+          "avgTime": 0.08765992733689532,
+          "minTime": 0.047909955810712196,
+          "maxTime": 22.532605185585254,
+          "stdDev": 1.5216639276210034e-50,
+          "rme": 1.131608678776772e-304,
+          "iterations": 779,
+          "totalTime": 6566.483200203249
+        },
+        {
+          "name": "Y,kVo#X)ASm",
+          "opsPerSecond": 4.4165809365809565,
+          "avgTime": 57.53587242973896,
+          "minTime": 0.10580995055016937,
+          "maxTime": 0.5916906519987188,
+          "stdDev": 2.942525943380461e-240,
+          "rme": 8.159200463418013e-28,
+          "iterations": 172,
+          "totalTime": 101.47435006121421,
+          "tags": [
+            "cpu"
+          ]
+        }
+      ],
+      "duration": 8324,
+      "timestamp": 1711707266324
+    },
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "m#1",
+          "opsPerSecond": 60.32985123522281,
+          "avgTime": 3.2070495167602764,
+          "minTime": 29.90594515095029,
+          "maxTime": 0.1435081534292303,
+          "stdDev": 6.297370205930917e-184,
+          "rme": 1.5820916417753046e-92,
+          "iterations": 113,
+          "totalTime": 359.18512831066926
+        },
+        {
+          "name": "?/[Z9Z$.Kc",
+          "opsPerSecond": 52.07530726708605,
+          "avgTime": 11.336484398876333,
+          "minTime": 0.04561960244962943,
+          "maxTime": 0.8117117019038462,
+          "stdDev": 5.2892156720253556e-247,
+          "rme": 3.0092470232994356e-86,
+          "iterations": 349,
+          "totalTime": 19.680716916378973,
+          "tags": [
+            "memory"
+          ]
+        }
+      ],
+      "duration": 3449,
+      "timestamp": 1735662388871
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "751d9567dfd3d4fc5f8ccaeb0e76babd90fd3935"
+  },
+  "duration": 38467
+}

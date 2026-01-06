@@ -1,0 +1,16 @@
+{
+  "id": "2b40a82e-1e6c-3b8d-be5b-2d67ea7c112c",
+  "name": "+Z7Sl4F)",
+  "generatedAt": "2024-03-05T22:54:48.234Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "56ea600fd8ddcfd79e563b745df0a1eaaafaab65"
+  },
+  "duration": 42108
+}

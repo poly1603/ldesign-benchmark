@@ -1,0 +1,18 @@
+{
+  "id": "df6f95fb-ffe2-8fff-a348-2684c3c69b61",
+  "name": "ni'!",
+  "generatedAt": "2026-01-05T02:20:04.081Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [],
+      "duration": 1510,
+      "timestamp": 1723769085177
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

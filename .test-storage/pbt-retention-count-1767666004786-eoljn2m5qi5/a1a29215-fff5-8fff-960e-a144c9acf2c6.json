@@ -1,0 +1,11 @@
+{
+  "id": "a1a29215-fff5-8fff-960e-a144c9acf2c6",
+  "name": "2G,NH2{jn",
+  "generatedAt": "2026-01-06T02:20:04.081Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

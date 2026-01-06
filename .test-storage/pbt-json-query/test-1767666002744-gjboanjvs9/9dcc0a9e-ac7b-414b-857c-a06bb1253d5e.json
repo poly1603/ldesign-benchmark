@@ -1,0 +1,37 @@
+{
+  "id": "9dcc0a9e-ac7b-414b-857c-a06bb1253d5e",
+  "name": "anmt",
+  "generatedAt": "2024-09-30T16:08:11.769Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "3P1op",
+          "opsPerSecond": 5.5158839770537345,
+          "avgTime": 83.57824481320237,
+          "minTime": 0.6938235522343883,
+          "maxTime": 1.068967864011251,
+          "stdDev": 1.7840958980411564e-65,
+          "rme": 2.338486435499987e-68,
+          "iterations": 866,
+          "totalTime": 7.015241010939894,
+          "tags": [
+            "fast"
+          ]
+        }
+      ],
+      "duration": 5282,
+      "timestamp": 1713465771523
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "2e4d79c17ace70ce5ef4cf91434208b5938a35ed"
+  }
+}

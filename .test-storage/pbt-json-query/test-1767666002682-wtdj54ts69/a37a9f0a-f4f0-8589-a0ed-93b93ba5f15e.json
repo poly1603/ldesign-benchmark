@@ -1,0 +1,73 @@
+{
+  "id": "a37a9f0a-f4f0-8589-a0ed-93b93ba5f15e",
+  "name": "vkzzFC",
+  "generatedAt": "2024-05-23T03:14:01.750Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "*,",
+          "opsPerSecond": 1.4951756503990061,
+          "avgTime": 0.018964489972006008,
+          "minTime": 0.013738792279997069,
+          "maxTime": 0.02301039822539386,
+          "stdDev": 3.248821454209609e-30,
+          "rme": 8.724754014320518e-257,
+          "iterations": 302,
+          "totalTime": 20.27208680451842,
+          "tags": [
+            "slow",
+            "cpu"
+          ]
+        }
+      ],
+      "duration": 312,
+      "timestamp": 1719241660435
+    },
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "y,5\\1N&",
+          "opsPerSecond": 2.6196761418571177,
+          "avgTime": 7.468011084426093,
+          "minTime": 0.7001150856035485,
+          "maxTime": 23.85410427448599,
+          "stdDev": 1.6113229355274373e-250,
+          "rme": 1.4217054028032924e-235,
+          "iterations": 327,
+          "totalTime": 3.8726546679609597,
+          "tags": [
+            "slow",
+            "io"
+          ]
+        },
+        {
+          "name": "iS",
+          "opsPerSecond": 13.019199320024502,
+          "avgTime": 82.26206661626571,
+          "minTime": 6.234692061698981,
+          "maxTime": 0.0494006845248939,
+          "stdDev": 7.977737426919279e-273,
+          "rme": 1.9974756975870768e-283,
+          "iterations": 147,
+          "totalTime": 10.523183617403575,
+          "tags": [
+            "cpu",
+            "fast",
+            "fast"
+          ]
+        }
+      ],
+      "duration": 3273,
+      "timestamp": 1730851353080
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "duration": 98152
+}

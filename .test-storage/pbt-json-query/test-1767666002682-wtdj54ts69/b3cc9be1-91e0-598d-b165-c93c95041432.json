@@ -1,0 +1,15 @@
+{
+  "id": "b3cc9be1-91e0-598d-b165-c93c95041432",
+  "name": "7n<<>#OA*s8",
+  "generatedAt": "2024-12-16T09:09:44.975Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "08efe7669dbd9fae71f99f8acaf761412a66cdda"
+  }
+}

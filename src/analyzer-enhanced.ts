@@ -146,7 +146,7 @@ export class EnhancedAnalyzer extends PerformanceAnalyzer {
    * @returns 异常值检测结果
    */
   detectOutliers(
-    samples: number[],
+    samples: readonly number[],
     method: 'iqr' | 'zscore' = 'iqr',
     threshold?: number
   ): OutlierResult {
@@ -170,7 +170,7 @@ export class EnhancedAnalyzer extends PerformanceAnalyzer {
   /**
    * 使用 IQR（四分位距）方法检测异常值
    */
-  private detectOutliersIQR(samples: number[], threshold: number): OutlierResult {
+  private detectOutliersIQR(samples: readonly number[], threshold: number): OutlierResult {
     const sorted = [...samples].sort((a, b) => a - b)
     const n = sorted.length
 
@@ -210,7 +210,7 @@ export class EnhancedAnalyzer extends PerformanceAnalyzer {
   /**
    * 使用 Z-score 方法检测异常值
    */
-  private detectOutliersZScore(samples: number[], threshold: number): OutlierResult {
+  private detectOutliersZScore(samples: readonly number[], threshold: number): OutlierResult {
     const mean = this.calculateMean(samples)
     const stdDev = this.calculateStdDev(samples, mean)
 
@@ -542,7 +542,7 @@ export class EnhancedAnalyzer extends PerformanceAnalyzer {
   /**
    * 计算样本均值
    */
-  private calculateMean(samples: number[]): number {
+  private calculateMean(samples: readonly number[]): number {
     if (samples.length === 0) return 0
     return samples.reduce((sum, val) => sum + val, 0) / samples.length
   }
@@ -550,7 +550,7 @@ export class EnhancedAnalyzer extends PerformanceAnalyzer {
   /**
    * 计算样本标准差
    */
-  private calculateStdDev(samples: number[], mean?: number): number {
+  private calculateStdDev(samples: readonly number[], mean?: number): number {
     if (samples.length < 2) return 0
     const m = mean ?? this.calculateMean(samples)
     const squaredDiffs = samples.map(val => Math.pow(val - m, 2))
@@ -561,7 +561,7 @@ export class EnhancedAnalyzer extends PerformanceAnalyzer {
   /**
    * 计算偏度
    */
-  private calculateSkewness(samples: number[]): number {
+  private calculateSkewness(samples: readonly number[]): number {
     if (samples.length < 3) return 0
     const mean = this.calculateMean(samples)
     const stdDev = this.calculateStdDev(samples, mean)
@@ -577,7 +577,7 @@ export class EnhancedAnalyzer extends PerformanceAnalyzer {
   /**
    * 计算峰度
    */
-  private calculateKurtosis(samples: number[]): number {
+  private calculateKurtosis(samples: readonly number[]): number {
     if (samples.length < 4) return 0
     const mean = this.calculateMean(samples)
     const stdDev = this.calculateStdDev(samples, mean)

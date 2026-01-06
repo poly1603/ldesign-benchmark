@@ -1,0 +1,72 @@
+{
+  "id": "9018d93c-23bd-2c95-9222-19603561a052",
+  "name": "<CYp%",
+  "generatedAt": "2024-08-21T02:10:04.660Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [
+        {
+          "name": "8A*zN.:g",
+          "opsPerSecond": 26.61406408204433,
+          "avgTime": 10.805238836162683,
+          "minTime": 1.348158868743748,
+          "maxTime": 0.43055416554254494,
+          "stdDev": 8.069170955260492e-71,
+          "rme": 2.6763348653609993e-263,
+          "iterations": 925,
+          "totalTime": 271.303441442076
+        },
+        {
+          "name": "=[!l",
+          "opsPerSecond": 1.3004478221891946,
+          "avgTime": 0.10899785337937751,
+          "minTime": 98.5161503171728,
+          "maxTime": 9.582090927719417,
+          "stdDev": 1.2315214696924964e-188,
+          "rme": 8.261988302698557e-196,
+          "iterations": 257,
+          "totalTime": 1.8891229883272156,
+          "tags": [
+            "io",
+            "io"
+          ]
+        }
+      ],
+      "duration": 5509,
+      "timestamp": 1723580287019
+    },
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "e+C=R[_4K",
+          "opsPerSecond": 145.1391306303997,
+          "avgTime": 0.16867334663603747,
+          "minTime": 0.4433093863960318,
+          "maxTime": 4.589679614075033,
+          "stdDev": 2.3516603899829993e-66,
+          "rme": 8.161536315101041e-131,
+          "iterations": 165,
+          "totalTime": 6047.688952952111,
+          "tags": [
+            "fast",
+            "fast"
+          ]
+        }
+      ],
+      "duration": 4355,
+      "timestamp": 1719600688418
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "3dc4b7fdb4de54ddfae48affc6eee5a9961debce"
+  },
+  "duration": 70655
+}

@@ -1,0 +1,16 @@
+{
+  "id": "dd4f558b-c346-3846-919d-53bdb8984cba",
+  "name": ")OW:_UrOE7l",
+  "generatedAt": "2024-04-23T03:42:07.565Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "dade8100493bf3b007a02aca483bd31baf0557cb"
+  },
+  "duration": 203
+}

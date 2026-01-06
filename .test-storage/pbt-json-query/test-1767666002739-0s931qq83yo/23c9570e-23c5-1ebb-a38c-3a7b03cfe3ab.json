@@ -1,0 +1,15 @@
+{
+  "id": "23c9570e-23c5-1ebb-a38c-3a7b03cfe3ab",
+  "name": "aDb=d",
+  "generatedAt": "2024-04-08T05:08:41.830Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1"
+  },
+  "duration": 83941
+}

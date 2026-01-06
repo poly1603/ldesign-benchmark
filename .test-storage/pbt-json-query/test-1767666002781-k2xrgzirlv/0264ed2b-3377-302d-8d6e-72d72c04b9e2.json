@@ -1,0 +1,16 @@
+{
+  "id": "0264ed2b-3377-302d-8d6e-72d72c04b9e2",
+  "name": "KL4(",
+  "generatedAt": "2024-12-17T21:55:24.906Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "b0cbcd669751c7dbe7cf6ee613c2d5bfbb23aeed"
+  },
+  "duration": 48324
+}

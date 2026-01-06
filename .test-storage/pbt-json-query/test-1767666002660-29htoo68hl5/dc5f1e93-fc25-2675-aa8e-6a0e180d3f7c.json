@@ -1,0 +1,29 @@
+{
+  "id": "dc5f1e93-fc25-2675-aa8e-6a0e180d3f7c",
+  "name": "CPqGH\\qqg0D",
+  "generatedAt": "2024-02-10T17:06:56.357Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [],
+      "duration": 3719,
+      "timestamp": 1727541808743
+    },
+    {
+      "name": "Suite-D",
+      "results": [],
+      "duration": 2801,
+      "timestamp": 1723308108529
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "9972b66430cd1e5bb3c1fd7017411f8dbcc0d1f9"
+  },
+  "duration": 43800
+}

@@ -1,0 +1,15 @@
+{
+  "id": "6605fa46-5eca-5ea3-a30b-1b970d890f07",
+  "name": "d%@3|",
+  "generatedAt": "2024-11-24T18:39:06.429Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test"
+  },
+  "duration": 1030
+}

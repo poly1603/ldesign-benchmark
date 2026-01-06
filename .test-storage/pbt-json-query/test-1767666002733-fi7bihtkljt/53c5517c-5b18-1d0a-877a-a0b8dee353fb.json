@@ -1,0 +1,19 @@
+{
+  "id": "53c5517c-5b18-1d0a-877a-a0b8dee353fb",
+  "name": "RpJa/G33Y",
+  "generatedAt": "2024-03-25T07:57:31.553Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 4910,
+      "timestamp": 1730119243647
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "duration": 585
+}

@@ -1,0 +1,16 @@
+{
+  "id": "bf91fbea-c461-2443-9728-d28ff553d6a0",
+  "name": "by YS77",
+  "generatedAt": "2024-07-26T21:11:59.227Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "c62e8e6340d1dbccf76ac95cb7329bd1a154183a"
+  },
+  "duration": 72944
+}

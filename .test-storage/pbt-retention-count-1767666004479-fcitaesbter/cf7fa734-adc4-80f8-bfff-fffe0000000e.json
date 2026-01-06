@@ -1,0 +1,24 @@
+{
+  "id": "cf7fa734-adc4-80f8-bfff-fffe0000000e",
+  "name": "key",
+  "generatedAt": "2026-01-03T02:20:04.081Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 1592,
+      "timestamp": 1717529512113
+    },
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 8376,
+      "timestamp": 1719271632751
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "f3def794-63c6-30e1-bd8d-52b895b6da7f",
+  "name": "?}I LCs[hZi|",
+  "generatedAt": "2024-04-19T23:28:39.032Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "29ac07bdf29d7c72edef9c4b056c0e0811a65f72"
+  }
+}

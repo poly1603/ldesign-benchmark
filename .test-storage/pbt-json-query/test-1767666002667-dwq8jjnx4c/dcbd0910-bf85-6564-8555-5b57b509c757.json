@@ -1,0 +1,55 @@
+{
+  "id": "dcbd0910-bf85-6564-8555-5b57b509c757",
+  "name": "iKU( S",
+  "generatedAt": "2024-12-05T21:39:08.536Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [
+        {
+          "name": "*}$",
+          "opsPerSecond": 806.3457360349993,
+          "avgTime": 31.590817497842483,
+          "minTime": 0.021146753214389656,
+          "maxTime": 3.212077117589615,
+          "stdDev": 1.4561830005042302e-302,
+          "rme": 1.506876142551894e-202,
+          "iterations": 442,
+          "totalTime": 60.95370644393634,
+          "tags": [
+            "cpu",
+            "slow"
+          ]
+        },
+        {
+          "name": "&&s",
+          "opsPerSecond": 10.785924077550238,
+          "avgTime": 0.9584795183870957,
+          "minTime": 0.03389786736505656,
+          "maxTime": 0.5142618214714102,
+          "stdDev": 9.658774138554143e-257,
+          "rme": 1.0849174871543106e-126,
+          "iterations": 694,
+          "totalTime": 18.892129706208795
+        }
+      ],
+      "duration": 1638,
+      "timestamp": 1727434609444
+    },
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 719,
+      "timestamp": 1715259552233
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop"
+  },
+  "duration": 24243
+}

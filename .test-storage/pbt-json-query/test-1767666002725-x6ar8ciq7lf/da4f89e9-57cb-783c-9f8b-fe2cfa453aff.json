@@ -1,0 +1,15 @@
+{
+  "id": "da4f89e9-57cb-783c-9f8b-fe2cfa453aff",
+  "name": "tAJ",
+  "generatedAt": "2024-02-23T02:05:00.385Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "bb7cb9f1e7338c92bf36efb8f43133cfb14d5ff4"
+  }
+}

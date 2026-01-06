@@ -1,0 +1,44 @@
+{
+  "id": "246b0aa1-d939-7b9b-8fad-a4ef1085de14",
+  "name": ",W|jcRo",
+  "generatedAt": "2024-12-07T01:53:53.512Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [
+        {
+          "name": "Ef$",
+          "opsPerSecond": 1490.1176014442367,
+          "avgTime": 2.5497726798806677,
+          "minTime": 0.24068586928534,
+          "maxTime": 0.041766106530322644,
+          "stdDev": 6.218508038736445e-26,
+          "rme": 1.6084196573742603e-53,
+          "iterations": 268,
+          "totalTime": 5387.082411955992,
+          "tags": [
+            "fast"
+          ]
+        }
+      ],
+      "duration": 2415,
+      "timestamp": 1717223257629
+    },
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 2522,
+      "timestamp": 1715310718366
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "fb6adbeffe28c8e8974ebe2a2dc617dc3da285fa"
+  },
+  "duration": 81389
+}

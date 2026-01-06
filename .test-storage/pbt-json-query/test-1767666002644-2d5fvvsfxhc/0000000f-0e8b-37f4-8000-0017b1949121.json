@@ -1,0 +1,16 @@
+{
+  "id": "0000000f-0e8b-37f4-8000-0017b1949121",
+  "name": "vEn({/[Or_|",
+  "generatedAt": "2024-10-04T21:23:39.168Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "ea1cfaa0141d918ffdec7cf3b3600af0d12caa05"
+  },
+  "duration": 15
+}

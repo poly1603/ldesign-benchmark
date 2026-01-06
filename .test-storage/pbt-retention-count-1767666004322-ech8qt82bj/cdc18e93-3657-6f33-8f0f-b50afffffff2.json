@@ -1,0 +1,24 @@
+{
+  "id": "cdc18e93-3657-6f33-8f0f-b50afffffff2",
+  "name": "!$jW_!M",
+  "generatedAt": "2026-01-05T02:20:04.081Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [],
+      "duration": 4068,
+      "timestamp": 1727849054038
+    },
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 8960,
+      "timestamp": 1713261156182
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

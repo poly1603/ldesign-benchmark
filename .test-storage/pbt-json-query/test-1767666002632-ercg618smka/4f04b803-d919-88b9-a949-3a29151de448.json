@@ -1,0 +1,12 @@
+{
+  "id": "4f04b803-d919-88b9-a949-3a29151de448",
+  "name": "pSc(3w^H",
+  "generatedAt": "2024-09-16T04:49:24.293Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "duration": 70425
+}

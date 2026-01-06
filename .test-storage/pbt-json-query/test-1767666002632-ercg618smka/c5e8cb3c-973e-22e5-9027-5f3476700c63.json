@@ -1,0 +1,16 @@
+{
+  "id": "c5e8cb3c-973e-22e5-9027-5f3476700c63",
+  "name": "@%gf{9TnMe5t",
+  "generatedAt": "2024-08-24T07:51:15.964Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "0615bcbbb2e503b453f807c70afddb16a44dec91"
+  },
+  "duration": 93618
+}

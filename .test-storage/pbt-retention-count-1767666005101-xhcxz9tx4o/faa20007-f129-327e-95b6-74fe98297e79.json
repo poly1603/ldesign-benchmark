@@ -1,0 +1,18 @@
+{
+  "id": "faa20007-f129-327e-95b6-74fe98297e79",
+  "name": "\"&:(",
+  "generatedAt": "2026-01-06T02:20:04.081Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 7718,
+      "timestamp": 1707430401906
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

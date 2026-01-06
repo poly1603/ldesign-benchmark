@@ -1,0 +1,23 @@
+{
+  "id": "ffffffe7-c386-4ed6-8329-762b6ad316f3",
+  "name": "uEf;zD9",
+  "generatedAt": "2024-08-10T04:46:26.127Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 2130,
+      "timestamp": 1727186601391
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "b16ce0b935dd3b6bcebcaa1f70a30c1fc191d6a5"
+  },
+  "duration": 65592
+}

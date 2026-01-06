@@ -1,0 +1,35 @@
+{
+  "id": "00000010-0014-1000-8fdf-9f59aca97ba9",
+  "name": "Va9j0y&6&#\"",
+  "generatedAt": "2024-01-01T00:00:00.011Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [
+        {
+          "name": "RM4@'Ltr4s",
+          "opsPerSecond": 80.22592406298764,
+          "avgTime": 0.06442301825315837,
+          "minTime": 0.028061216492571504,
+          "maxTime": 0.23363232525773614,
+          "stdDev": 8.788409849799537e-64,
+          "rme": 2.38815838815681e-52,
+          "iterations": 688,
+          "totalTime": 47.7554939503197
+        }
+      ],
+      "duration": 7762,
+      "timestamp": 1727593863989
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "06dd1c37c33fabcef227ecaa184bbd3a2c2abdb0"
+  },
+  "duration": 95982
+}

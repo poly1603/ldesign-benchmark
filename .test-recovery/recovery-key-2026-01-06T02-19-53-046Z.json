@@ -1,0 +1,23 @@
+{
+  "timestamp": "2026-01-06T02:19:53.046Z",
+  "error": {
+    "name": "Error",
+    "message": "Test error",
+    "stack": "Error: Test error\n    at D:/WorkBench/ldesign/tools/benchmark/src/recovery.test.ts:358:27\n    at AsyncProperty.predicate (file:///D:/WorkBench/ldesign/node_modules/.pnpm/fast-check@4.5.2/node_modules/fast-check/lib/check/property/AsyncProperty.js:14:59)\n    at AsyncProperty.run (file:///D:/WorkBench/ldesign/node_modules/.pnpm/fast-check@4.5.2/node_modules/fast-check/lib/check/property/AsyncProperty.generic.js:43:39)\n    at asyncRunIt (file:///D:/WorkBench/ldesign/node_modules/.pnpm/fast-check@4.5.2/node_modules/fast-check/lib/check/runner/Runner.js:24:36)"
+  },
+  "results": [
+    {
+      "name": "4",
+      "opsPerSecond": 4.958085536956787,
+      "avgTime": 3.952848176831697e-37,
+      "minTime": 1.571499054762938e-35,
+      "maxTime": 8.541066041001157e-15,
+      "stdDev": 4.229020189594479e-10,
+      "rme": 7.278882322313401e-38,
+      "iterations": 5557,
+      "totalTime": 0.0017683393089100718,
+      "status": "success"
+    }
+  ],
+  "suiteName": "key"
+}

@@ -1,0 +1,86 @@
+{
+  "id": "313f5899-50de-577b-b464-f6ca18f7d875",
+  "name": "HQc;c!Jq#",
+  "generatedAt": "2024-09-28T00:43:17.515Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [
+        {
+          "name": "7",
+          "opsPerSecond": 503.082815088027,
+          "avgTime": 13.930064394312602,
+          "minTime": 0.6045379814957297,
+          "maxTime": 0.031014614120734304,
+          "stdDev": 1.1224287564499017e-303,
+          "rme": 6.858004535913453e-173,
+          "iterations": 257,
+          "totalTime": 1.781218622594422,
+          "tags": [
+            "cpu"
+          ]
+        },
+        {
+          "name": "`L/jP",
+          "opsPerSecond": 724.1306199262211,
+          "avgTime": 7.963391427115738,
+          "minTime": 0.04044478567702575,
+          "maxTime": 0.3065514210858852,
+          "stdDev": 7.585597939279164e-195,
+          "rme": 2.0627900885175917e-54,
+          "iterations": 89,
+          "totalTime": 25.358359549792173
+        }
+      ],
+      "duration": 3311,
+      "timestamp": 1709645407217
+    },
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "L~ ~J3NC>",
+          "opsPerSecond": 23.801242269985813,
+          "avgTime": 0.6238079942908948,
+          "minTime": 0.46086342016757365,
+          "maxTime": 12.771849039430338,
+          "stdDev": 3.803084671168606e-287,
+          "rme": 1.0935423938638591e-216,
+          "iterations": 209,
+          "totalTime": 31.356019438594164,
+          "tags": [
+            "memory",
+            "cpu",
+            "cpu"
+          ]
+        },
+        {
+          "name": "kCBTnBt-3>^",
+          "opsPerSecond": 59.87852676060165,
+          "avgTime": 0.4208745112057012,
+          "minTime": 0.3103339517384317,
+          "maxTime": 0.363066971272952,
+          "stdDev": 1.3873815839612591e-202,
+          "rme": 1.59473394379579e-70,
+          "iterations": 19,
+          "totalTime": 1.3010413719584681,
+          "tags": [
+            "io",
+            "cpu",
+            "io"
+          ]
+        }
+      ],
+      "duration": 4667,
+      "timestamp": 1717704475709
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1"
+  }
+}

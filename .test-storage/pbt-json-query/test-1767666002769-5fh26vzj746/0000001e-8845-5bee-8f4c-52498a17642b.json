@@ -1,0 +1,52 @@
+{
+  "id": "0000001e-8845-5bee-8f4c-52498a17642b",
+  "name": "GJ\\r",
+  "generatedAt": "2024-12-31T23:59:59.989Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "3rs",
+          "opsPerSecond": 337.62975913379046,
+          "avgTime": 0.016565385641584825,
+          "minTime": 0.20171619356076878,
+          "maxTime": 0.05899078261711461,
+          "stdDev": 5.360442315021346e-158,
+          "rme": 6.850299706979562e-162,
+          "iterations": 285,
+          "totalTime": 3.2621254689264596,
+          "tags": [
+            "io"
+          ]
+        },
+        {
+          "name": "Wdk~3)",
+          "opsPerSecond": 1.4193542344481975,
+          "avgTime": 1.8096493460474452,
+          "minTime": 0.05125152425158193,
+          "maxTime": 0.013526006791677637,
+          "stdDev": 0.002948241922958588,
+          "rme": 2.351176053612762e-279,
+          "iterations": 703,
+          "totalTime": 125.05075555996969,
+          "tags": [
+            "io"
+          ]
+        }
+      ],
+      "duration": 8,
+      "timestamp": 1704067200004
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "6c8918f062b3c07e5df0093e1ab5ddbc04cdf71c"
+  },
+  "duration": 99997
+}

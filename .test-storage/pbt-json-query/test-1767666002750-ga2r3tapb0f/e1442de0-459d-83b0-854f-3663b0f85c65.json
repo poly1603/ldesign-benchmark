@@ -1,0 +1,16 @@
+{
+  "id": "e1442de0-459d-83b0-854f-3663b0f85c65",
+  "name": "EMKs,(",
+  "generatedAt": "2024-03-18T08:16:53.041Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "c3ed2cc4561cccfbcbfff0755a9353cff8d06f71"
+  },
+  "duration": 37963
+}

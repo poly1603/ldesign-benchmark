@@ -1,0 +1,16 @@
+{
+  "id": "0aafeb24-a8fc-6cc0-91ec-4364e7fc7565",
+  "name": "&J",
+  "generatedAt": "2024-01-01T00:00:00.018Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "a700705cbbaaa4b52ce16d719aae1000f1d728fe"
+  },
+  "duration": 44557
+}

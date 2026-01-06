@@ -1,0 +1,40 @@
+{
+  "id": "7679577a-37db-77f8-82ea-d157cf270e27",
+  "name": "6ESjSo",
+  "generatedAt": "2024-05-24T12:58:05.265Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "Q%P`n+",
+          "opsPerSecond": 122.71047752506361,
+          "avgTime": 0.07325130949282074,
+          "minTime": 49.89707246339751,
+          "maxTime": 9.773433545928292,
+          "stdDev": 1.39743160072196e-140,
+          "rme": 4.712581661107559e-230,
+          "iterations": 285,
+          "totalTime": 3328.5318731231982,
+          "tags": [
+            "slow",
+            "cpu",
+            "fast"
+          ]
+        }
+      ],
+      "duration": 481,
+      "timestamp": 1727373231297
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "8a4d1fa432b33fc4dfc3e72a74b0b07dabd23986"
+  },
+  "duration": 78462
+}

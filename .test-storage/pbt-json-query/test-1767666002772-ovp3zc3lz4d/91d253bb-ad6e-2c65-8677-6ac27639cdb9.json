@@ -1,0 +1,23 @@
+{
+  "id": "91d253bb-ad6e-2c65-8677-6ac27639cdb9",
+  "name": "@je5e{",
+  "generatedAt": "2024-04-08T06:04:52.589Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [],
+      "duration": 5536,
+      "timestamp": 1710239658331
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "accc5d9f9bab8fdbd12702fc797cfccd94d89be0"
+  },
+  "duration": 1669
+}

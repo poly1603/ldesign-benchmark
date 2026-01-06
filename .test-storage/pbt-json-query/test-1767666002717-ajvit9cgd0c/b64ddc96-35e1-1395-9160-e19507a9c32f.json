@@ -1,0 +1,19 @@
+{
+  "id": "b64ddc96-35e1-1395-9160-e19507a9c32f",
+  "name": "Yd#1",
+  "generatedAt": "2024-02-16T06:01:58.487Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [],
+      "duration": 6507,
+      "timestamp": 1724900902192
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "duration": 62750
+}

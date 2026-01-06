@@ -1,0 +1,86 @@
+{
+  "id": "8fc7e536-7abb-45d3-8875-dab7a5d0f619",
+  "name": "9Rkl[I",
+  "generatedAt": "2024-11-23T13:13:19.248Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "utA",
+          "opsPerSecond": 3.174451213030735,
+          "avgTime": 0.029216360763783648,
+          "minTime": 0.05002962091667971,
+          "maxTime": 14.341086616825361,
+          "stdDev": 3.3951757534584607e-149,
+          "rme": 3.119068436686946e-89,
+          "iterations": 190,
+          "totalTime": 5683.6363085938065
+        },
+        {
+          "name": "y",
+          "opsPerSecond": 171.96124726488418,
+          "avgTime": 55.69546914713161,
+          "minTime": 0.08818837848498791,
+          "maxTime": 1.0649052298196513,
+          "stdDev": 1.9097731674903197e-176,
+          "rme": 4.1361910005566465e-305,
+          "iterations": 446,
+          "totalTime": 1.1276082063779336,
+          "tags": [
+            "cpu"
+          ]
+        }
+      ],
+      "duration": 5830,
+      "timestamp": 1704989489158
+    },
+    {
+      "name": "Suite-D",
+      "results": [
+        {
+          "name": "`Z+YY?;Xi",
+          "opsPerSecond": 371.4849645792537,
+          "avgTime": 53.95866020253765,
+          "minTime": 0.2147331577635306,
+          "maxTime": 0.6577385581851418,
+          "stdDev": 3.519530685325755e-74,
+          "rme": 2.3936436395015113e-172,
+          "iterations": 899,
+          "totalTime": 3.1875400521472166,
+          "tags": [
+            "io"
+          ]
+        },
+        {
+          "name": "5ZQ<VD~U,G",
+          "opsPerSecond": 126.04513472741364,
+          "avgTime": 91.82982513409164,
+          "minTime": 0.011688446194042941,
+          "maxTime": 6.284507062150107,
+          "stdDev": 7.044042598043383e-145,
+          "rme": 1.2315514470643487e-185,
+          "iterations": 663,
+          "totalTime": 130.11311285027776,
+          "tags": [
+            "fast",
+            "cpu",
+            "slow"
+          ]
+        }
+      ],
+      "duration": 3685,
+      "timestamp": 1708544954471
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "daec14cb0ff424cf0f788ab461e2eeb5e87fafff"
+  },
+  "duration": 85945
+}

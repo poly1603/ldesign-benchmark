@@ -1,0 +1,11 @@
+{
+  "id": "6b6bfa2a-b218-63b4-8000-001c0000001b",
+  "name": "\"QaM]",
+  "generatedAt": "2026-01-01T02:20:04.081Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

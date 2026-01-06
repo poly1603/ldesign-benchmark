@@ -1,0 +1,38 @@
+{
+  "id": "764b6671-4cda-3472-91b7-a7bab8002400",
+  "name": "URp}cN~^:",
+  "generatedAt": "2024-11-30T06:23:46.223Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [
+        {
+          "name": "i$=",
+          "opsPerSecond": 15.916495087967585,
+          "avgTime": 94.5190774881319,
+          "minTime": 6.114745464860256,
+          "maxTime": 1.8338612820177966,
+          "stdDev": 1.3766423240536349e-220,
+          "rme": 1.7602609778531985e-188,
+          "iterations": 892,
+          "totalTime": 20.07886373987162,
+          "tags": [
+            "cpu"
+          ]
+        }
+      ],
+      "duration": 592,
+      "timestamp": 1711903906387
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "e0959a19a97d147fc9a346df8e8c7dcb8f0bbfb0"
+  },
+  "duration": 74727
+}

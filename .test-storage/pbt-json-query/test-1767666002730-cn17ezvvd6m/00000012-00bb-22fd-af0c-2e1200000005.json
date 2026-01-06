@@ -1,0 +1,60 @@
+{
+  "id": "00000012-00bb-22fd-af0c-2e1200000005",
+  "name": "Y(pX",
+  "generatedAt": "2024-07-31T00:40:00.273Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "s",
+          "opsPerSecond": 6.6088859295480615,
+          "avgTime": 0.22034903951406817,
+          "minTime": 13.045095414779132,
+          "maxTime": 0.36502320659269344,
+          "stdDev": 2.521886160891923e-183,
+          "rme": 1.3347852427070306e-100,
+          "iterations": 226,
+          "totalTime": 1.9382986313050774,
+          "tags": [
+            "fast",
+            "slow",
+            "memory"
+          ]
+        }
+      ],
+      "duration": 3203,
+      "timestamp": 1734798805380
+    },
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "Yg",
+          "opsPerSecond": 72.4703124123579,
+          "avgTime": 1.0326362719661089,
+          "minTime": 10.52210324273576,
+          "maxTime": 3.219782157647913,
+          "stdDev": 1.7558306755692486e-177,
+          "rme": 6.139070606459066e-117,
+          "iterations": 156,
+          "totalTime": 119.02491611686713,
+          "tags": [
+            "slow",
+            "memory"
+          ]
+        }
+      ],
+      "duration": 6510,
+      "timestamp": 1727896692287
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main"
+  }
+}

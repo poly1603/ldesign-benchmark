@@ -1,0 +1,11 @@
+{
+  "id": "fffffffb-b137-6114-8000-00020000000d",
+  "name": "V5-F*wK",
+  "generatedAt": "2026-01-06T02:20:04.081Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

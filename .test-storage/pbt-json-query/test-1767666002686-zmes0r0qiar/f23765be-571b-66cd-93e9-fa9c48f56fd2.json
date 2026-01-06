@@ -1,0 +1,16 @@
+{
+  "id": "f23765be-571b-66cd-93e9-fa9c48f56fd2",
+  "name": "{=cuGBR",
+  "generatedAt": "2024-01-26T11:42:54.695Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "eea1d94f4fbfcdd4dae0197bcd77501cc30b9d00"
+  },
+  "duration": 3516
+}

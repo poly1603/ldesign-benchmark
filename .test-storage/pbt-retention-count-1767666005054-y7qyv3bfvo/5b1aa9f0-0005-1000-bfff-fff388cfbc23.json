@@ -1,0 +1,11 @@
+{
+  "id": "5b1aa9f0-0005-1000-bfff-fff388cfbc23",
+  "name": "=L",
+  "generatedAt": "2026-01-03T02:20:04.081Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

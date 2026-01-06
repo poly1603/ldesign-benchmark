@@ -1,0 +1,24 @@
+{
+  "id": "0000000c-5f53-2998-93c4-34c74ce1d288",
+  "name": "x@S[:wC",
+  "generatedAt": "2026-01-05T02:20:04.081Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [],
+      "duration": 5765,
+      "timestamp": 1735689599976
+    },
+    {
+      "name": "Suite-B",
+      "results": [],
+      "duration": 12,
+      "timestamp": 1715496967321
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

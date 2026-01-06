@@ -1,0 +1,35 @@
+{
+  "id": "1a2ccb67-52f6-56a6-8522-47c8a24453f8",
+  "name": "= dCJq7]S",
+  "generatedAt": "2024-07-01T14:52:12.077Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "UQ/%z",
+          "opsPerSecond": 59.44406562914919,
+          "avgTime": 0.11137719930534339,
+          "minTime": 0.18224091378326707,
+          "maxTime": 2.2442432247961133,
+          "stdDev": 4.805577347787663e-162,
+          "rme": 2.4068013393671224e-95,
+          "iterations": 884,
+          "totalTime": 224.70838796701463,
+          "tags": [
+            "slow",
+            "io"
+          ]
+        }
+      ],
+      "duration": 124,
+      "timestamp": 1716540649881
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "duration": 40068
+}

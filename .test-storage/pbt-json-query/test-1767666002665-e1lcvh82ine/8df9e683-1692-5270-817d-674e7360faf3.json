@@ -1,0 +1,39 @@
+{
+  "id": "8df9e683-1692-5270-817d-674e7360faf3",
+  "name": "(,9",
+  "generatedAt": "2024-02-14T23:00:26.653Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "vgw`'(F",
+          "opsPerSecond": 123.3007146646627,
+          "avgTime": 27.769093173517728,
+          "minTime": 0.027650079671528452,
+          "maxTime": 0.1131545447491191,
+          "stdDev": 1.536458031343846e-233,
+          "rme": 3.1197276525803187e-271,
+          "iterations": 966,
+          "totalTime": 4437.101703735029,
+          "tags": [
+            "fast",
+            "fast"
+          ]
+        }
+      ],
+      "duration": 6406,
+      "timestamp": 1712651384966
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "9bd1ddf98af9e4b9f33ae5fd3a856bfbbe8d7d2a"
+  },
+  "duration": 47389
+}

@@ -1,0 +1,11 @@
+{
+  "id": "report-1-1767666003537-caem85xn5zp",
+  "name": "Report 1",
+  "suites": [],
+  "generatedAt": "2026-01-03T01:20:03.536Z",
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

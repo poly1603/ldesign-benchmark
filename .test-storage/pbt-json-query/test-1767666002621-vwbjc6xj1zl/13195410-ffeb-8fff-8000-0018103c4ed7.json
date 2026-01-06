@@ -1,0 +1,34 @@
+{
+  "id": "13195410-ffeb-8fff-8000-0018103c4ed7",
+  "name": "iA'Cpz",
+  "generatedAt": "2024-07-06T01:05:28.911Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [
+        {
+          "name": "}zX!}",
+          "opsPerSecond": 9999.99999999998,
+          "avgTime": 0.01000000000000003,
+          "minTime": 77.69524556313993,
+          "maxTime": 0.01000000000000003,
+          "stdDev": 9.999999999999991,
+          "rme": 8.875507572119859e-158,
+          "iterations": 752,
+          "totalTime": 284.1800576131444
+        }
+      ],
+      "duration": 9853,
+      "timestamp": 1704067200029
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop"
+  },
+  "duration": 99985
+}

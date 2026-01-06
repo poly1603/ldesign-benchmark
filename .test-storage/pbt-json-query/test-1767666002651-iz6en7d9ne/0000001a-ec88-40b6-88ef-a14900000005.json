@@ -1,0 +1,15 @@
+{
+  "id": "0000001a-ec88-40b6-88ef-a14900000005",
+  "name": "\")*1n~|",
+  "generatedAt": "2024-01-01T00:00:00.006Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1"
+  },
+  "duration": 99997
+}

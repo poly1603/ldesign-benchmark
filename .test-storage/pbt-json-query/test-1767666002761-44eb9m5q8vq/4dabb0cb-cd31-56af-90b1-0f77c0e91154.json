@@ -1,0 +1,12 @@
+{
+  "id": "4dabb0cb-cd31-56af-90b1-0f77c0e91154",
+  "name": "1 rWNSO",
+  "generatedAt": "2024-05-29T20:47:32.282Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "duration": 91849
+}

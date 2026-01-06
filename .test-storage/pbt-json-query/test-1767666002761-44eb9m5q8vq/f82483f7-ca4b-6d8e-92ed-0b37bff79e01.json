@@ -1,0 +1,45 @@
+{
+  "id": "f82483f7-ca4b-6d8e-92ed-0b37bff79e01",
+  "name": "cr",
+  "generatedAt": "2024-03-17T04:57:45.366Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "YG6QX'1$",
+          "opsPerSecond": 2417.710995526599,
+          "avgTime": 4.961206160874577,
+          "minTime": 2.96689256904005,
+          "maxTime": 0.08724920086626847,
+          "stdDev": 4.090311374730565e-83,
+          "rme": 1.9791160774914362e-44,
+          "iterations": 515,
+          "totalTime": 3.267553115621974,
+          "tags": [
+            "slow",
+            "cpu"
+          ]
+        }
+      ],
+      "duration": 7688,
+      "timestamp": 1711903419921
+    },
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 5512,
+      "timestamp": 1726620614318
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "35f0901f4cb6110d58eaaec9d9f6bbd13c1bc3ea"
+  },
+  "duration": 91090
+}

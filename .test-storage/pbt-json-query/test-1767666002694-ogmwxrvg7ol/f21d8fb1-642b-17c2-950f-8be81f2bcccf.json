@@ -1,0 +1,38 @@
+{
+  "id": "f21d8fb1-642b-17c2-950f-8be81f2bcccf",
+  "name": "$Nx_4o^Jdd",
+  "generatedAt": "2024-09-07T05:08:03.855Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "?+JOj,U",
+          "opsPerSecond": 5184.633666222081,
+          "avgTime": 7.278624347128891,
+          "minTime": 49.65499390445252,
+          "maxTime": 1.9018536505183476,
+          "stdDev": 2.326302127191392e-109,
+          "rme": 9.415141500863058e-78,
+          "iterations": 495,
+          "totalTime": 4.299950984746943,
+          "tags": [
+            "cpu"
+          ]
+        }
+      ],
+      "duration": 1141,
+      "timestamp": 1731007507548
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "c9f12eb86975efe1ec7abc6f534ac83eca9a89f5"
+  },
+  "duration": 62951
+}

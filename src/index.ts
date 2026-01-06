@@ -101,9 +101,73 @@ export {
   TimeoutError,
   StorageError,
   ValidationError as BenchmarkValidationError,
+  NetworkError,
+  PluginError,
   formatError,
   captureError,
+  createConfigError,
+  createTimeoutError,
+  isBenchmarkError,
+  isErrorOfType,
+  isRetryableError,
+  isFatalError,
+  tryCatch,
+  tryCatchSync,
+  withErrorBoundary,
 } from './errors'
+
+// 工具函数
+export {
+  formatBytes,
+  formatOps,
+  formatTime,
+  formatPercentage,
+  formatDuration,
+  calculatePercentile,
+  calculateAllPercentiles,
+  calculateStats,
+  calculateRME,
+  chunk,
+  delay,
+  retry,
+  deepMerge,
+  deepFreeze,
+  isPositiveNumber,
+  isNonNegativeNumber,
+  isValidPercentage,
+  isNonEmptyString,
+  assert,
+  assertDefined,
+  nowISO,
+  fileTimestamp,
+  isPromise,
+  toArray,
+  getTypeName,
+} from './utils'
+
+// 类型守卫和验证函数
+export {
+  isBenchmarkStatus,
+  isBenchmarkPhase,
+  isPercentileStats,
+  isMemoryStats,
+  isBenchmarkResult,
+  isBenchmarkSuite,
+  isProgressInfo,
+  isCompletedStatus,
+  isFailureStatus,
+  validateBenchmarkOptions,
+  validateThreshold,
+  validateBenchmarkReport,
+  safeParseJSON,
+  safeParseInt,
+  safeParseFloat,
+  safeParseBoolean,
+  clamp,
+  isInRange,
+  isSafePath,
+  sanitizeFilename,
+} from './validators'
 
 export {
   TimeoutHandler,
@@ -271,7 +335,14 @@ export type {
 // 错误处理和调试类型
 export type {
   ErrorContext,
+  ErrorBoundaryResult,
 } from './errors'
+
+// 验证器类型
+export type {
+  ValidationError as ValidatorError,
+  ValidationResult as ValidatorResult,
+} from './validators'
 
 export type {
   PartialResult,

@@ -1,0 +1,16 @@
+{
+  "id": "9990b607-a811-53bf-bf51-99657cb5f02b",
+  "name": "W$sKR?$aQ$p$",
+  "generatedAt": "2024-08-12T14:13:05.327Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "7ac5eab71e9cf0a25ac6b8fbd35c4c4c5a64bc7b"
+  },
+  "duration": 86058
+}

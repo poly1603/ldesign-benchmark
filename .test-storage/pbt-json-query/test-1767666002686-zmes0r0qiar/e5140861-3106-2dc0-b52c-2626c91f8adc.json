@@ -1,0 +1,35 @@
+{
+  "id": "e5140861-3106-2dc0-b52c-2626c91f8adc",
+  "name": "q*BDTK-i =g",
+  "generatedAt": "2024-04-05T20:04:24.043Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [
+        {
+          "name": "QzE",
+          "opsPerSecond": 2.847135529513077,
+          "avgTime": 4.31992987697053,
+          "minTime": 55.91446170123033,
+          "maxTime": 1.5896899260049884,
+          "stdDev": 4.410751481261934e-234,
+          "rme": 3.413484390192223e-265,
+          "iterations": 657,
+          "totalTime": 7247.407792933901
+        }
+      ],
+      "duration": 821,
+      "timestamp": 1723717682675
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "da5dda408c8a6ffa4fa9638977301fddeba53368"
+  },
+  "duration": 26751
+}

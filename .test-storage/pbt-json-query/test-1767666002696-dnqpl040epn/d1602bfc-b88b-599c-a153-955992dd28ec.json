@@ -1,0 +1,23 @@
+{
+  "id": "d1602bfc-b88b-599c-a153-955992dd28ec",
+  "name": "<4OSjiJ",
+  "generatedAt": "2024-06-10T15:17:05.496Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 8074,
+      "timestamp": 1704151669979
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "a1f4a8233a30cd7dd1d4ab4beae806b93e9c38ff"
+  },
+  "duration": 63561
+}

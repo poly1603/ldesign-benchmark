@@ -1,0 +1,11 @@
+{
+  "id": "report-1-1767666003512-6e499e0ib46",
+  "name": "Report 1",
+  "suites": [],
+  "generatedAt": "2026-01-06T01:20:03.511Z",
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "id": "f08a9c0e-02fc-2f46-aa85-f4890000001c",
+  "name": "\"l",
+  "generatedAt": "2024-10-11T17:47:52.181Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [],
+      "duration": 6390,
+      "timestamp": 1710883889151
+    },
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "|$D",
+          "opsPerSecond": 55.08968397043438,
+          "avgTime": 1.3665310632094,
+          "minTime": 0.19518965769461993,
+          "maxTime": 2.97299587011603,
+          "stdDev": 5.915351565405125e-93,
+          "rme": 4.291926617109688e-285,
+          "iterations": 847,
+          "totalTime": 1499.7830945589344,
+          "tags": [
+            "cpu",
+            "cpu",
+            "fast"
+          ]
+        },
+        {
+          "name": "9Nvvz%c",
+          "opsPerSecond": 30.923358896437655,
+          "avgTime": 0.03554034102309714,
+          "minTime": 21.970534454690302,
+          "maxTime": 12.405572556875459,
+          "stdDev": 4.68286833061327e-44,
+          "rme": 8.710919977543764e-308,
+          "iterations": 444,
+          "totalTime": 27.594265439735935
+        }
+      ],
+      "duration": 7,
+      "timestamp": 1726416370941
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "cdcbc7d759b0d3b30a7bb0cceaa12a6cc7eeb5db"
+  },
+  "duration": 99999
+}

@@ -1,0 +1,68 @@
+{
+  "id": "10aa7a11-8d50-6e7f-89d3-0040a604c5b4",
+  "name": "bZ1N9#/",
+  "generatedAt": "2024-03-14T22:01:42.808Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "5v=X\"V}5$.ih",
+          "opsPerSecond": 2346.044556370933,
+          "avgTime": 3.1920679556950304,
+          "minTime": 18.223211683860026,
+          "maxTime": 4.55914936287018,
+          "stdDev": 3.435036243113127e-221,
+          "rme": 1.0372846095986323e-248,
+          "iterations": 325,
+          "totalTime": 5500.7460317440355,
+          "tags": [
+            "fast",
+            "slow"
+          ]
+        },
+        {
+          "name": "CaR)R&w[wt",
+          "opsPerSecond": 6.724936525233117,
+          "avgTime": 33.074099469329305,
+          "minTime": 0.6657773921426695,
+          "maxTime": 0.03144438764254555,
+          "stdDev": 8.1933499266936745e-255,
+          "rme": 1.3400766215282635e-68,
+          "iterations": 24,
+          "totalTime": 94.02988391587444
+        }
+      ],
+      "duration": 2283,
+      "timestamp": 1733307377290
+    },
+    {
+      "name": "Suite-B",
+      "results": [
+        {
+          "name": "IE&N%u@+:_",
+          "opsPerSecond": 5216.86081244598,
+          "avgTime": 0.048155376060899806,
+          "minTime": 99.45714398347477,
+          "maxTime": 0.025701117128440195,
+          "stdDev": 1.6472219984916093e-271,
+          "rme": 4.1764082135691004e-136,
+          "iterations": 65,
+          "totalTime": 2.386621905476047,
+          "tags": [
+            "fast",
+            "cpu"
+          ]
+        }
+      ],
+      "duration": 9217,
+      "timestamp": 1722281012535
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "duration": 13869
+}

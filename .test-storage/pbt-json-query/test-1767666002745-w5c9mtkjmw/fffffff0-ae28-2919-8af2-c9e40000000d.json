@@ -1,0 +1,16 @@
+{
+  "id": "fffffff0-ae28-2919-8af2-c9e40000000d",
+  "name": "aPH_P7m4",
+  "generatedAt": "2024-04-27T14:48:49.871Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "42e9edd07bbdb4b7d0ba4f0ac0eccafd23bb3fbc"
+  },
+  "duration": 6894
+}

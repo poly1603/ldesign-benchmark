@@ -1,0 +1,18 @@
+{
+  "id": "ebed6607-3039-76c4-8000-0018efa56afb",
+  "name": "d?0xmNX-Z?Q",
+  "generatedAt": "2026-01-05T02:20:04.081Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 615,
+      "timestamp": 1704067200016
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

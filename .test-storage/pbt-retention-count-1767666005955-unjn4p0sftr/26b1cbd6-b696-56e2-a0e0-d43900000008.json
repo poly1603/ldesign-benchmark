@@ -1,0 +1,11 @@
+{
+  "id": "26b1cbd6-b696-56e2-a0e0-d43900000008",
+  "name": "key",
+  "generatedAt": "2026-01-03T02:20:04.081Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

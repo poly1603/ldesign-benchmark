@@ -1,0 +1,24 @@
+{
+  "id": "0ce15fca-0017-1000-8000-001575896737",
+  "name": "toSt",
+  "generatedAt": "2026-01-03T02:20:04.081Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [],
+      "duration": 5638,
+      "timestamp": 1706594987822
+    },
+    {
+      "name": "Suite-B",
+      "results": [],
+      "duration": 4279,
+      "timestamp": 1735689599976
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

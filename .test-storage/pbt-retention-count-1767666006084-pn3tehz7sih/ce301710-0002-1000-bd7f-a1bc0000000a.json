@@ -1,0 +1,24 @@
+{
+  "id": "ce301710-0002-1000-bd7f-a1bc0000000a",
+  "name": "Xw@/\\v",
+  "generatedAt": "2026-01-05T02:20:04.081Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 9999,
+      "timestamp": 1704067200004
+    },
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 14,
+      "timestamp": 1715860039840
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

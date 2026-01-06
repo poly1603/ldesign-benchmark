@@ -1,0 +1,11 @@
+{
+  "id": "2d463802-703a-7ec9-8000-000900000008",
+  "name": "G$",
+  "generatedAt": "2026-01-06T02:20:04.081Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

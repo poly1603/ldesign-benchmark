@@ -1,0 +1,88 @@
+{
+  "id": "7b59871e-7a72-256f-9d32-b4b98a16c72b",
+  "name": "?keind",
+  "generatedAt": "2024-01-01T00:00:00.001Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "!l2",
+          "opsPerSecond": 2.2847767683872777,
+          "avgTime": 4.534462138577493,
+          "minTime": 0.21719251724750724,
+          "maxTime": 0.1004400148628388,
+          "stdDev": 2.526193804027486e-92,
+          "rme": 5.761800783353326e-27,
+          "iterations": 863,
+          "totalTime": 1845.1304582085922,
+          "tags": [
+            "memory"
+          ]
+        },
+        {
+          "name": "n^#JfK^sM/`F",
+          "opsPerSecond": 20.343391700769963,
+          "avgTime": 0.9892055147421803,
+          "minTime": 54.49434784963276,
+          "maxTime": 0.2393061543942687,
+          "stdDev": 1.248021466382663e-225,
+          "rme": 2.588934545961021e-308,
+          "iterations": 443,
+          "totalTime": 3085.634616271277,
+          "tags": [
+            "memory",
+            "io",
+            "slow"
+          ]
+        }
+      ],
+      "duration": 4026,
+      "timestamp": 1715715575173
+    },
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "jIz\\iTE",
+          "opsPerSecond": 218.40829140202482,
+          "avgTime": 6.593410559511044,
+          "minTime": 0.3682120148816596,
+          "maxTime": 24.63292195894237,
+          "stdDev": 3.0797550525824174e-213,
+          "rme": 4.2159549627560066e-218,
+          "iterations": 742,
+          "totalTime": 1852.3098593501718,
+          "tags": [
+            "slow",
+            "cpu",
+            "memory"
+          ]
+        },
+        {
+          "name": "*.",
+          "opsPerSecond": 3004.2834414276476,
+          "avgTime": 22.90695833852148,
+          "minTime": 9.128399922498222,
+          "maxTime": 13.095078762165025,
+          "stdDev": 6.54071249576322e-233,
+          "rme": 8.955096034071903e-83,
+          "iterations": 130,
+          "totalTime": 89.08297892355719
+        }
+      ],
+      "duration": 7333,
+      "timestamp": 1711911134493
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "98d19f6a21dcf07727dfe1aff1ce0e3a2f3b84c6"
+  },
+  "duration": 81182
+}

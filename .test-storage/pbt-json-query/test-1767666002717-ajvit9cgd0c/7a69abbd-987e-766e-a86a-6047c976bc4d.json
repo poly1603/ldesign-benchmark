@@ -1,0 +1,59 @@
+{
+  "id": "7a69abbd-987e-766e-a86a-6047c976bc4d",
+  "name": "DyA0~|NnyZ",
+  "generatedAt": "2024-04-08T11:48:26.727Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "<$3MFI<\\YD2E",
+          "opsPerSecond": 155.70610840972682,
+          "avgTime": 0.018974739840657187,
+          "minTime": 61.088019545556605,
+          "maxTime": 0.04805617093138925,
+          "stdDev": 2.849929876092369e-133,
+          "rme": 2.1453345677958505e-75,
+          "iterations": 496,
+          "totalTime": 12.219977968354703,
+          "tags": [
+            "slow",
+            "io"
+          ]
+        }
+      ],
+      "duration": 6525,
+      "timestamp": 1720416032009
+    },
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "\\F3",
+          "opsPerSecond": 1.1156589557523409,
+          "avgTime": 0.01691156419477841,
+          "minTime": 0.2652011530663334,
+          "maxTime": 5.957075928880014,
+          "stdDev": 1.2679177384282398e-213,
+          "rme": 0.0017336536697486196,
+          "iterations": 175,
+          "totalTime": 1.2238150379083108,
+          "tags": [
+            "cpu"
+          ]
+        }
+      ],
+      "duration": 5,
+      "timestamp": 1730609141903
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1"
+  },
+  "duration": 79988
+}

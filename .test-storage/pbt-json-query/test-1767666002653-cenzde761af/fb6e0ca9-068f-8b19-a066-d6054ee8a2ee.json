@@ -1,0 +1,30 @@
+{
+  "id": "fb6e0ca9-068f-8b19-a066-d6054ee8a2ee",
+  "name": "Zg7v",
+  "generatedAt": "2024-10-22T03:05:51.210Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "k]kLm[",
+          "opsPerSecond": 6.754866961329693,
+          "avgTime": 0.23685885433649032,
+          "minTime": 0.08648478837135526,
+          "maxTime": 0.020285942231204623,
+          "stdDev": 4.276385971244469e-10,
+          "rme": 5.1827494329891e-219,
+          "iterations": 801,
+          "totalTime": 207.9032507305865
+        }
+      ],
+      "duration": 5806,
+      "timestamp": 1726288459857
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "8e3bb773-001a-1000-8000-001478d84dbf",
+  "name": "1'#ACGM>^",
+  "generatedAt": "2024-11-24T22:57:36.490Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "qd)6a((B\"6",
+          "opsPerSecond": 390.34567708086695,
+          "avgTime": 1.4752147447978459,
+          "minTime": 4.631947076334369,
+          "maxTime": 1.3063967040009419,
+          "stdDev": 5.1611294782916844e-132,
+          "rme": 5.0286793071163554e-141,
+          "iterations": 666,
+          "totalTime": 185.33164159059334,
+          "tags": [
+            "memory",
+            "cpu",
+            "slow"
+          ]
+        }
+      ],
+      "duration": 7745,
+      "timestamp": 1719746530294
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "6cfea8d5b0a166da8286cbb34868288047c9bdec"
+  },
+  "duration": 1
+}

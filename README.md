@@ -1,6 +1,8 @@
 # 🏁 LDesign 性能基准测试框架
 
-用于验证各包优化效果的统一基准测试框架，提供完整的性能测试、分析和可视化解决方案。
+> 📊 用于验证各包优化效果的统一基准测试框架，提供完整的性能测试、分析和可视化解决方案。
+
+**特性一览**: 高性能百分位计算 (O(n)) | WebSocket 实时推送 | 完善的 TypeScript 类型 | 错误边界处理 | 多格式报告 | CI/CD 集成
 
 ---
 
@@ -26,10 +28,17 @@
 - **插件开发**: 易于开发和集成新插件
 
 ### 📊 深度性能分析
-- **内存分析**: 详细的内存使用情况分析
-- **CPU 分析**: CPU 使用时间和瓶颈检测
-- **瓶颈识别**: 自动识别性能瓶颈
-- **优化建议**: 智能生成优化建议
+- **内存分析**: 详细的内存使用情况分析（堆、外部内存、RSS）
+- **百分位计算**: 使用 QuickSelect 算法实现 O(n) 复杂度
+- **异常值检测**: IQR 和 Z-score 方法检测异常样本
+- **置信区间**: 计算 90%/95%/99% 置信区间
+- **优化建议**: 基于分析结果智能生成优化建议
+
+### 🛡️ 错误处理
+- **错误边界**: 完善的错误边界处理 (tryCatch, tryCatchSync)
+- **类型安全**: 丰富的类型守卫和验证函数
+- **重试机制**: 支持指数退避的重试逻辑
+- **恢复建议**: 错误信息包含恢复建议
 
 ### 🔄 CI/CD 集成
 - **GitHub Actions**: 完整的 CI/CD 工作流
@@ -43,24 +52,33 @@
 
 ```
 benchmark/
-├── README.md                 # 本文件
-├── package.json              # 包配置
-├── tsconfig.json             # TypeScript 配置
-├── tsup.config.ts            # 构建配置
+├── README.md                     # 本文件
+├── package.json                  # 包配置
+├── tsconfig.json                 # TypeScript 配置
+├── tsup.config.ts                # 构建配置
+├── vitest.config.ts              # 测试配置
 ├── benchmark.config.example.json # 配置文件示例
-├── benchmark.schema.json     # 配置 JSON Schema
+├── benchmark.schema.json         # 配置 JSON Schema
 ├── src/
-│   ├── index.ts              # 主入口
-│   ├── benchmark.ts          # 核心基准测试实现
-│   ├── reporter.ts           # 报告生成器
-│   ├── runner.ts             # 批量运行器
-│   ├── cli.ts                # 命令行接口
-│   ├── server.ts             # 可视化服务器
-│   ├── plugins.ts            # 插件系统
-│   ├── analyzer.ts           # 性能分析工具
-│   └── types.ts              # 类型定义
+│   ├── index.ts                  # 主入口
+│   ├── benchmark.ts              # 核心基准测试实现
+│   ├── reporter.ts               # 报告生成器
+│   ├── runner.ts                 # 批量运行器
+│   ├── cli.ts                    # 命令行接口
+│   ├── server.ts                 # 可视化服务器 (WebSocket 支持)
+│   ├── plugins.ts                # 插件系统
+│   ├── analyzer.ts               # 性能分析工具
+│   ├── analyzer-enhanced.ts      # 增强分析器 (异常检测、置信区间)
+│   ├── errors.ts                 # 错误类和错误边界
+│   ├── validators.ts             # 类型守卫和验证函数
+│   ├── utils/
+│   │   └── index.ts              # 共享工具函数
+│   ├── types/
+│   │   ├── index.ts              # 类型导出
+│   │   └── benchmark.ts          # 核心类型定义
+│   └── types.ts                  # 类型重导出 (向后兼容)
 └── .github/workflows/
-    └── benchmark.yml         # CI/CD 工作流
+    └── benchmark.yml             # CI/CD 工作流
 ```
 
 ---
@@ -535,13 +553,244 @@ jobs:
 
 ---
 
+## 🛠️ API 参考
+
+### 核心类型
+
+```typescript
+// 基准测试任务函数
+type BenchmarkTask = () => void | Promise<void>
+
+// 基准测试选项
+interface BenchmarkOptions {
+  name: string              // 测试名称
+  warmup?: number           // 预热次数 (默认: 5)
+  time?: number             // 最小运行时间 ms (默认: 1000)
+  iterations?: number       // 最小迭代次数 (默认: 10)
+  timeout?: number          // 超时时间 ms (默认: 30000)
+  retries?: number          // 失败重试次数 (默认: 0)
+  collectMemory?: boolean   // 收集内存信息 (默认: false)
+  retainSamples?: boolean   // 保留样本数据 (默认: false)
+  tags?: string[]           // 标签用于过滤
+  onProgress?: ProgressCallback  // 进度回调
+}
+
+// 基准测试结果
+interface BenchmarkResult {
+  readonly name: string
+  readonly opsPerSecond: number
+  readonly avgTime: number
+  readonly minTime: number
+  readonly maxTime: number
+  readonly stdDev: number
+  readonly rme: number
+  readonly iterations: number
+  readonly totalTime: number
+  readonly percentiles?: PercentileStats
+  readonly memory?: MemoryStats
+  readonly extendedStats?: ExtendedStats
+  readonly samples?: readonly number[]
+  readonly status?: BenchmarkStatus
+  readonly error?: string
+  readonly group?: string
+  readonly customMetrics?: Record<string, number>
+}
+```
+
+### 工具函数
+
+```typescript
+import {
+  // 格式化
+  formatBytes,
+  formatOps,
+  formatTime,
+  formatPercentage,
+  formatDuration,
+  
+  // 统计
+  calculatePercentile,      // O(n) QuickSelect 算法
+  calculateAllPercentiles,
+  calculateStats,
+  calculateRME,
+  
+  // 工具
+  retry,                    // 指数退避重试
+  deepMerge,
+  deepFreeze,
+  delay,
+  chunk,
+  
+  // 验证
+  isPositiveNumber,
+  isNonEmptyString,
+  assert,
+  assertDefined,
+} from '@ldesign/benchmark'
+```
+
+### 错误处理
+
+```typescript
+import {
+  // 错误类
+  BenchmarkError,
+  ConfigurationError,
+  ExecutionError,
+  TimeoutError,
+  ValidationError,
+  NetworkError,
+  PluginError,
+  
+  // 工具函数
+  captureError,
+  formatError,
+  createConfigError,
+  createTimeoutError,
+  
+  // 类型守卫
+  isBenchmarkError,
+  isRetryableError,
+  isFatalError,
+  
+  // 错误边界
+  tryCatch,
+  tryCatchSync,
+  withErrorBoundary,
+} from '@ldesign/benchmark'
+
+// 使用错误边界
+const result = await tryCatch(
+  () => riskyOperation(),
+  { taskName: 'myTask', suiteName: 'mySuite' }
+)
+
+if (result.success) {
+  console.log(result.value)
+} else {
+  console.error(result.error.format())
+}
+```
+
+### 验证器
+
+```typescript
+import {
+  // 类型守卫
+  isBenchmarkStatus,
+  isBenchmarkPhase,
+  isBenchmarkResult,
+  isBenchmarkSuite,
+  isProgressInfo,
+  isCompletedStatus,
+  isFailureStatus,
+  
+  // 验证函数
+  validateBenchmarkOptions,
+  validateThreshold,
+  validateBenchmarkReport,
+  
+  // 安全解析
+  safeParseJSON,
+  safeParseInt,
+  safeParseFloat,
+  
+  // 范围验证
+  clamp,
+  isInRange,
+  
+  // 路径验证
+  isSafePath,
+  sanitizeFilename,
+} from '@ldesign/benchmark'
+```
+
+---
+
+## 🔧 故障排除
+
+### 常见问题
+
+**Q: 测试结果不稳定，误差很大？**
+
+A: 尝试以下方法:
+- 增加预热次数: `warmup: 10`
+- 增加运行时间: `time: 5000`
+- 确保测试环境稳定，关闭其他占用 CPU 的程序
+- 使用 `collectMemory: true` 检查是否有 GC 干扰
+
+**Q: 内存使用过高？**
+
+A: 
+- 设置 `retainSamples: false` 不保留原始样本
+- 减少迭代次数
+- 检查测试代码是否有内存泄漏
+
+**Q: 超时错误？**
+
+A:
+- 增加超时时间: `timeout: 60000`
+- 检查任务是否有无限循环
+- 使用 `--debug` 模式查看详细日志
+
+**Q: WebSocket 连接失败？**
+
+A:
+- 确保端口未被占用
+- 检查防火墙设置
+- 尝试使用其他端口: `ldbench serve --port 8080`
+
+---
+
 ## ✅ 最佳实践
 
-1. **预热运行** - 避免冷启动影响
-2. **多次采样** - 减少误差
+1. **预热运行** - 避免冷启动和 JIT 编译影响
+2. **多次采样** - 减少随机误差，提高可靠性
 3. **隔离环境** - 避免其他进程干扰
-4. **版本控制** - 保存历史基准数据
-5. **持续监控** - CI/CD 中自动运行
+4. **版本控制** - 保存历史基准数据用于对比
+5. **持续监控** - CI/CD 中自动运行基准测试
+6. **关注 P95/P99** - 不要只看平均值，尾部延迟更重要
+7. **收集内存** - 定期检查内存使用情况
+
+---
+
+## 📝 更新日志
+
+### v0.2.0
+- ✨ 新增 QuickSelect O(n) 百分位计算算法
+- ✨ 新增完善的错误边界处理 (tryCatch, withErrorBoundary)
+- ✨ 新增 NetworkError, PluginError 错误类
+- ✨ 新增带恢复建议的错误信息
+- ✨ 新增完善的类型守卫和验证器
+- ✨ 新增指数退避重试机制
+- 📝 改进 TypeScript 类型 (readonly, const assertions)
+- 📝 改进 server.ts 完善 API 响应类型
+- 🐛 修复多个 TypeScript 类型错误
+
+### v0.1.0
+- 🎉 初始版本
+- 基本基准测试功能
+- CLI 工具
+- 可视化服务器
+- 插件系统
+
+---
+
+## 🤝 贡献指南
+
+欢迎提交 Issue 和 Pull Request！
+
+1. Fork 仓库
+2. 创建功能分支: `git checkout -b feature/amazing-feature`
+3. 提交更改: `git commit -m 'feat: add amazing feature'`
+4. 推送分支: `git push origin feature/amazing-feature`
+5. 提交 Pull Request
+
+---
+
+## 📄 许可证
+
+MIT License - 查看 [LICENSE](./LICENSE) 了解更多信息。
 
 ---
 

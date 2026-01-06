@@ -1,0 +1,59 @@
+{
+  "id": "8762dfd2-02f9-46e7-8c72-8b2aeaf99172",
+  "name": "9#vMXW{bTCQ",
+  "generatedAt": "2024-12-16T18:31:03.433Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [
+        {
+          "name": "TnP",
+          "opsPerSecond": 1497.4116875019638,
+          "avgTime": 11.061689847460302,
+          "minTime": 0.01667621567214284,
+          "maxTime": 4.368861953278264,
+          "stdDev": 2.3043071465653805e-122,
+          "rme": 1.3762203875139048e-96,
+          "iterations": 940,
+          "totalTime": 548.3531488774144,
+          "tags": [
+            "fast",
+            "memory"
+          ]
+        },
+        {
+          "name": "SW I Wd<&aI",
+          "opsPerSecond": 30.195932534262962,
+          "avgTime": 0.022856151547541406,
+          "minTime": 0.15336714610373461,
+          "maxTime": 0.022886423000806705,
+          "stdDev": 3.7419692943748983e-261,
+          "rme": 3.581779575573237e-244,
+          "iterations": 492,
+          "totalTime": 1.1800815676484382,
+          "tags": [
+            "io",
+            "fast",
+            "cpu"
+          ]
+        }
+      ],
+      "duration": 4711,
+      "timestamp": 1718155003273
+    },
+    {
+      "name": "Suite-D",
+      "results": [],
+      "duration": 2111,
+      "timestamp": 1725362350177
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1"
+  }
+}

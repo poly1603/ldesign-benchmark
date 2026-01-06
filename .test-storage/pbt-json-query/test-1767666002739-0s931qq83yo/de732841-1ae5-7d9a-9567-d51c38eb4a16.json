@@ -1,0 +1,23 @@
+{
+  "id": "de732841-1ae5-7d9a-9567-d51c38eb4a16",
+  "name": "az(SH/P0(y",
+  "generatedAt": "2024-03-06T17:58:14.148Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [],
+      "duration": 6524,
+      "timestamp": 1710663913740
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "fbcdee4b5f75302871f4e76be0f8b5a11667f37f"
+  },
+  "duration": 48268
+}

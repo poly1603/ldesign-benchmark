@@ -1,0 +1,36 @@
+{
+  "id": "9a2b852c-9950-1579-a656-37e02fc3b77b",
+  "name": "/I<",
+  "generatedAt": "2024-12-31T12:26:16.577Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [
+        {
+          "name": "bFA~H(eD",
+          "opsPerSecond": 596.0284975247714,
+          "avgTime": 0.07617411531492113,
+          "minTime": 12.701824860806555,
+          "maxTime": 0.028944399176709976,
+          "stdDev": 5.7176680397056646e-170,
+          "rme": 1.8301828742472071e-187,
+          "iterations": 665,
+          "totalTime": 7562.3070601350255,
+          "tags": [
+            "fast"
+          ]
+        }
+      ],
+      "duration": 7190,
+      "timestamp": 1728758217715
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1"
+  }
+}

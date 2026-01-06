@@ -1,0 +1,23 @@
+{
+  "id": "e6551ce0-6f4e-7c87-a70e-50619d3d3d72",
+  "name": "jq",
+  "generatedAt": "2024-07-18T00:24:36.351Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 5768,
+      "timestamp": 1730817926153
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "9693b4bdb8ecba1a03a1ecdbaa9dd676aa666cbd"
+  },
+  "duration": 17778
+}

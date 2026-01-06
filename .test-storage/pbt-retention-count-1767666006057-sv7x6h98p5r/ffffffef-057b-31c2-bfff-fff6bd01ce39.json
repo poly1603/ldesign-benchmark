@@ -1,0 +1,18 @@
+{
+  "id": "ffffffef-057b-31c2-bfff-fff6bd01ce39",
+  "name": "=7\\&',ka\\_",
+  "generatedAt": "2026-01-04T02:20:04.081Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 6826,
+      "timestamp": 1727352207847
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

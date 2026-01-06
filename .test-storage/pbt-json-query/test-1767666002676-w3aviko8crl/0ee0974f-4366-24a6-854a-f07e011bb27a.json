@@ -1,0 +1,22 @@
+{
+  "id": "0ee0974f-4366-24a6-854a-f07e011bb27a",
+  "name": "s[Q(Lv",
+  "generatedAt": "2024-02-09T20:55:44.073Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 391,
+      "timestamp": 1724471684486
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "c6456ebd2f004439f1de49f518ae6bd0cd2ad2bd"
+  }
+}

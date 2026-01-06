@@ -1,0 +1,11 @@
+{
+  "id": "3f84b293-77d0-4f6b-8c86-f9c30000000b",
+  "name": "QlO",
+  "generatedAt": "2026-01-06T02:20:04.081Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

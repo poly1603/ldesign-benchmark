@@ -1,0 +1,48 @@
+{
+  "id": "edcc4eed-3235-6cc4-91a3-ccec624f58e5",
+  "name": "r7l9@\"wA^5",
+  "generatedAt": "2024-08-15T07:59:25.801Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [
+        {
+          "name": "@W@",
+          "opsPerSecond": 50.6668928837734,
+          "avgTime": 3.329751359159407,
+          "minTime": 0.04651299192767201,
+          "maxTime": 9.084729644197711,
+          "stdDev": 0.00032856242467063765,
+          "rme": 2.9943404021384354e-235,
+          "iterations": 697,
+          "totalTime": 5.9429680504929605,
+          "tags": [
+            "cpu"
+          ]
+        },
+        {
+          "name": "2_y25",
+          "opsPerSecond": 250.90026188429746,
+          "avgTime": 0.06879725830993166,
+          "minTime": 8.587432487975367,
+          "maxTime": 13.214681980265048,
+          "stdDev": 5.826323487206074e-279,
+          "rme": 1.737322279969682e-296,
+          "iterations": 227,
+          "totalTime": 1.5548108587181961
+        }
+      ],
+      "duration": 7057,
+      "timestamp": 1713137101324
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test"
+  },
+  "duration": 92319
+}

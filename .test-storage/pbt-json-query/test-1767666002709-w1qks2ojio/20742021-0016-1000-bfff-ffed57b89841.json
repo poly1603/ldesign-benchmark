@@ -1,0 +1,40 @@
+{
+  "id": "20742021-0016-1000-bfff-ffed57b89841",
+  "name": "SHpg?$2o",
+  "generatedAt": "2024-02-07T16:12:52.865Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "q1!^%nB",
+          "opsPerSecond": 5.861962468553909,
+          "avgTime": 0.683591678450567,
+          "minTime": 0.03154262153101275,
+          "maxTime": 2.70236436215987,
+          "stdDev": 2.8910799629391184e-40,
+          "rme": 2.1422507345043655e-195,
+          "iterations": 520,
+          "totalTime": 26.87262477372423,
+          "tags": [
+            "cpu",
+            "fast",
+            "cpu"
+          ]
+        }
+      ],
+      "duration": 7022,
+      "timestamp": 1704067200016
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "aae9cc23a1e6b471bcdc1db7f17cba2df6502643"
+  },
+  "duration": 1249
+}

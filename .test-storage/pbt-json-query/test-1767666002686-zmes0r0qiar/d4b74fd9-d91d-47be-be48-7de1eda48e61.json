@@ -1,0 +1,15 @@
+{
+  "id": "d4b74fd9-d91d-47be-be48-7de1eda48e61",
+  "name": "qbz.Sq[V",
+  "generatedAt": "2024-03-24T15:51:37.949Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "4bb7848cdc6fb19b8e5c7ff9ef55fc62ae2b52dd"
+  }
+}

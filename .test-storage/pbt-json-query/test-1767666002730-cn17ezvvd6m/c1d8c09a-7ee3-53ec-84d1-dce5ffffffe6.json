@@ -1,0 +1,19 @@
+{
+  "id": "c1d8c09a-7ee3-53ec-84d1-dce5ffffffe6",
+  "name": "?6,WwNV&X[l+",
+  "generatedAt": "2024-11-23T13:12:39.819Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 1654,
+      "timestamp": 1704067200002
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "duration": 52168
+}

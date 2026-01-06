@@ -1,0 +1,16 @@
+{
+  "id": "d94b23c1-9d49-6a3e-b31c-7d232264427b",
+  "name": "tZeen2[pqjy$",
+  "generatedAt": "2024-08-16T14:42:33.444Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1",
+    "commit": "909d74113d0be3ec34a0f9820ca9a8ac970bb227"
+  },
+  "duration": 65061
+}

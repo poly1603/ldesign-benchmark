@@ -1,0 +1,16 @@
+{
+  "id": "9275a37f-f6a9-5e39-be62-57e203b11659",
+  "name": "S,|Jx#Iq5n@",
+  "generatedAt": "2024-06-30T08:48:41.701Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "cbe0c9cdaa7dcd615c3d36cb8ca13b1bf157744e"
+  },
+  "duration": 56159
+}

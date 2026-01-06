@@ -1,0 +1,22 @@
+{
+  "id": "4c087836-d65e-6d6c-a549-cbbd35ea097a",
+  "name": "I;2D",
+  "generatedAt": "2024-07-15T21:18:18.482Z",
+  "suites": [
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 2345,
+      "timestamp": 1723598820542
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1"
+  },
+  "duration": 98765
+}

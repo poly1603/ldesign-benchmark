@@ -1,0 +1,15 @@
+{
+  "id": "67e17fd8-0a99-458d-97c6-136ffec4bbbc",
+  "name": "9(K-LoH}KR",
+  "generatedAt": "2024-10-24T12:25:27.386Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main"
+  },
+  "duration": 29385
+}

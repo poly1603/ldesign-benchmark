@@ -1,0 +1,12 @@
+{
+  "id": "f6041b7a-2cc1-6288-bded-e97eeeb9a408",
+  "name": "bind",
+  "generatedAt": "2024-10-25T02:16:09.889Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "duration": 2
+}

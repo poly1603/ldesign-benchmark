@@ -1,0 +1,45 @@
+{
+  "id": "f365e034-6c63-2416-8e42-ea5b309c6fc8",
+  "name": ":S[b",
+  "generatedAt": "2024-10-25T18:27:50.297Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": ">",
+          "opsPerSecond": 1.8611677464735839,
+          "avgTime": 36.06975872316356,
+          "minTime": 1.8322448655756178,
+          "maxTime": 0.014653779081504762,
+          "stdDev": 8.426012016084312e-28,
+          "rme": 2.0985811286468682e-290,
+          "iterations": 221,
+          "totalTime": 426.10449200637964,
+          "tags": [
+            "fast",
+            "io"
+          ]
+        }
+      ],
+      "duration": 7259,
+      "timestamp": 1721161556992
+    },
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 5582,
+      "timestamp": 1732747128539
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "eaae09fccd7edbe47272ac05f8a6994af2543424"
+  },
+  "duration": 42252
+}

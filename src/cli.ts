@@ -5,7 +5,7 @@ import { createRunner, checkThresholds, BenchmarkReporter, createConfigLoader, v
 import type { BenchmarkThresholds, BenchmarkConfig } from './types'
 import { globby } from 'globby'
 import { readFileSync, existsSync, mkdirSync, writeFileSync, readdirSync, unlinkSync, statSync } from 'node:fs'
-import { watch } from 'chokidar'
+import chokidar from 'chokidar'
 import { performance } from 'node:perf_hooks'
 
 const cli = cac('ldbench')
@@ -53,14 +53,6 @@ function loadConfig(configPath?: string): BenchmarkConfig {
   return DEFAULT_CONFIG
 }
 
-/**
- * 格式化文件大小
- */
-function formatSize(bytes: number): string {
-  if (bytes >= 1024 * 1024) return `${(bytes / (1024 * 1024)).toFixed(2)} MB`
-  if (bytes >= 1024) return `${(bytes / 1024).toFixed(2)} KB`
-  return `${bytes} B`
-}
 
 cli
   .command('run [files...]', '运行基准测试文件')
@@ -305,13 +297,15 @@ cli
       if (options.watch) {
         console.log('\n👀 进入监听模式... (Ctrl+C 退出)')
 
-        const watcher = watch(benchmarkFiles, {
+        // 使用 chokidar 监听文件变化
+        // Note: chokidar v4 has different return type, using type assertion for compatibility
+        const watcher = chokidar.watch(benchmarkFiles, {
           persistent: true,
           ignoreInitial: true
-        })
+        }) as unknown as { on: (event: string, callback: (path: string) => void) => void; close: () => Promise<void> }
 
-        watcher.on('change', async (filePath) => {
-          console.log(`\n🔄 文件变化: ${path.relative(process.cwd(), filePath)}`)
+        watcher.on('change', async (changedFilePath: string) => {
+          console.log(`\n🔄 文件变化: ${path.relative(process.cwd(), changedFilePath)}`)
           console.log('重新运行基准测试...')
 
           // 重新加载并运行
@@ -333,7 +327,7 @@ cli
 
         process.on('SIGINT', () => {
           console.log('\n👋 退出监听模式')
-          watcher.close()
+          void watcher.close()
           process.exit(0)
         })
       }

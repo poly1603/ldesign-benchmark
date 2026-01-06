@@ -1,0 +1,11 @@
+{
+  "id": "4bf8ba12-26eb-708e-8abf-9384ffffffe4",
+  "name": "z${P{X!%",
+  "generatedAt": "2026-01-04T02:20:04.081Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "dc2def1c-739b-2cf3-9935-6b6f465b1f70",
+  "name": "a+Pu#",
+  "generatedAt": "2024-11-06T01:55:09.435Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "0ba57abf47a66103f658021fdeee5739398b10c1"
+  },
+  "duration": 47263
+}

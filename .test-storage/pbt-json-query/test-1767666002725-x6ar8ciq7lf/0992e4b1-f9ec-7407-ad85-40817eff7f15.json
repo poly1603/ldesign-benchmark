@@ -1,0 +1,29 @@
+{
+  "id": "0992e4b1-f9ec-7407-ad85-40817eff7f15",
+  "name": "B$hsbX&NRxy",
+  "generatedAt": "2024-03-10T18:40:11.722Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [],
+      "duration": 6692,
+      "timestamp": 1704079722684
+    },
+    {
+      "name": "Suite-A",
+      "results": [],
+      "duration": 5379,
+      "timestamp": 1719607916327
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "10fcc4e2b100e4ed1899cbae1cbabcaef708477d"
+  },
+  "duration": 47312
+}

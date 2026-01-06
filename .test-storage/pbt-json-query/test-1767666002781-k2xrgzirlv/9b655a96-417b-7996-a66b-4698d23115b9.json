@@ -1,0 +1,16 @@
+{
+  "id": "9b655a96-417b-7996-a66b-4698d23115b9",
+  "name": "[5qHXSK*b",
+  "generatedAt": "2024-01-26T04:58:52.149Z",
+  "suites": [],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "b6575f5132573505eaea0fc8e9ad7b4ab010b33e"
+  },
+  "duration": 95896
+}

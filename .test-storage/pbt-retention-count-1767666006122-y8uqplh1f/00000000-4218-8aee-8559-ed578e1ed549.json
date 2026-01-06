@@ -1,0 +1,18 @@
+{
+  "id": "00000000-4218-8aee-8559-ed578e1ed549",
+  "name": "u\"",
+  "generatedAt": "2026-01-05T02:20:04.081Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [],
+      "duration": 6075,
+      "timestamp": 1723047777666
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  }
+}

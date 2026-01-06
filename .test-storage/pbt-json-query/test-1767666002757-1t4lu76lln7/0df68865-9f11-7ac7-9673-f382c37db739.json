@@ -1,0 +1,71 @@
+{
+  "id": "0df68865-9f11-7ac7-9673-f382c37db739",
+  "name": "]EZ=PYx",
+  "generatedAt": "2024-10-06T09:01:10.647Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [
+        {
+          "name": "GDnnFOs",
+          "opsPerSecond": 58.91291390206656,
+          "avgTime": 15.590580731600348,
+          "minTime": 0.03875496243044624,
+          "maxTime": 0.20045589009477707,
+          "stdDev": 1.875338791855737e-30,
+          "rme": 1.441036120223148e-137,
+          "iterations": 838,
+          "totalTime": 5903.30999592745
+        },
+        {
+          "name": "m|@YQSTD]",
+          "opsPerSecond": 10.456035447124195,
+          "avgTime": 0.09880667366405516,
+          "minTime": 30.753981689708628,
+          "maxTime": 31.62235550817584,
+          "stdDev": 1.6994847588637853e-44,
+          "rme": 1.5027161524862303e-289,
+          "iterations": 423,
+          "totalTime": 61.45584078406464,
+          "tags": [
+            "slow",
+            "slow",
+            "fast"
+          ]
+        }
+      ],
+      "duration": 4155,
+      "timestamp": 1734155158030
+    },
+    {
+      "name": "Suite-B",
+      "results": [
+        {
+          "name": "k5fk6#",
+          "opsPerSecond": 1044.5662782758977,
+          "avgTime": 0.28549892538195054,
+          "minTime": 56.2999755713647,
+          "maxTime": 61.642066954349175,
+          "stdDev": 1.9221177048494456e-39,
+          "rme": 2.0890296271052002e-185,
+          "iterations": 341,
+          "totalTime": 14.4897549733531,
+          "tags": [
+            "memory"
+          ]
+        }
+      ],
+      "duration": 9171,
+      "timestamp": 1725752787632
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "release/v1"
+  },
+  "duration": 30113
+}

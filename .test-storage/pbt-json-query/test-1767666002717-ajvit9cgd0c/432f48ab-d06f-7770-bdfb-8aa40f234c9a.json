@@ -1,0 +1,53 @@
+{
+  "id": "432f48ab-d06f-7770-bdfb-8aa40f234c9a",
+  "name": " \\J]A_",
+  "generatedAt": "2024-02-23T18:40:47.879Z",
+  "suites": [
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "y^,6!IUs",
+          "opsPerSecond": 28.77475887511674,
+          "avgTime": 6.295357304110015,
+          "minTime": 27.34481557406305,
+          "maxTime": 5.759970934634656,
+          "stdDev": 1.0107765673542274e-174,
+          "rme": 4.944404586606757e-246,
+          "iterations": 542,
+          "totalTime": 4.619200302967261
+        }
+      ],
+      "duration": 6673,
+      "timestamp": 1728921710619
+    },
+    {
+      "name": "Suite-C",
+      "results": [
+        {
+          "name": "oVQ_<",
+          "opsPerSecond": 124.88171415863953,
+          "avgTime": 3.6368898136680996,
+          "minTime": 0.19392741088685486,
+          "maxTime": 0.936232716602492,
+          "stdDev": 1.903474825866563e-199,
+          "rme": 1.7192875869008403e-261,
+          "iterations": 745,
+          "totalTime": 1.4127489358418608
+        }
+      ],
+      "duration": 1462,
+      "timestamp": 1717032267529
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "develop",
+    "commit": "2ef54cb18c31545efdc789a1ccf5ebd9ad46f7ee"
+  },
+  "duration": 83851
+}

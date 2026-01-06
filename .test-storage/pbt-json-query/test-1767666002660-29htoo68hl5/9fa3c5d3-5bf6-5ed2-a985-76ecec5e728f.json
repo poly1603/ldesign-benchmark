@@ -1,0 +1,52 @@
+{
+  "id": "9fa3c5d3-5bf6-5ed2-a985-76ecec5e728f",
+  "name": "}i_Z1xu",
+  "generatedAt": "2024-07-19T05:58:53.642Z",
+  "suites": [
+    {
+      "name": "Suite-B",
+      "results": [
+        {
+          "name": ".f5bsd,^<~h",
+          "opsPerSecond": 1473.8749223110046,
+          "avgTime": 2.4396172223027786,
+          "minTime": 0.02912142994814858,
+          "maxTime": 0.303905511035493,
+          "stdDev": 1.5864279855659686e-264,
+          "rme": 1.16476450600313e-57,
+          "iterations": 947,
+          "totalTime": 3.3699194546231004,
+          "tags": [
+            "cpu"
+          ]
+        },
+        {
+          "name": "SM`YeIL",
+          "opsPerSecond": 1526.734058459252,
+          "avgTime": 0.11411901513532491,
+          "minTime": 8.54205576188976,
+          "maxTime": 0.23079480881938627,
+          "stdDev": 1.920955296949604e-218,
+          "rme": 1.5780340929989496e-117,
+          "iterations": 550,
+          "totalTime": 2.0115693317609367,
+          "tags": [
+            "slow"
+          ]
+        }
+      ],
+      "duration": 4084,
+      "timestamp": 1714292283917
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "33f11c8ccfe1c2034bfc2c8f6fce1b896df86c7b"
+  },
+  "duration": 76710
+}

@@ -1,0 +1,54 @@
+{
+  "id": "0ece8b90-c458-6a36-a591-8c58623f6ec6",
+  "name": "ZQ0",
+  "generatedAt": "2024-10-26T00:55:14.384Z",
+  "suites": [
+    {
+      "name": "Suite-D",
+      "results": [
+        {
+          "name": "kBW)P;\\&&sW",
+          "opsPerSecond": 3.4112835161871313,
+          "avgTime": 40.449207092158204,
+          "minTime": 0.05665324741096848,
+          "maxTime": 0.24586793007208135,
+          "stdDev": 8.862566845638664e-27,
+          "rme": 6.526182583591804e-295,
+          "iterations": 442,
+          "totalTime": 437.39681084959744,
+          "tags": [
+            "memory",
+            "slow",
+            "io"
+          ]
+        },
+        {
+          "name": "M",
+          "opsPerSecond": 2859.391368169454,
+          "avgTime": 30.339831676710297,
+          "minTime": 25.150632881868706,
+          "maxTime": 7.7220022592221085,
+          "stdDev": 4.822830776903557e-285,
+          "rme": 2.8570483553917335e-261,
+          "iterations": 583,
+          "totalTime": 4.425180617110114,
+          "tags": [
+            "slow"
+          ]
+        }
+      ],
+      "duration": 1291,
+      "timestamp": 1715714162605
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "nodeVersion": "v20.0.0"
+  },
+  "git": {
+    "branch": "feature/test",
+    "commit": "b4acbee6ee61ba6fb443373e92edc179064ade6a"
+  },
+  "duration": 11110
+}

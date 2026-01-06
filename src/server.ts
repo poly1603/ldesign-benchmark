@@ -6,18 +6,30 @@
  * 提供 Web 界面来查看和操作基准测试结果
  */
 
-import { createServer } from 'node:http'
+import { createServer, type IncomingMessage, type ServerResponse, type Server } from 'node:http'
 import { readFileSync, existsSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 import path from 'node:path'
 import { WebSocketServer, WebSocket } from 'ws'
-import type { BenchmarkResult, ProgressInfo } from './types.js'
+import type { BenchmarkResult, ProgressInfo, BenchmarkReport, BenchmarkSuite, TrendDirection } from './types.js'
 
-interface ServerOptions {
-  port: number
-  host: string
-  historyDir: string
-  enableWebSocket?: boolean
+// ============================================================================
+// 服务器配置类型 / Server Configuration Types
+// ============================================================================
+
+/**
+ * 服务器配置选项
+ * Server configuration options
+ */
+export interface ServerOptions {
+  /** 端口号 / Port number */
+  readonly port: number
+  /** 主机地址 / Host address */
+  readonly host: string
+  /** 历史记录目录 / History directory */
+  readonly historyDir: string
+  /** 是否启用 WebSocket / Enable WebSocket */
+  readonly enableWebSocket?: boolean
 }
 
 /**
@@ -49,11 +61,155 @@ export interface CompleteMessage extends WSMessage {
   }
 }
 
+/**
+ * 错误消息
+ * Error message
+ */
+export interface ErrorMessage extends WSMessage {
+  type: 'error'
+  payload: {
+    code: string
+    message: string
+    details?: unknown
+  }
+}
+
+// ============================================================================
+// API 响应类型 / API Response Types
+// ============================================================================
+
+/**
+ * 历史记录项
+ * History list item
+ */
+export interface HistoryListItem {
+  readonly id: string
+  readonly name: string
+  readonly timestamp: string
+  readonly suites: number
+  readonly totalTasks: number
+}
+
+/**
+ * 对比结果项
+ * Comparison result item
+ */
+export interface ComparisonItem {
+  readonly suite: string
+  readonly task: string
+  readonly values: ReadonlyArray<{
+    readonly reportId: string
+    readonly opsPerSecond: number
+    readonly avgTime: number
+    readonly minTime: number
+    readonly maxTime: number
+    readonly rme: number
+  }>
+  readonly trend: TrendDirection
+  readonly improvement: number
+  readonly avgOpsPerSecond: number
+  readonly avgTime: number
+}
+
+/**
+ * 多报告对比汇总
+ * Multi-report comparison summary
+ */
+export interface MultiComparisonResult {
+  readonly reports: ReadonlyArray<{
+    readonly id: string
+    readonly name: string
+    readonly generatedAt: string
+  }>
+  readonly comparisons: readonly ComparisonItem[]
+  readonly summary: {
+    readonly totalComparisons: number
+    readonly improvements: number
+    readonly regressions: number
+    readonly stable: number
+    readonly avgChange: number
+  }
+}
+
+/**
+ * 双报告对比结果
+ * Two-report comparison result
+ */
+export interface TwoReportComparisonResult {
+  readonly baseline: string
+  readonly current: string
+  readonly comparisons: ReadonlyArray<{
+    readonly suite: string
+    readonly task: string
+    readonly baselineOps: number
+    readonly currentOps: number
+    readonly improvement: number
+    readonly isRegression: boolean
+    readonly isImprovement: boolean
+  }>
+  readonly summary: {
+    readonly totalComparisons: number
+    readonly improvements: number
+    readonly regressions: number
+    readonly avgImprovement: number
+  }
+}
+
+/**
+ * 趋势数据点
+ * Trend data point
+ */
+export interface TrendDataPointExt {
+  readonly timestamp: number
+  readonly date: string
+  readonly opsPerSecond: number
+  readonly avgTime: number
+  readonly minTime: number
+  readonly maxTime: number
+  readonly rme: number
+  readonly commitHash?: string
+  readonly branch?: string
+}
+
+/**
+ * 趋势数据响应
+ * Trend data response
+ */
+export interface TrendDataResponse {
+  readonly task: string
+  readonly suite: string
+  readonly dataPoints: readonly TrendDataPointExt[]
+  readonly trend: TrendDirection
+  readonly changeRate: number
+  readonly summary: {
+    readonly totalPoints: number
+    readonly avgOpsPerSecond: number
+    readonly avgTime: number
+    readonly range: string
+  }
+}
+
+/**
+ * 服务器状态响应
+ * Server status response
+ */
+export interface ServerStatusResponse {
+  readonly uptime: number
+  readonly memory: NodeJS.MemoryUsage
+  readonly timestamp: string
+  readonly historyCount: number
+  readonly wsClientCount?: number
+}
+
+// ============================================================================
+// 服务器类 / Server Class
+// ============================================================================
+
 export class BenchmarkServer {
-  private server: any
+  private server: Server | null = null
   private wss: WebSocketServer | null = null
-  private wsClients: Set<WebSocket> = new Set()
-  private options: ServerOptions
+  private readonly wsClients: Set<WebSocket> = new Set()
+  private readonly options: Required<ServerOptions>
 
   constructor(options: Partial<ServerOptions> = {}) {
     this.options = {
@@ -77,7 +233,7 @@ export class BenchmarkServer {
     }
 
     return new Promise((resolve, reject) => {
-      this.server.listen(this.options.port, this.options.host, (err?: Error) => {
+      this.server!.listen(this.options.port, this.options.host, (err?: Error) => {
         if (err) {
           reject(err)
         } else {
@@ -205,9 +361,11 @@ export class BenchmarkServer {
 
   /**
    * 处理 HTTP 请求
+   * Handle HTTP request
    */
-  private async handleRequest(req: any, res: any): Promise<void> {
-    const url = new URL(req.url || '/', `http://${req.headers.host}`)
+  private async handleRequest(req: IncomingMessage, res: ServerResponse): Promise<void> {
+    const host = req.headers.host || 'localhost'
+    const url = new URL(req.url || '/', `http://${host}`)
     const pathname = url.pathname
 
     // 设置 CORS 头
@@ -247,8 +405,9 @@ export class BenchmarkServer {
 
   /**
    * 提供仪表板页面
+   * Serve dashboard page
    */
-  private async serveDashboard(_req: any, res: any): Promise<void> {
+  private async serveDashboard(_req: IncomingMessage, res: ServerResponse): Promise<void> {
     const dashboardHTML = this.getDashboardHTML()
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' })
     res.end(dashboardHTML)
@@ -457,8 +616,9 @@ export class BenchmarkServer {
 
   /**
    * 提供历史记录列表
+   * Serve history list
    */
-  private async serveHistoryList(_req: any, res: any): Promise<void> {
+  private async serveHistoryList(_req: IncomingMessage, res: ServerResponse): Promise<void> {
     const historyDir = this.options.historyDir
 
     if (!existsSync(historyDir)) {
@@ -473,17 +633,17 @@ export class BenchmarkServer {
       .reverse()
       .slice(0, 50) // 限制返回数量
 
-    const historyList = files.map(file => {
+    const historyList: HistoryListItem[] = files.map(file => {
       const filePath = join(historyDir, file)
       const content = readFileSync(filePath, 'utf-8')
-      const report = JSON.parse(content)
+      const report = JSON.parse(content) as BenchmarkReport
 
       return {
         id: file.replace('.json', ''),
         name: report.name,
         timestamp: report.generatedAt,
         suites: report.suites.length,
-        totalTasks: report.suites.reduce((sum: number, s: any) => sum + s.results.length, 0)
+        totalTasks: report.suites.reduce((sum: number, s: BenchmarkSuite) => sum + s.results.length, 0)
       }
     })
 
@@ -493,8 +653,9 @@ export class BenchmarkServer {
 
   /**
    * 提供具体报告
+   * Serve specific report
    */
-  private async serveReport(_req: any, res: any, pathname: string): Promise<void> {
+  private async serveReport(_req: IncomingMessage, res: ServerResponse, pathname: string): Promise<void> {
     const reportId = pathname.split('/').pop()?.replace('.json', '')
 
     if (!reportId) {
@@ -520,9 +681,11 @@ export class BenchmarkServer {
 
   /**
    * 提供对比数据
+   * Serve comparison data
    */
-  private async serveComparison(req: any, res: any): Promise<void> {
-    const url = new URL(req.url || '/', `http://${req.headers.host}`)
+  private async serveComparison(req: IncomingMessage, res: ServerResponse): Promise<void> {
+    const host = req.headers.host || 'localhost'
+    const url = new URL(req.url || '/', `http://${host}`)
     const reportIds = url.searchParams.get('reports')?.split(',') || []
 
     // 支持旧的 baseline/current 参数
@@ -553,8 +716,9 @@ export class BenchmarkServer {
 
   /**
    * 旧的双报告对比（向后兼容）
+   * Legacy two-report comparison (backward compatible)
    */
-  private async serveTwoReportComparison(baselineId: string, currentId: string, res: any): Promise<void> {
+  private async serveTwoReportComparison(baselineId: string, currentId: string, res: ServerResponse): Promise<void> {
     const baselinePath = join(this.options.historyDir, `${baselineId}.json`)
     const currentPath = join(this.options.historyDir, `${currentId}.json`)
 
@@ -578,9 +742,26 @@ export class BenchmarkServer {
 
   /**
    * 获取多报告对比数据
+   * Get multi-report comparison data
    */
-  async getComparisonData(reportIds: string[]): Promise<any> {
-    const reports: any[] = []
+  async getComparisonData(reportIds: string[]): Promise<MultiComparisonResult> {
+    interface ReportData {
+      id: string
+      name: string
+      generatedAt: string
+      report: BenchmarkReport
+    }
+
+    interface TaskValue {
+      reportId: string
+      opsPerSecond: number
+      avgTime: number
+      minTime: number
+      maxTime: number
+      rme: number
+    }
+
+    const reports: ReportData[] = []
 
     // 加载所有报告
     for (const reportId of reportIds) {
@@ -590,7 +771,7 @@ export class BenchmarkServer {
       }
 
       const content = readFileSync(reportPath, 'utf-8')
-      const report = JSON.parse(content)
+      const report = JSON.parse(content) as BenchmarkReport
       reports.push({
         id: reportId,
         name: report.name,
@@ -600,7 +781,7 @@ export class BenchmarkServer {
     }
 
     // 收集所有唯一的套件和任务
-    const taskMap = new Map<string, Map<string, any[]>>()
+    const taskMap = new Map<string, Map<string, TaskValue[]>>()
 
     for (const { id, report } of reports) {
       for (const suite of report.suites || []) {
@@ -628,7 +809,7 @@ export class BenchmarkServer {
     }
 
     // 构建对比数据
-    const comparisons: any[] = []
+    const comparisons: ComparisonItem[] = []
 
     for (const [suiteName, suiteMap] of taskMap.entries()) {
       for (const [taskName, values] of suiteMap.entries()) {
@@ -639,11 +820,13 @@ export class BenchmarkServer {
         const lastOps = values[values.length - 1].opsPerSecond
         const improvement = ((lastOps - firstOps) / firstOps) * 100
 
+        const trend: TrendDirection = improvement > 5 ? 'improving' : improvement < -5 ? 'degrading' : 'stable'
+
         comparisons.push({
           suite: suiteName,
           task: taskName,
           values,
-          trend: improvement > 5 ? 'improving' : improvement < -5 ? 'degrading' : 'stable',
+          trend,
           improvement,
           avgOpsPerSecond: values.reduce((sum, v) => sum + v.opsPerSecond, 0) / values.length,
           avgTime: values.reduce((sum, v) => sum + v.avgTime, 0) / values.length
@@ -676,13 +859,15 @@ export class BenchmarkServer {
 
   /**
    * 提供服务器状态
+   * Serve server status
    */
-  private async serveStatus(_req: any, res: any): Promise<void> {
-    const status = {
+  private async serveStatus(_req: IncomingMessage, res: ServerResponse): Promise<void> {
+    const status: ServerStatusResponse = {
       uptime: process.uptime(),
       memory: process.memoryUsage(),
       timestamp: new Date().toISOString(),
-      historyCount: this.getHistoryCount()
+      historyCount: this.getHistoryCount(),
+      wsClientCount: this.wsClients.size
     }
 
     res.writeHead(200, { 'Content-Type': 'application/json' })
@@ -703,16 +888,27 @@ export class BenchmarkServer {
 
   /**
    * 对比两个报告
+   * Compare two reports
    */
-  private compareReports(baseline: any, current: any): any {
-    const comparisons: any[] = []
+  private compareReports(baseline: BenchmarkReport, current: BenchmarkReport): TwoReportComparisonResult {
+    interface ComparisonEntry {
+      suite: string
+      task: string
+      baselineOps: number
+      currentOps: number
+      improvement: number
+      isRegression: boolean
+      isImprovement: boolean
+    }
+
+    const comparisons: ComparisonEntry[] = []
 
     for (const currentSuite of current.suites) {
-      const baselineSuite = baseline.suites.find((s: any) => s.name === currentSuite.name)
+      const baselineSuite = baseline.suites.find(s => s.name === currentSuite.name)
       if (!baselineSuite) continue
 
       for (const currentResult of currentSuite.results) {
-        const baselineResult = baselineSuite.results.find((r: any) => r.name === currentResult.name)
+        const baselineResult = baselineSuite.results.find(r => r.name === currentResult.name)
         if (!baselineResult) continue
 
         const improvement = ((currentResult.opsPerSecond - baselineResult.opsPerSecond) / baselineResult.opsPerSecond) * 100
@@ -736,15 +932,18 @@ export class BenchmarkServer {
         totalComparisons: comparisons.length,
         improvements: comparisons.filter(c => c.isImprovement).length,
         regressions: comparisons.filter(c => c.isRegression).length,
-        avgImprovement: comparisons.reduce((sum, c) => sum + c.improvement, 0) / comparisons.length
+        avgImprovement: comparisons.length > 0
+          ? comparisons.reduce((sum, c) => sum + c.improvement, 0) / comparisons.length
+          : 0
       }
     }
   }
 
   /**
    * 提供趋势数据 API
+   * Serve trend data API
    */
-  private async serveTrendData(req: any, res: any, pathname: string): Promise<void> {
+  private async serveTrendData(req: IncomingMessage, res: ServerResponse, pathname: string): Promise<void> {
     // 解析路径: /api/trend/{suiteName}/{taskName}
     const parts = pathname.split('/').filter(Boolean)
     if (parts.length < 4) {
@@ -756,7 +955,8 @@ export class BenchmarkServer {
     const suiteName = decodeURIComponent(parts[2])
     const taskName = decodeURIComponent(parts[3])
 
-    const url = new URL(req.url || '/', `http://${req.headers.host}`)
+    const host = req.headers.host || 'localhost'
+    const url = new URL(req.url || '/', `http://${host}`)
     const range = url.searchParams.get('range') || 'month' // week, month, quarter, year
     const points = parseInt(url.searchParams.get('points') || '30')
 
@@ -773,12 +973,13 @@ export class BenchmarkServer {
 
   /**
    * 获取趋势数据
+   * Get trend data
    */
   async getTrendData(
     suiteName: string,
     taskName: string,
     options?: { range?: string; points?: number }
-  ): Promise<any> {
+  ): Promise<TrendDataResponse> {
     const historyDir = this.options.historyDir
 
     if (!existsSync(historyDir)) {
@@ -787,7 +988,13 @@ export class BenchmarkServer {
         suite: suiteName,
         dataPoints: [],
         trend: 'stable',
-        changeRate: 0
+        changeRate: 0,
+        summary: {
+          totalPoints: 0,
+          avgOpsPerSecond: 0,
+          avgTime: 0,
+          range: options?.range || 'month'
+        }
       }
     }
 
@@ -808,22 +1015,22 @@ export class BenchmarkServer {
       .sort()
       .reverse()
 
-    const dataPoints: any[] = []
+    const dataPoints: TrendDataPointExt[] = []
 
     for (const file of files) {
       try {
         const filePath = path.join(historyDir, file)
         const content = readFileSync(filePath, 'utf-8')
-        const report = JSON.parse(content)
+        const report = JSON.parse(content) as BenchmarkReport
 
         const reportDate = new Date(report.generatedAt)
         if (reportDate < startDate) continue
 
         // 查找匹配的套件和任务
-        const suite = report.suites?.find((s: any) => s.name === suiteName)
+        const suite = report.suites?.find(s => s.name === suiteName)
         if (!suite) continue
 
-        const result = suite.results?.find((r: any) => r.name === taskName)
+        const result = suite.results?.find(r => r.name === taskName)
         if (!result) continue
 
         dataPoints.push({
@@ -871,8 +1078,9 @@ export class BenchmarkServer {
 
   /**
    * 计算趋势方向
+   * Calculate trend direction
    */
-  private calculateTrend(dataPoints: any[]): 'improving' | 'stable' | 'degrading' {
+  private calculateTrend(dataPoints: TrendDataPointExt[]): TrendDirection {
     if (dataPoints.length < 2) return 'stable'
 
     const firstHalf = dataPoints.slice(0, Math.floor(dataPoints.length / 2))
@@ -890,8 +1098,9 @@ export class BenchmarkServer {
 
   /**
    * 计算变化率（百分比/周）
+   * Calculate change rate (%/week)
    */
-  private calculateChangeRate(dataPoints: any[]): number {
+  private calculateChangeRate(dataPoints: TrendDataPointExt[]): number {
     if (dataPoints.length < 2) return 0
 
     const first = dataPoints[0]
